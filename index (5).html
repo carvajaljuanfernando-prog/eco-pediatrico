@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leer un informe de eco pediátrico · Manual interactivo</title>
+<meta name="description" content="Manual interactivo para pediatras, urgencias, medicina general y UCI: cómo interpretar un informe de ecocardiograma pediátrico, empezando por el Z-score. Por el Dr. Juan Fernando Carvajal Estupiñán, Cardiólogo, Instituto del Corazón de Bucaramanga, Colombia.">
+<meta name="author" content="Dr. Juan Fernando Carvajal Estupiñán">
+<meta name="keywords" content="ecocardiograma pediátrico, Z-score, cardiopatías congénitas, Kawasaki, pediatría, urgencias, UCI, interpretación, educación médica">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta property="og:description" content="Manual interactivo para médicos no cardiólogos: el Z-score, las trampas del eco pediátrico y los hallazgos que obligan a actuar. Dr. Juan Fernando Carvajal Estupiñán · Cardiólogo, Instituto del Corazón de Bucaramanga · Colombia.">
+<meta property="og:site_name" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta name="theme-color" content="#16323f">
+<meta name="apple-mobile-web-app-title" content="Eco Pediátrico">
+<meta name="application-name" content="Eco Pediátrico">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2320506f'/%3E%3Cpath d='M32 48C32 48 13 36 13 25c0-6.5 5-10.5 10.2-10.5 4.3 0 7.4 2.7 8.8 5.5 1.4-2.8 4.5-5.5 8.8-5.5C46 14.5 51 18.5 51 25c0 11-19 23-19 23z' fill='%23ffffff'/%3E%3Cpath d='M16 30h8l3-7 3.5 13 3-10 2.8 7 2.4-4.5H48' fill='none' stroke='%2320506f' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#142b3a;
+    --brand:#205070;
+    --brand-2:#2c6b8f;
+    --paper:#eef2f3;
+    --surface:#ffffff;
+    --line:#d2dde1;
+    --muted:#5e7480;
+    --ok:#1f8a6d; --ok-bg:#e2f1ea;
+    --warn:#b9821c; --warn-bg:#f7edd4;
+    --alert:#b3452e; --alert-bg:#f5e0d9;
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand)}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.2;letter-spacing:-.01em}
+  .mono{font-family:var(--font-mono)}
+
+  /* ---------- Layout ---------- */
+  .shell{display:grid;grid-template-columns:248px 1fr;gap:0;min-height:100vh}
+  .nav{
+    position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+    background:var(--ink);color:#cfe0e8;padding:26px 18px;border-right:1px solid #0d212e;
+  }
+  .nav .brandmark{font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;letter-spacing:.02em;line-height:1.25}
+  .nav .brandsub{color:#88a7b6;font-size:11.5px;margin-top:6px;line-height:1.4}
+  .wave{display:block;margin:18px 0;opacity:.55}
+  .nav ol{list-style:none;margin:0;padding:0;counter-reset:s}
+  .nav li a{
+    display:flex;gap:10px;align-items:baseline;text-decoration:none;color:#a9c4d1;
+    font-size:13.5px;padding:7px 9px;border-radius:7px;margin:1px 0;
+  }
+  .nav li a .n{font-family:var(--font-mono);font-size:11px;color:#6f93a3;min-width:18px}
+  .nav li a:hover{background:#1d3c4d;color:#fff}
+  .nav li a.active{background:var(--brand);color:#fff}
+  .nav li a.active .n{color:#bfe0f0}
+
+  .main{padding:0;min-width:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* ---------- Hero ---------- */
+  .hero{background:linear-gradient(180deg,#16323f 0%, #1b3d4d 100%);color:#eaf2f5;padding:54px 0 40px}
+  .hero .wrap{display:block}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7fb0c4}
+  .hero h1{font-size:clamp(28px,5vw,40px);color:#fff;margin:14px 0 14px;font-weight:700}
+  .hero p.lead{font-size:17px;color:#bcd2dc;max-width:60ch;margin:0}
+  .hero .meta{margin-top:24px;font-size:13px;color:#8db1c1;font-family:var(--font-mono)}
+  .hero .meta b{color:#d9e8ee;font-weight:600}
+
+  /* ---------- Sections ---------- */
+  section{padding:46px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--brand);display:inline-block}
+  h2{font-size:clamp(22px,3.4vw,29px);margin:14px 0 8px}
+  h3{font-size:18px;margin:28px 0 6px;color:var(--brand)}
+  p{margin:12px 0}
+  .sub{color:var(--muted);font-size:15px;margin-top:0}
+
+  /* ---------- Components ---------- */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;margin:20px 0;box-shadow:0 1px 0 rgba(20,43,58,.03)}
+  .clin{border-left:3px solid var(--brand);background:#f3f8fa;border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:14.5px}
+  .clin b{color:var(--brand)}
+  .trap{border-left:3px solid var(--alert);background:var(--alert-bg);border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:14.5px}
+  .trap b{color:var(--alert)}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--font-display);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#f5f8f9}
+  td.v{font-family:var(--font-mono);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+
+  .pill{display:inline-block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:var(--ok-bg);color:var(--ok)}
+  .pill.warn{background:var(--warn-bg);color:var(--warn)}
+  .pill.alert{background:var(--alert-bg);color:var(--alert)}
+
+  /* glossary tooltip */
+  .g{border-bottom:1px dotted var(--brand-2);cursor:help;position:relative}
+  .g .tip{
+    display:none;position:absolute;left:0;bottom:135%;z-index:30;
+    width:min(280px,76vw);background:var(--ink);color:#e8f1f5;font-size:13px;font-weight:400;
+    line-height:1.45;padding:11px 13px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.22);
+    font-family:var(--font-body);text-transform:none;letter-spacing:normal;
+  }
+  .g:hover .tip,.g:focus .tip,.g:focus-within .tip{display:block}
+  .g.tip-left .tip{left:auto;right:0}
+
+  /* interactive tool */
+  .tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:24px 0}
+  .tool-head{background:var(--ink);color:#dceaf0;padding:13px 18px;font-family:var(--font-display);font-weight:600;font-size:14px;display:flex;align-items:center;gap:9px}
+  .tool-head .tag{font-family:var(--font-mono);font-size:10.5px;background:var(--brand);color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:.06em}
+  .tool-body{padding:20px}
+  .field{margin:14px 0}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+  .field .hint{color:var(--muted);font-weight:400;font-size:12px}
+  input[type=range]{width:100%;accent-color:var(--brand)}
+  input[type=number]{width:110px;font-family:var(--font-mono);font-size:15px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fbfdfd}
+  input[type=number]:focus,select:focus,button:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+  select{font-family:var(--font-body);font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fbfdfd}
+  .val{font-family:var(--font-mono);font-weight:600;color:var(--brand)}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;overflow:hidden;max-width:100%}
+  .seg button{font-family:var(--font-body);font-size:13px;font-weight:600;padding:8px 14px;border:none;background:#fbfdfd;color:var(--muted);cursor:pointer}
+  .seg button[aria-pressed=true]{background:var(--brand);color:#fff}
+  .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fbfdfd;font-size:14px}
+  .toggle button{font-family:var(--font-mono);font-size:12px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--muted);padding:6px 12px;border-radius:7px;cursor:pointer}
+  .toggle button[aria-pressed=true]{background:var(--alert);border-color:var(--alert);color:#fff}
+  .readout{margin-top:16px;padding:16px;border-radius:11px;background:#f4f8f9;border:1px solid var(--line)}
+  .readout .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .readout .result{font-family:var(--font-display);font-size:20px;font-weight:700;margin:4px 0 6px}
+  .readout .why{font-size:13.5px;color:var(--ink)}
+
+  button.primary{font-family:var(--font-display);font-weight:600;font-size:14px;background:var(--brand);color:#fff;border:none;padding:11px 18px;border-radius:9px;cursor:pointer}
+  button.primary:hover{background:var(--brand-2)}
+
+  /* collapsible reference */
+  details{border:1px solid var(--line);border-radius:11px;margin:10px 0;background:var(--surface);overflow:hidden}
+  details>summary{cursor:pointer;padding:13px 16px;font-family:var(--font-display);font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::after{content:"+";font-family:var(--font-mono);color:var(--brand);font-size:18px}
+  details[open]>summary::after{content:"–"}
+  details .inner{padding:0 16px 14px}
+
+  /* quiz */
+  .q{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  .q .stem{font-weight:600;margin-bottom:12px}
+  .q .opt{display:block;width:100%;text-align:left;font-family:var(--font-body);font-size:14px;padding:11px 13px;margin:7px 0;border:1px solid var(--line);border-radius:9px;background:#fbfdfd;cursor:pointer}
+  .q .opt:hover{border-color:var(--brand-2)}
+  .q .opt.correct{background:var(--ok-bg);border-color:var(--ok);color:#0d5c45}
+  .q .opt.wrong{background:var(--alert-bg);border-color:var(--alert);color:#7c2c1b}
+  .q .fb{margin-top:11px;font-size:13.5px;padding:11px 13px;border-radius:9px;background:#f3f8fa;display:none}
+  .q .fb.show{display:block}
+  .scorebar{font-family:var(--font-mono);font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* SVG figure */
+  figure{margin:20px 0;text-align:center}
+  figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;font-style:italic}
+
+  /* exam */
+  .progress{height:8px;background:#e3ebee;border-radius:6px;overflow:hidden;margin-bottom:12px}
+  .progress>i{display:block;height:100%;background:var(--brand);transition:width .25s}
+  .examMeta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+  .lvlbadge{font-family:var(--font-mono);font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:999px}
+  .lvl-b{background:var(--ok-bg);color:var(--ok)}
+  .lvl-i{background:var(--warn-bg);color:var(--warn)}
+  .lvl-a{background:var(--alert-bg);color:var(--alert)}
+  .reportTitle{font-family:var(--font-display);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:18px 0 8px}
+  .statrow{display:flex;align-items:center;gap:12px;margin:8px 0}
+  .statlbl{font-size:13px;font-weight:600;min-width:92px}
+  .statbar{flex:1;height:9px;background:#e3ebee;border-radius:6px;overflow:hidden}
+  .statbar>i{display:block;height:100%}
+  .statnum{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);min-width:42px;text-align:right}
+
+  /* author & credits */
+  .author{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:14px;padding:22px;margin:20px 0}
+  .author .initials{flex:0 0 auto;width:58px;height:58px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:.02em}
+  .author .who{min-width:0}
+  .author .nm{font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--ink);line-height:1.25}
+  .author .role{font-family:var(--font-mono);font-size:12.5px;color:var(--brand);margin-top:5px;letter-spacing:.02em}
+  .author .place{font-size:13px;color:var(--muted);margin-top:3px}
+  .author .note{font-size:13.5px;color:var(--ink);margin-top:12px;line-height:1.6}
+  @media(max-width:520px){.author{flex-direction:column;gap:14px}}
+  .thanks{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+  .thanks li{font-size:14px;color:var(--ink);padding:9px 13px;background:#fbfdfd;border:1px solid var(--line);border-radius:9px}
+  .thanks li b{font-weight:600}
+  .thanks li span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
+  .contact-txt{flex:1 1 260px;font-size:14px;line-height:1.6;color:var(--ink);min-width:0}
+  .mailbtn{flex:0 0 auto;display:inline-block;font-family:var(--font-mono);font-size:13.5px;font-weight:600;background:var(--brand);color:#fff;text-decoration:none;padding:11px 16px;border-radius:9px;word-break:break-all;max-width:100%}
+  .mailbtn:hover,.mailbtn:focus{background:var(--brand-2)}
+
+  footer{background:var(--ink);color:#9fbecb;padding:34px 0;font-size:13px}
+  footer .wrap{max-width:var(--maxw)}
+  footer b{color:#dcebf1;color:#d6e7ee}
+  .disc{font-size:12px;color:#7c9eae;margin-top:14px;line-height:1.5}
+
+  /* mobile */
+  .navtoggle{display:none}
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr}
+    .nav{position:fixed;inset:0 auto 0 0;width:264px;transform:translateX(-100%);transition:transform .2s;z-index:50}
+    .nav.open{transform:translateX(0)}
+    .navtoggle{display:inline-flex;align-items:center;gap:8px;position:fixed;top:12px;right:12px;z-index:60;background:var(--ink);color:#fff;border:none;font-family:var(--font-display);font-weight:600;font-size:13px;padding:10px 14px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer}
+    .scrim{display:none;position:fixed;inset:0;background:rgba(10,25,33,.45);z-index:45}
+    .scrim.show{display:block}
+    td.v{white-space:normal}
+    table{font-size:13.5px}
+    th,td{padding:8px 8px}
+  }
+  /* ---------- Pediátrico: añadidos ---------- */
+  .nav li a.soon{opacity:.55}
+  .nav li a.soon::after{content:"pronto";margin-left:auto;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;color:#6f93a3;border:1px solid #2f5566;border-radius:5px;padding:0 5px}
+  .soonbox{border:1px dashed #b9cad1;border-radius:14px;padding:18px 20px;margin:18px 0;background:#f7fafb}
+  .soonbox .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .soonbox ul{margin:6px 0 0;padding-left:20px;font-size:14.5px}
+  .soonbox li{margin:4px 0}
+  .audience{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .audience span{font-family:var(--font-mono);font-size:11.5px;color:#d9e8ee;border:1px solid #3a6478;border-radius:999px;padding:3px 10px}
+  .analogy{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+  .analogy>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
+  .analogy .h{font-family:var(--font-display);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--brand);margin-bottom:4px}
+  @media(max-width:560px){.analogy{grid-template-columns:1fr}}
+  .zrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .zrow input[type=number]{width:96px}
+  .zcurve{width:100%;max-width:520px;height:auto;display:block;margin:6px auto 0}
+  .warnlist{margin:10px 0 0;padding:0;list-style:none}
+  .warnlist li{font-size:13.5px;padding:9px 12px;margin:6px 0;border-radius:9px;background:var(--warn-bg);border-left:3px solid var(--warn)}
+  .warnlist li b{color:#7a560f}
+  .srcline{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+  .segchain{list-style:none;counter-reset:sc;margin:18px 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .segchain li{counter-increment:sc;position:relative;flex:1 1 150px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--brand);border-radius:10px;padding:10px 12px 11px;font-size:13.5px}
+  .segchain li::before{content:counter(sc);font-family:var(--font-mono);font-size:11px;color:var(--brand);display:block;margin-bottom:2px}
+  .segchain li b{display:block;font-family:var(--font-display);font-size:14.5px;color:var(--ink)}
+  .segchain li span{color:var(--muted);font-size:12.5px;line-height:1.35;display:block;margin-top:2px}
+</style>
+
+</head>
+<body>
+
+<button class="navtoggle" id="navToggle" aria-label="Abrir índice">☰ Índice</button>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+  <!-- NAV -->
+  <aside class="nav" id="nav" aria-label="Índice del manual">
+    <div class="brandmark">Leer un eco pediátrico</div>
+    <div class="brandsub">Manual interactivo para médicos no cardiólogos</div>
+    <svg class="wave" width="200" height="22" viewBox="0 0 200 22" fill="none" aria-hidden="true">
+      <path d="M0 11 H34 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H84 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H134 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H200" stroke="#3a7fa0" stroke-width="1.6" fill="none"/>
+    </svg>
+    <ol>
+      <li><a href="#inicio"><span class="n">00</span> Cómo usar</a></li>
+      <li><a href="#zscore"><span class="n">01</span> El niño no es un adulto pequeño</a></li>
+      <li><a href="#informe"><span class="n">02</span> Anatomía del informe</a></li>
+      <li><a href="#shunts"><span class="n">03</span> Cortocircuitos</a></li>
+      <li><a href="#vi"><span class="n">04</span> Ventrículo izquierdo</a></li>
+      <li><a href="#vd"><span class="n">05</span> VD e hipertensión pulmonar</a></li>
+      <li><a href="#valvulas"><span class="n">06</span> Válvulas y tractos de salida</a></li>
+      <li><a href="#coronarias"><span class="n">07</span> Coronarias</a></li>
+      <li><a href="#aorta"><span class="n">08</span> Aorta y arco</a></li>
+      <li><a href="#pericardio"><span class="n">09</span> Pericardio</a></li>
+      <li><a href="#posop"><span class="n">10</span> Posoperatorios</a></li>
+      <li><a href="#criticos"><span class="n">11</span> Hallazgos críticos</a></li>
+      <li><a href="#caso"><span class="n">12</span> Caso resuelto</a></li>
+      <li><a href="#referencia"><span class="n">13</span> Referencia rápida</a></li>
+      <li><a href="#quiz"><span class="n">14</span> Autoevaluación</a></li>
+      <li><a href="#creditos"><span class="n">15</span> Autor</a></li>
+    </ol>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Ecocardiograma transtorácico pediátrico · interpretación</div>
+        <h1>Cómo leer un informe de ecocardiograma pediátrico</h1>
+        <p class="lead">Para quien recibe el informe de un niño y tiene que decidir: qué significa cada dato, por qué en pediatría casi nada se lee con un número fijo, y cuándo un hallazgo exige actuar ya.</p>
+        <div class="audience" aria-label="Dirigido a"><span>Pediatría</span><span>Urgencias</span><span>Medicina general</span><span>UCI pediátrica y neonatal</span></div>
+        <div class="meta"><b>Dr. Juan Fernando Carvajal Estupiñán</b> · Cardiólogo<br>Instituto del Corazón de Bucaramanga · Bucaramanga, Colombia<br>Material de uso educativo · versión preliminar</div>
+      </div>
+    </div>
+
+    <div class="wrap">
+
+      <!-- 00 INICIO -->
+      <section id="inicio">
+        <div class="kicker">00 · Cómo usar</div>
+        <h2>Tres ideas antes de empezar</h2>
+        <p class="sub">Léelo con el informe al lado. Cada apartado responde lo mismo: qué mide, cómo se sabe si es anormal y qué significa para el niño que tienes enfrente.</p>
+        <div class="card">
+          <p style="margin-top:0"><b>1. En pediatría el valor normal cambia con el tamaño del niño.</b> Una raíz aórtica de 20 mm puede ser normal en un escolar y está claramente dilatada en un lactante. Por eso el informe pediátrico se lee en <b>Z-score</b>, no en milímetros. El capítulo 1 es la llave de todo lo demás.</p>
+          <p><b>2. La anatomía va primero.</b> En el adulto el eco responde sobre todo "¿cómo funciona?". En el niño la primera pregunta es "¿cómo está construido?": qué está conectado con qué, qué sobra y qué falta. El informe sigue ese orden (análisis segmentario).</p>
+          <p style="margin-bottom:0"><b>3. Muchos parámetros del adulto no están validados en niños.</b> La guía pediátrica de la ASE lo dice expresamente: la insuficiencia valvular se gradúa de forma cualitativa, la función diastólica no es rutinaria y la fracción de acortamiento puede engañar. Si ves un número "de adulto" en un informe pediátrico, léelo con cautela.</p>
+        </div>
+        <div class="clin"><b>Qué hay en este manual.</b> Catorce capítulos organizados como se lee un informe, con herramientas interactivas, un capítulo de posoperatorios (Fallot, switch arterial, Fontan), una lista de hallazgos que obligan a llamar de inmediato y una autoevaluación.</div>
+      </section>
+
+      <!-- 01 Z-SCORE -->
+      <section id="zscore">
+        <div class="kicker">01 · El niño no es un adulto pequeño</div>
+        <h2>El Z-score: cómo saber si una medida es normal para <em>este</em> niño</h2>
+        <p class="sub">Un recién nacido de 3 kg y un adolescente de 70 kg tienen corazones de tamaños muy distintos. Ningún valor fijo en milímetros sirve para los dos. La solución es comparar cada medida con la de niños sanos del mismo tamaño.</p>
+
+        <h3>Ya lo usas todos los días</h3>
+        <p>El Z-score del eco funciona igual que las curvas de crecimiento. No dices "este niño mide 110 cm, es alto"; dices "está en el percentil 97 para su edad". El Z-score expresa lo mismo en otra escala: <b>cuántas desviaciones estándar se aleja la medida del promedio de niños sanos de su mismo tamaño</b>.</p>
+        <div class="analogy">
+          <div><div class="h">Curva de crecimiento</div>Talla comparada con niños de la misma <b>edad</b> y sexo. Resultado en percentil.</div>
+          <div><div class="h">Z-score del eco</div>Medida cardiaca comparada con niños sanos de la misma <b>superficie corporal</b> (o talla). Resultado en desviaciones estándar.</div>
+        </div>
+
+        <table>
+          <thead><tr><th>Z-score</th><th>Percentil aproximado</th><th>Lectura</th></tr></thead>
+          <tbody>
+            <tr><td class="v">0</td><td class="v">50</td><td>Exactamente el promedio para su tamaño</td></tr>
+            <tr><td class="v">entre −2 y +2</td><td class="v">2 a 98</td><td><span class="pill ok">Rango normal</span> ahí está el 95 % de los niños sanos</td></tr>
+            <tr><td class="v">+2</td><td class="v">≈ 97,7</td><td><span class="pill warn">Límite superior</span> por encima se considera aumentado</td></tr>
+            <tr><td class="v">+3</td><td class="v">≈ 99,9</td><td>Claramente fuera de lo esperado</td></tr>
+            <tr><td class="v">−2</td><td class="v">≈ 2,3</td><td><span class="pill warn">Límite inferior</span> por debajo se considera pequeño</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>La regla que necesitas.</b> La guía pediátrica de la ASE toma <b>+2 y −2</b> como los límites habituales de lo normal. Un Z de +2,8 en la raíz aórtica significa "más grande de lo esperado para su tamaño", aunque en milímetros parezca un valor pequeño.</div>
+
+        <h3>Los dos sentidos importan</h3>
+        <p>En el adulto casi siempre preocupa lo grande. En el niño también preocupa lo pequeño:</p>
+        <ul>
+          <li><b>Z positivo alto (≥ +2):</b> cavidad dilatada, pared engrosada, vaso o raíz aórtica dilatados, coronaria dilatada o con aneurisma.</li>
+          <li><b>Z negativo bajo (≤ −2):</b> estructura más pequeña de lo esperado. En un anillo valvular, una arteria pulmonar o un arco aórtico puede significar <span class="g" tabindex="0">hipoplasia<span class="tip">Desarrollo insuficiente de una estructura. En cardiopatías congénitas, el tamaño de un anillo valvular o de un vaso (en Z-score) pesa tanto como el gradiente para decidir el tratamiento.</span></span>. En la estenosis aórtica del neonato, por ejemplo, la guía indica que el Z del anillo aórtico puede orientar la severidad mejor que el gradiente.</li>
+        </ul>
+
+        <h3>¿Contra qué se compara? Tamaño, no edad</h3>
+        <p>Las estructuras cardiacas crecen con el tamaño corporal, así que sus Z se calculan casi siempre por <span class="g" tabindex="0">superficie corporal<span class="tip">SC o BSA, en m². Se calcula con peso y talla. Un error en el peso o la talla que se anotaron en el eco cambia todos los Z del informe.</span></span> (o talla). Los índices de función, en cambio, dependen más de la <b>edad</b>. Por eso el informe pediátrico debe traer peso, talla y superficie corporal: sin ellos, los Z no se pueden verificar.</p>
+        <div class="trap"><b>Trampa: el peso mal anotado.</b> Todos los Z del informe dependen del peso y la talla que se registraron el día del estudio. Si el peso está equivocado (un niño pesado en brazos de la madre, una talla estimada), los Z también lo estarán. Si un resultado no cuadra con la clínica, revisa primero esos dos datos.</div>
+
+        <h3>No todos los Z-score son iguales</h3>
+        <p>Existen varios modelos de referencia publicados, construidos con poblaciones y métodos diferentes. La guía de la ASE compara cuatro de los más usados:</p>
+        <table>
+          <thead><tr><th>Modelo</th><th>Población de referencia</th></tr></thead>
+          <tbody>
+            <tr><td><b>PHN</b> (Pediatric Heart Network)</td><td>3.215 niños sanos, 19 centros de Norteamérica, multirracial</td></tr>
+            <tr><td><b>Boston</b></td><td>Más de 2.000 niños, un centro</td></tr>
+            <tr><td><b>Italia</b> (Cantinotti)</td><td>1.151 niños caucásicos, un centro; incluye prematuros</td></tr>
+            <tr><td><b>Detroit</b> (Pettersen)</td><td>782 niños, un centro</td></tr>
+          </tbody>
+        </table>
+        <p>El mismo niño con la misma medida puede obtener <b>Z distintos según el modelo</b>. Las diferencias son mayores en las estructuras más pequeñas, como las coronarias.</p>
+        <div class="trap"><b>Trampa: comparar informes de laboratorios distintos.</b> Si un control dice Z +2,6 y el anterior decía +1,8, antes de concluir que la estructura creció pregunta si ambos usaron el mismo modelo. La guía es explícita: para seguir a un paciente en el tiempo hay que usar <b>siempre el mismo modelo</b>. Un buen informe dice cuál usó.</div>
+
+        <h3>Cuándo el Z-score deja de ser confiable</h3>
+        <div class="trap"><b>Obesidad.</b> El exceso de grasa aumenta la superficie corporal sin que el corazón crezca en proporción. El Z calculado sale artificialmente <b>bajo</b> y puede ocultar una dilatación real. La guía advierte que en el niño obeso no se debe confiar en los Z habituales.</div>
+        <div class="trap"><b>Prematuros y cardiopatías congénitas.</b> La mayoría de los modelos se construyeron con niños a término y con corazón estructuralmente normal. Aplicarlos a un prematuro o a un corazón con cardiopatía es una extrapolación: orienta, pero no es exacto.</div>
+        <div class="trap"><b>Modo M con valores del PHN.</b> Los Z del PHN para el ventrículo izquierdo se obtuvieron con medidas en 2D, no en modo M. La guía indica que no deben usarse para medidas hechas en modo M.</div>
+
+        <h3>Otras diferencias que se reflejan en el informe</h3>
+        <ul>
+          <li><b>La aorta se mide distinto.</b> En niños se mide de borde interno a borde interno, en sístole. En adultos, de borde anterior a borde anterior, en diástole. Cuando un adolescente pasa a un laboratorio de adultos, el diámetro puede "cambiar" solo por la técnica.</li>
+          <li><b>La frecuencia cardiaca alta altera los gradientes.</b> Con taquicardia la diástole se acorta y, si la válvula mitral o tricúspide es estenótica, el gradiente medio sube. Por eso un buen informe anota la frecuencia cardiaca, y dos controles solo se comparan bien si la frecuencia era parecida.</li>
+          <li><b>La sedación cambia la fisiología.</b> Los menores de 3 años o con dificultades del desarrollo a veces necesitan sedación. La sedación o la anestesia pueden producir, por ejemplo, reversión del flujo diastólico en la aorta abdominal sin que haya enfermedad.</li>
+          <li><b>Las imágenes se orientan distinto.</b> En pediatría las vistas subcostales y apicales se muestran con el vértice hacia abajo, al revés de lo habitual en adultos. No es un error si ves imágenes impresas "invertidas".</li>
+        </ul>
+
+        <!-- TOOL: Z-score interpreter -->
+        <div class="tool" id="ztool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Intérprete de Z-score</div>
+          <div class="tool-body">
+            <p style="margin-top:0;font-size:14px;color:var(--muted)">Escribe el Z que trae el informe. La herramienta no calcula el Z a partir de milímetros: interpreta el que ya reportó el laboratorio.</p>
+            <div class="field">
+              <label>¿Qué estructura es?</label>
+              <div class="seg" role="group" aria-label="Tipo de estructura">
+                <button type="button" id="zkGen" aria-pressed="true">Cavidad, pared, válvula o vaso</button>
+                <button type="button" id="zkCor" aria-pressed="false">Arteria coronaria</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="zIn">Z-score reportado <span class="hint">(puede ser negativo)</span></label>
+              <div class="zrow">
+                <input type="number" id="zIn" step="0.1" value="2.4" inputmode="decimal">
+                <input type="range" id="zRange" min="-5" max="12" step="0.1" value="2.4" style="flex:1;min-width:160px" aria-label="Z-score">
+              </div>
+            </div>
+            <div class="field" id="mmField" hidden>
+              <label for="mmIn">Diámetro absoluto de la coronaria <span class="hint">(mm, opcional)</span></label>
+              <input type="number" id="mmIn" step="0.1" min="0" placeholder="—" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label>Situaciones que restan confiabilidad <span class="hint">(marca las que apliquen)</span></label>
+              <div class="toggle"><span>Niño con obesidad</span><button type="button" data-w="obes" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Prematuro o recién nacido de bajo peso</span><button type="button" data-w="prem" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Voy a compararlo con un informe de otro laboratorio</span><button type="button" data-w="lab" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>El informe no dice qué modelo de Z usó</span><button type="button" data-w="mod" aria-pressed="false">No</button></div>
+            </div>
+
+            <figure style="margin:10px 0 0">
+              <svg class="zcurve" id="zCurve" viewBox="0 0 520 190" role="img" aria-label="Curva normal con la posición del Z-score">
+                <rect x="160" y="20" width="200" height="130" fill="#e2f1ea" opacity=".7"/>
+                <path id="zBell" fill="none" stroke="#205070" stroke-width="2"/>
+                <line x1="40" y1="150" x2="480" y2="150" stroke="#9fb3bb" stroke-width="1"/>
+                <g font-family="IBM Plex Mono" font-size="10" fill="#5e7480" text-anchor="middle" id="zTicks"></g>
+                <text x="260" y="36" text-anchor="middle" font-family="Inter" font-size="10.5" fill="#1f8a6d">rango normal (−2 a +2)</text>
+                <g id="zMark">
+                  <line id="zLine" x1="260" y1="24" x2="260" y2="150" stroke="#b3452e" stroke-width="2" stroke-dasharray="4 3"/>
+                  <circle id="zDot" cx="260" cy="150" r="6.5" fill="#b3452e" stroke="#fff" stroke-width="2"/>
+                  <text id="zLbl" x="260" y="16" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="#b3452e">Z</text>
+                </g>
+              </svg>
+            </figure>
+
+            <div class="readout" aria-live="polite">
+              <div class="label">Interpretación</div>
+              <div class="result" id="zResult">—</div>
+              <div class="why" id="zWhy"></div>
+              <ul class="warnlist" id="zWarn"></ul>
+              <div class="srcline" id="zSrc"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clin"><b>Por qué no hay "leve, moderado, severo" para cualquier Z.</b> Fuera de las coronarias (que tienen su propia escala), no existe una graduación universal del Z-score aceptada por las guías. Cada laboratorio puede usar sus propios cortes. La herramienta te dice si el valor está dentro o fuera de lo normal y cuánto se aleja, sin inventar categorías que el informe no respalda.</div>
+        <div class="clin"><b>Qué hacer con un Z fuera de rango.</b> Un Z de +2,3 no es por sí solo un diagnóstico: el 2,3 % de los niños sanos está por encima de +2. Pesa más si coincide con otros hallazgos (un soplo, una cardiopatía conocida, un síndrome genético), si aumenta entre controles hechos con el mismo modelo, o si se aleja mucho del límite.</div>
+      </section>
+
+      <!-- 02–13 PENDIENTES -->
+      <section id="informe">
+        <div class="kicker">02 · Anatomía del informe</div>
+        <h2>Cómo está organizado un informe pediátrico</h2>
+        <p class="sub">Un informe pediátrico completo tiene partes fijas y describe el corazón en un orden fijo. Conocer ese orden te dice dónde buscar cada dato y, sobre todo, te permite notar lo que falta.</p>
+
+        <h3>Las partes del informe y qué buscar en cada una</h3>
+        <p>La guía de la ASE retoma los componentes que exige la acreditación de laboratorios pediátricos. En la práctica, léelos en este orden:</p>
+        <table>
+          <thead><tr><th>Parte</th><th>Qué contiene</th><th>Qué revisar tú</th></tr></thead>
+          <tbody>
+            <tr><td><b>1. Conclusión o resumen</b></td><td>Hallazgos que responden a la indicación, positivos y negativos pertinentes, comparación con estudios previos</td><td>¿Responde a la pregunta por la que pediste el eco?</td></tr>
+            <tr><td><b>2. Limitaciones</b></td><td>Ventanas pobres, niño que se movía, inestabilidad clínica, barreras físicas (traqueostomía, tubos de tórax, tórax abierto)</td><td>Qué estructuras no se vieron bien</td></tr>
+            <tr><td><b>3. Hallazgos críticos</b></td><td>Si los hubo: a quién se avisaron y a qué hora</td><td>Si ves uno sin constancia de aviso, actúa</td></tr>
+            <tr><td><b>4. Datos clínicos</b></td><td>Indicación, diagnósticos e intervenciones previas, peso, talla, superficie corporal, IMC, presión arterial, saturación</td><td>Peso y talla: de ellos dependen todos los Z</td></tr>
+            <tr><td><b>5. Medidas</b></td><td>Organizadas por segmento, cada una con su Z-score o rango de referencia</td><td>Los Z fuera de −2 a +2</td></tr>
+            <tr><td><b>6. Doppler</b></td><td>Velocidades y gradientes de válvulas, vasos y cortocircuitos; severidad de estenosis e insuficiencias; presión del VD estimada</td><td>Gradientes y presión pulmonar (capítulos 5 y 6)</td></tr>
+            <tr><td><b>7. Hallazgos por segmento</b></td><td>Descripción anatómica en orden segmentario (ver abajo)</td><td>Que ningún segmento se haya omitido</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>Empieza por la conclusión y las limitaciones.</b> La conclusión te dice qué encontró el laboratorio; las limitaciones te dicen cuánto confiar en ella. Un informe "normal" con ventanas muy pobres no es lo mismo que un informe normal con imágenes de buena calidad.</div>
+
+        <h3>"No se visualizó" no es "normal"</h3>
+        <p>La guía pide distinguir dos cosas que en el informe pueden sonar parecidas: una estructura que <b>no se evaluó bien por limitación técnica</b> y una estructura que está <b>ausente, ocluida o trombosada</b>. También pide dejar constancia cuando no se evaluó algo importante para la pregunta clínica.</p>
+        <div class="trap"><b>Trampa: la coronaria que nadie vio.</b> Un escolar con síncope o dolor torácico de esfuerzo tiene un eco "normal", pero en letra pequeña dice "origen de las coronarias no visualizado". Ese eco <b>no descarta</b> un origen anómalo de coronaria, que es justo lo que había que descartar. Si la estructura clave para tu pregunta no se vio, el estudio no responde tu pregunta.</div>
+
+        <h3>El análisis segmentario: el corazón por partes, en orden</h3>
+        <p>El corazón con cardiopatía congénita puede tener sus piezas conectadas de forma distinta a lo normal. Para describirlo sin ambigüedad, el informe recorre la sangre en el mismo orden en que circula y responde en cada paso <b>qué hay</b> y <b>con qué se conecta</b>:</p>
+        <ol class="segchain" aria-label="Orden del análisis segmentario">
+          <li><b>Situs</b><span>posición de vísceras y aurículas</span></li>
+          <li><b>Venas</b><span>cavas y pulmonares</span></li>
+          <li><b>Aurículas</b><span>y septo interauricular</span></li>
+          <li><b>Conexión AV</b><span>tricúspide y mitral</span></li>
+          <li><b>Ventrículos</b><span>y septo interventricular</span></li>
+          <li><b>Conexión VA</b><span>tractos de salida y válvulas</span></li>
+          <li><b>Grandes arterias</b><span>aorta, arco, pulmonares, ductus, coronarias</span></li>
+        </ol>
+        <p>Los términos que vas a encontrar en ese recorrido:</p>
+        <table>
+          <thead><tr><th>Término</th><th>Significa</th></tr></thead>
+          <tbody>
+            <tr><td><b>Situs solitus</b></td><td>Disposición normal: hígado a la derecha, estómago a la izquierda, aurícula morfológicamente derecha a la derecha.</td></tr>
+            <tr><td><b>Situs inversus</b></td><td>Imagen en espejo de lo normal.</td></tr>
+            <tr><td><b>Situs ambiguo</b> (heterotaxia)</td><td>Disposición que no es ni normal ni en espejo. Se asocia a cardiopatías complejas.</td></tr>
+            <tr><td><b>Levocardia / dextrocardia / mesocardia</b></td><td>El corazón está en el hemitórax izquierdo (normal), derecho o en la línea media.</td></tr>
+            <tr><td><b>Conexión concordante</b></td><td>Cada cámara se conecta con la que le corresponde: aurícula derecha con ventrículo derecho, ventrículo izquierdo con aorta.</td></tr>
+            <tr><td><b>Conexión discordante</b></td><td>La conexión está invertida: por ejemplo, ventrículo derecho con aorta.</td></tr>
+            <tr><td><b>Doble salida</b></td><td>Las dos grandes arterias salen del mismo ventrículo (casi siempre del derecho).</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>La frase que significa "anatomía normal".</b> Cuando leas <i>"situs solitus, levocardia, conexiones auriculoventriculares y ventriculoarteriales concordantes"</i>, el informe te está diciendo que el corazón está armado de forma normal. Puede tener aun así un defecto (una CIV, una válvula estenótica), pero la arquitectura básica es correcta. Algunos laboratorios lo abrevian con la notación de Van Praagh: <span class="mono">{S,D,S}</span>.</div>
+        <div class="trap"><b>Trampa: los nombres cambian según la escuela.</b> Existen varios sistemas de nomenclatura para las cardiopatías congénitas (la guía cita, entre otros, los de Anderson, Van Praagh y el código internacional IPCCC). El mismo defecto puede tener nombres distintos. Si un término no te resulta claro, pregunta al laboratorio: la guía recomienda que cada centro use una nomenclatura que todo el equipo entienda.</div>
+
+        <!-- TOOL: segmental decoder -->
+        <div class="tool" id="segtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Decodificador del análisis segmentario</div>
+          <div class="tool-body">
+            <p style="margin-top:0;font-size:14px;color:var(--muted)">Elige lo que dice el informe en cada segmento. La herramienta traduce la combinación a lenguaje clínico.</p>
+            <div class="field">
+              <label>Situs</label>
+              <div class="seg" role="group" aria-label="Situs" data-k="situs">
+                <button type="button" data-v="S" aria-pressed="true">Solitus</button>
+                <button type="button" data-v="I" aria-pressed="false">Inversus</button>
+                <button type="button" data-v="A" aria-pressed="false">Ambiguo</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Posición del corazón</label>
+              <div class="seg" role="group" aria-label="Posición del corazón" data-k="pos">
+                <button type="button" data-v="L" aria-pressed="true">Levocardia</button>
+                <button type="button" data-v="D" aria-pressed="false">Dextrocardia</button>
+                <button type="button" data-v="M" aria-pressed="false">Mesocardia</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Conexión auriculoventricular</label>
+              <div class="seg" role="group" aria-label="Conexión auriculoventricular" data-k="av">
+                <button type="button" data-v="C" aria-pressed="true">Concordante</button>
+                <button type="button" data-v="D" aria-pressed="false">Discordante</button>
+                <button type="button" data-v="U" aria-pressed="false">Univentricular</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Conexión ventriculoarterial</label>
+              <div class="seg" role="group" aria-label="Conexión ventriculoarterial" data-k="va">
+                <button type="button" data-v="C" aria-pressed="true">Concordante</button>
+                <button type="button" data-v="D" aria-pressed="false">Discordante</button>
+                <button type="button" data-v="O" aria-pressed="false">Doble salida</button>
+                <button type="button" data-v="T" aria-pressed="false">Tronco común</button>
+              </div>
+            </div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Qué significa</div>
+              <div class="result" id="segResult">—</div>
+              <div class="why" id="segWhy"></div>
+              <ul class="warnlist" id="segNotes"></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3>Abreviaturas que confunden</h3>
+        <table>
+          <thead><tr><th>Abreviatura</th><th>En el informe pediátrico</th></tr></thead>
+          <tbody>
+            <tr><td class="v">FA</td><td><b>Fracción de acortamiento</b> del VI, no fibrilación auricular. Es el índice de función más usado en pediatría (capítulo 4).</td></tr>
+            <tr><td class="v">CIA · CIV</td><td>Comunicación interauricular · interventricular.</td></tr>
+            <tr><td class="v">FOP</td><td>Foramen oval permeable: normal en el recién nacido.</td></tr>
+            <tr><td class="v">DAP · PCA</td><td>Ductus arterioso permeable (también "persistencia del conducto arterioso").</td></tr>
+            <tr><td class="v">TSVD · TSVI</td><td>Tracto de salida del ventrículo derecho · izquierdo.</td></tr>
+            <tr><td class="v">APD · API</td><td>Arteria pulmonar derecha · izquierda.</td></tr>
+            <tr><td class="v">PSVD</td><td>Presión sistólica del ventrículo derecho, estimada por Doppler.</td></tr>
+            <tr><td class="v">SC</td><td>Superficie corporal (m²), base de los Z-score.</td></tr>
+            <tr><td class="v">IT · IM · IAo · IP</td><td>Insuficiencia tricuspídea · mitral · aórtica · pulmonar.</td></tr>
+          </tbody>
+        </table>
+        <div class="trap"><b>Trampa: "FA 30 %".</b> En un informe de adultos, "FA" casi siempre es fibrilación auricular. En uno pediátrico es la fracción de acortamiento. Leer "FA" en un niño y pensar en arritmia es un error frecuente al pasar de un tipo de informe al otro.</div>
+
+        <div class="clin"><b>Tiempos de respuesta.</b> Según la guía, un informe de rutina de un paciente hospitalizado debe estar listo en 24 horas, y un hallazgo crítico debe comunicarse por una vía directa (llamada, en persona, mensaje) en 1 a 2 horas, dejando constancia de a quién y cuándo. Los hallazgos críticos se desarrollan en el capítulo 11.</div>
+      </section>
+
+      <section id="shunts">
+        <div class="kicker">03 · Cortocircuitos</div>
+        <h2>CIA, CIV, ductus y foramen oval</h2>
+        <p class="sub">Un cortocircuito es sangre que pasa de un lado del corazón al otro por donde no debería. De cada uno, el informe tiene que responder tres cosas: dónde está, hacia dónde va la sangre y cuánto afecta al corazón.</p>
+
+        <h3>Los cuatro cortocircuitos que más verás</h3>
+        <table>
+          <thead><tr><th>Defecto</th><th>Qué es</th><th>Qué le hace al corazón</th></tr></thead>
+          <tbody>
+            <tr><td><b>FOP</b><br><span class="mono" style="font-size:12px">foramen oval permeable</span></td><td>Paso entre las aurículas que existe en todo feto</td><td>Normal en el recién nacido. En general sin repercusión</td></tr>
+            <tr><td><b>CIA</b><br><span class="mono" style="font-size:12px">comunicación interauricular</span></td><td>Defecto del septo interauricular. Tipos: ostium secundum (el más común), ostium primum, seno venoso, seno coronario</td><td>Si es significativa, dilata la <b>aurícula y el ventrículo derechos</b></td></tr>
+            <tr><td><b>CIV</b><br><span class="mono" style="font-size:12px">comunicación interventricular</span></td><td>Defecto del septo interventricular. Tipos más comunes: perimembranosa y muscular. Puede haber más de una</td><td>Si es significativa, dilata la <b>aurícula y el ventrículo izquierdos</b> y puede elevar la presión pulmonar</td></tr>
+            <tr><td><b>DAP</b><br><span class="mono" style="font-size:12px">ductus arterioso permeable</span></td><td>Vaso fetal entre la aorta y la arteria pulmonar que no se cerró</td><td>Si es significativo, dilata <b>cavidades izquierdas</b> y puede elevar la presión pulmonar</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>La pista del lado dilatado.</b> Una CIA sobrecarga el lado <b>derecho</b>; una CIV o un ductus, el lado <b>izquierdo</b>. La guía indica sospechar una CIA o un defecto del seno venoso cuando el informe describe aurícula o ventrículo derechos dilatados sin otra explicación. Un cortocircuito que no dilata ninguna cavidad suele ser pequeño.</div>
+
+        <h3>Dirección del flujo: la pregunta más importante</h3>
+        <p>La sangre va de donde hay más presión a donde hay menos. Normalmente el lado izquierdo tiene más presión, así que el flujo es <b>de izquierda a derecha</b>. Cuando el informe describe un flujo <b>bidireccional o de derecha a izquierda</b>, algo está elevando la presión del lado derecho.</p>
+        <table>
+          <thead><tr><th>Dirección</th><th>Lectura</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill ok">Izquierda → derecha</span></td><td>Lo esperado. La repercusión depende del tamaño.</td></tr>
+            <tr><td><span class="pill warn">Bidireccional</span></td><td>Presiones similares a ambos lados. En el recién nacido de pocas horas o días puede ser transicional; después sugiere presión pulmonar elevada.</td></tr>
+            <tr><td><span class="pill alert">Derecha → izquierda</span></td><td>Presión derecha mayor que la izquierda: hipertensión pulmonar importante u obstrucción del lado derecho. Explica cianosis.</td></tr>
+          </tbody>
+        </table>
+        <div class="trap"><b>Trampa: el recién nacido cianótico con aurícula izquierda pequeña.</b> Si el informe describe flujo de derecha a izquierda por el foramen oval <b>durante todo el ciclo</b> y una aurícula izquierda pequeña, la guía indica sospechar <b>drenaje venoso pulmonar anómalo total</b>: las venas pulmonares no llegan a la aurícula izquierda. Si además está obstruido, es un hallazgo crítico.</div>
+
+        <h3>"Restrictivo": la palabra que te dice la presión</h3>
+        <p>Una CIV o un ductus <b>restrictivo</b> es lo bastante pequeño como para frenar el paso de sangre. Eso mantiene una diferencia grande de presión entre los dos lados y el Doppler mide una <b>velocidad alta</b> a través del defecto. Por eso, en estos defectos, <b>velocidad alta es buena noticia</b>: significa que la presión del lado derecho es baja.</p>
+        <div class="analogy">
+          <div><div class="h">CIV restrictiva</div>Velocidad alta (gradiente grande). El VD está protegido de la presión del VI. Presión pulmonar probablemente normal.</div>
+          <div><div class="h">CIV no restrictiva</div>Velocidad baja (gradiente pequeño). Las presiones de los dos ventrículos se igualan. Presión pulmonar elevada, casi sistémica.</div>
+        </div>
+        <p>Con esa diferencia de presión y la presión arterial del niño se puede estimar la presión del VD o de la pulmonar: la herramienta del capítulo 5 te lo calcula.</p>
+        <div class="trap"><b>Trampa: la CIV "pequeña" por la velocidad baja.</b> Un gradiente bajo a través de una CIV no significa que sea pequeña: puede significar lo contrario, una CIV grande con presión pulmonar alta. Mira siempre la dirección del flujo y el tamaño de las cavidades.</div>
+
+        <h3>Qué decide si hay que cerrar</h3>
+        <ul>
+          <li><b>Tamaño de las cavidades</b> en Z-score: la dilatación es la huella del cortocircuito significativo.</li>
+          <li><b>Presión pulmonar</b> (capítulo 5).</li>
+          <li><b>En la CIA ostium secundum</b>, el informe mide el defecto en dos planos y los <span class="g" tabindex="0">bordes<span class="tip">Rebordes de tejido del septo alrededor del defecto (superior, inferior, anterior y posterior). Un dispositivo percutáneo necesita bordes suficientes para anclarse.</span></span> del septo alrededor: de eso depende si se puede cerrar con dispositivo percutáneo.</li>
+          <li><b>La relación de flujos Qp:Qs</b> que a veces aparece en informes debe tomarse con cautela: la guía reconoce que el eco pediátrico todavía es limitado para cuantificar el flujo pulmonar frente al sistémico.</li>
+        </ul>
+
+        <h3>El test de burbujas</h3>
+        <p>Se inyecta por una vena solución salina agitada con un poco de aire (y a veces sangre del paciente). Las microburbujas son demasiado grandes para atravesar los capilares del pulmón: si aparecen en el lado izquierdo, pasaron por un atajo. <b>El momento en que aparecen</b> dice dónde está el atajo.</p>
+
+        <!-- TOOL: bubble test -->
+        <div class="tool" id="bubtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Intérprete del test de burbujas</div>
+          <div class="tool-body">
+            <div class="field">
+              <label>¿Aparecen burbujas en la aurícula o el ventrículo izquierdos?</label>
+              <div class="seg" role="group" data-k="seen">
+                <button type="button" data-v="no" aria-pressed="false">No</button>
+                <button type="button" data-v="si" aria-pressed="true">Sí</button>
+              </div>
+            </div>
+            <div class="field" id="bubCycF">
+              <label for="bubCyc">¿En qué ciclo cardiaco aparecen, contando desde que se llena la aurícula derecha? · <span class="val" id="bubCycV">3</span></label>
+              <input type="range" id="bubCyc" min="1" max="12" step="1" value="3">
+            </div>
+            <div class="field">
+              <label>Condiciones del estudio</label>
+              <div class="toggle"><span>Se hizo Valsalva o presión abdominal</span><button type="button" data-b="val" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>El Valsalva fue prolongado</span><button type="button" data-b="valLong" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Presión de la aurícula izquierda elevada (p. ej., disfunción del VI)</span><button type="button" data-b="laP" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Válvula de Eustaquio prominente</span><button type="button" data-b="eus" aria-pressed="false">No</button></div>
+            </div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Interpretación</div>
+              <div class="result" id="bubResult">—</div>
+              <div class="why" id="bubWhy"></div>
+              <ul class="warnlist" id="bubNotes"></ul>
+              <div class="srcline">Criterios según la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024, Tabla 13).</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vi">
+        <div class="kicker">04 · Ventrículo izquierdo</div>
+        <h2>Tamaño, masa y función del VI</h2>
+        <p class="sub">Los mismos conceptos que en el adulto (dilatación, hipertrofia, función) pero leídos en Z-score y con más desconfianza hacia los números de función. La guía pediátrica es franca: todos los métodos para medir la función del VI tienen errores de exactitud y reproducibilidad.</p>
+
+        <h3>Tamaño: el diámetro diastólico en Z</h3>
+        <p>El dato más usado es el diámetro diastólico del VI con su Z-score. En niños se mide preferentemente en el <b>eje corto</b> paraesternal: a la altura de las puntas de la mitral en los pequeños y de los músculos papilares en los mayores.</p>
+        <ul>
+          <li><b>Z ≥ +2:</b> VI dilatado. Piensa en sobrecarga de volumen (CIV, ductus, insuficiencia mitral o aórtica) o en miocardiopatía dilatada.</li>
+          <li>Un diámetro solo representa bien el tamaño si el VI es <b>redondo</b> en el eje corto. Cuando el VD está sobrecargado (CIA grande, insuficiencia pulmonar, hipertensión pulmonar) el septo se aplana, el VI se deforma y el diámetro deja de ser confiable.</li>
+        </ul>
+
+        <h3>Función sistólica: FA y FE, con sus trampas</h3>
+        <p>La <b>fracción de acortamiento (FA)</b> es el índice clásico en pediatría: compara el diámetro del VI en diástole y en sístole. La <b>fracción de eyección (FE)</b> se calcula con volúmenes (método de discos o de área-longitud "en bala").</p>
+        <div class="trap"><b>Trampa: el 17 % de niños sanos con "función baja".</b> En la base de datos del PHN, con 3.215 niños sanos cuya función era normal a simple vista, el 17 % tuvo una FA menor de 25 % o una FE menor de 50 % cuando las medidas se hicieron a ciegas. Una FA o FE limítrofe en un niño asintomático no es por sí sola un diagnóstico de disfunción.</div>
+        <p>La guía dice que la FA <b>no debe usarse</b> en tres situaciones:</p>
+        <ol>
+          <li>Cuando hay alteraciones de la contracción regional, como el <b>movimiento paradójico del septo</b> (frecuente tras cirugía cardiaca o con sobrecarga del VD).</li>
+          <li>Cuando el VI tiene <b>forma anormal</b> o no es circular en el eje corto (sobrecarga de presión o volumen del VD).</li>
+          <li>Además, nunca mide el acortamiento longitudinal: una FA normal no garantiza función normal.</li>
+        </ol>
+        <p>En esos casos valen más la FE por volúmenes, la FE por 3D o el strain.</p>
+
+        <h3>Strain longitudinal global (GLS)</h3>
+        <p>Detecta disfunción <b>antes</b> de que caigan la FA o la FE. En niños que reciben quimioterapia con antraciclinas identifica daño temprano. La guía ubica el límite inferior de lo normal del GLS endocárdico del VI entre <b>−17 % y −18 %</b>: valores menos negativos (por ejemplo −14 %) son anormales.</p>
+        <div class="trap"><b>Trampa: comparar strain de equipos distintos.</b> El strain es reproducible en el mismo equipo, pero cambia entre marcas y versiones de software. En el seguimiento (por ejemplo, durante quimioterapia) hay que usar la misma plataforma.</div>
+
+        <h3>Hipertrofia: masa y relación masa/volumen</h3>
+        <p>Igual que en el adulto, la hipertrofia es <b>aumento de masa</b>, no solo pared gruesa. En pediatría se lee en Z-score:</p>
+        <ul>
+          <li><b>Masa del VI con Z ≥ 2</b> = hipertrofia.</li>
+          <li>La <b>relación masa/volumen</b> dice qué tipo: con Z <b>menor de 2</b> es <b>excéntrica</b> (sobrecarga de volumen, como una CIV); con Z <b>≥ 2</b> es <b>concéntrica</b> (sobrecarga de presión, como estenosis aórtica, coartación o hipertensión arterial).</li>
+        </ul>
+        <div class="trap"><b>Trampa: la hipertrofia en el niño obeso.</b> La prevalencia de hipertrofia en niños obesos cambia mucho según el método usado para indexar la masa. No hay consenso sobre cuál usar en niños, y el Z por superficie corporal se distorsiona con la obesidad (capítulo 1).</div>
+
+        <!-- TOOL: LV classifier -->
+        <div class="tool" id="lvtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Clasificador de hipertrofia y validez de la FA</div>
+          <div class="tool-body">
+            <div class="field">
+              <label for="lvMass">Z-score de la masa del VI · <span class="val" id="lvMassV">2,5</span></label>
+              <input type="range" id="lvMass" min="-3" max="8" step="0.1" value="2.5">
+            </div>
+            <div class="field">
+              <label for="lvMV">Z-score de la relación masa/volumen · <span class="val" id="lvMVV">2,4</span></label>
+              <input type="range" id="lvMV" min="-3" max="8" step="0.1" value="2.4">
+            </div>
+            <div class="field">
+              <label>¿Hay algo que invalide la FA?</label>
+              <div class="toggle"><span>Movimiento paradójico del septo o alteración regional</span><button type="button" data-lv="par" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Septo aplanado o VI no circular (sobrecarga del VD)</span><button type="button" data-lv="flat" aria-pressed="false">No</button></div>
+            </div>
+            <figure style="margin:8px 0 0">
+              <svg id="lvQuad" width="300" height="236" viewBox="0 0 300 236" role="img" aria-label="Cuadrante de geometría del VI en Z-score" style="max-width:100%;height:auto">
+                <rect x="40" y="20" width="110" height="90" fill="#f5e0d9"/>
+                <rect x="150" y="20" width="110" height="90" fill="#f5e0d9"/>
+                <rect x="40" y="110" width="110" height="90" fill="#f3f8fa"/>
+                <rect x="150" y="110" width="110" height="90" fill="#f7edd4"/>
+                <line x1="150" y1="20" x2="150" y2="200" stroke="#205070" stroke-width="1.4"/>
+                <line x1="40" y1="110" x2="260" y2="110" stroke="#205070" stroke-width="1.4"/>
+                <rect x="40" y="20" width="220" height="180" fill="none" stroke="#cdd9de"/>
+                <text x="95" y="58" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#7c2c1b">Hipertrofia</text>
+                <text x="95" y="71" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#7c2c1b">excéntrica</text>
+                <text x="205" y="58" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#7c2c1b">Hipertrofia</text>
+                <text x="205" y="71" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#7c2c1b">concéntrica</text>
+                <text x="95" y="159" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#5e7480">Normal</text>
+                <text x="205" y="152" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#8a6510">Relación masa/vol.</text>
+                <text x="205" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#8a6510">alta sin hipertrofia</text>
+                <text x="150" y="216" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#205070">Z masa/volumen 2 →</text>
+                <text x="20" y="115" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#205070" transform="rotate(-90 20 115)">↑ Z masa 2</text>
+                <circle id="lvPt" cx="205" cy="65" r="7" fill="#205070" stroke="#fff" stroke-width="2"/>
+              </svg>
+            </figure>
+            <div class="readout" aria-live="polite">
+              <div class="label">Resultado</div>
+              <div class="result" id="lvResult">—</div>
+              <div class="why" id="lvWhy"></div>
+              <ul class="warnlist" id="lvNotes"></ul>
+              <div class="srcline">Cortes en Z-score según la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024).</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Función diastólica: casi nunca en el informe pediátrico</h3>
+        <p>A diferencia del adulto, la función diastólica <b>no se evalúa de rutina</b> en niños: las frecuencias cardiacas altas y la poca colaboración hacen muy variables las medidas, y hay pocos valores normales publicados. La relación E/e′ <b>no se correlaciona bien</b> con las presiones de llenado en niños.</p>
+        <div class="clin"><b>Qué hacer con los datos diastólicos.</b> Si el informe los trae, úsalos solo integrados: la aurícula izquierda dilatada (por volumen, cuando se mide) y la presión pulmonar elevada reflejan mejor las presiones de llenado del VI que cualquier índice aislado. La disfunción diastólica sí importa en obstrucciones del tracto de salida izquierdo, miocardiopatías, miocarditis y corazones univentriculares.</div>
+
+        <h3>El septo interventricular</h3>
+        <p>En el eje corto el septo debe verse <b>redondeado</b> durante todo el ciclo. El informe puede describir:</p>
+        <ul>
+          <li><b>Aplanamiento en diástole:</b> sobrecarga de <b>volumen</b> del VD (CIA grande, insuficiencia pulmonar o tricuspídea).</li>
+          <li><b>Aplanamiento en sístole</b> o abombamiento hacia el VI: sobrecarga de <b>presión</b> del VD (hipertensión pulmonar, estenosis pulmonar).</li>
+          <li><b>Movimiento paradójico:</b> frecuente después de cirugía cardiaca; invalida la FA.</li>
+        </ul>
+      </section>
+
+      <section id="vd">
+        <div class="kicker">05 · VD e hipertensión pulmonar</div>
+        <h2>El ventrículo derecho y la presión pulmonar</h2>
+        <p class="sub">El VD es la cavidad más difícil de medir por su forma compleja, sus trabéculas y su posición detrás del esternón. Ningún número aislado lo describe bien: la guía pide combinar la impresión visual con varios parámetros.</p>
+
+        <h3>Cómo estima el eco la presión pulmonar</h3>
+        <p>El eco no mide la presión: la <b>calcula</b> con la ecuación de Bernoulli simplificada, <span class="mono">gradiente = 4 × v²</span>, a partir de la velocidad de un chorro. En pediatría hay tres caminos, según qué chorro exista:</p>
+        <table>
+          <thead><tr><th>Chorro disponible</th><th>Cálculo</th></tr></thead>
+          <tbody>
+            <tr><td><b>Insuficiencia tricuspídea</b></td><td>Presión sistólica del VD = 4v² + presión de aurícula derecha estimada</td></tr>
+            <tr><td><b>CIV</b> (flujo izquierda → derecha)</td><td>Presión sistólica del VD = presión sistólica del brazo − 4v² de la CIV</td></tr>
+            <tr><td><b>Ductus</b> (flujo izquierda → derecha)</td><td>Presión sistólica pulmonar = presión sistólica del brazo − 4v² del ductus</td></tr>
+          </tbody>
+        </table>
+        <p>Sin estenosis pulmonar, la presión sistólica del VD equivale a la presión sistólica de la arteria pulmonar. Con la insuficiencia pulmonar también se estiman la presión <b>media</b> (gradiente al inicio de la diástole + presión de aurícula derecha) y la <b>diastólica</b> (gradiente al final de la diástole + presión de aurícula derecha).</p>
+        <div class="trap"><b>Trampa: la vena cava no sirve para estimar la presión de la aurícula derecha en niños.</b> En adultos se usa el tamaño y el colapso de la vena cava inferior. La guía pediátrica aclara que en niños no hay estudios que muestren buena correlación, por lo que se <b>asume</b> un valor (habitualmente 5 a 10 mmHg).</div>
+
+        <h3>La forma pediátrica de expresarla: en proporción a la sistémica</h3>
+        <p>En lugar de un número fijo, los informes pediátricos suelen comparar la presión del VD con la presión sistólica sistémica del niño. Es más útil porque la presión arterial normal cambia con la edad.</p>
+        <table>
+          <thead><tr><th>Presión VD / presión sistólica sistémica</th><th>Lectura habitual</th></tr></thead>
+          <tbody>
+            <tr><td class="v">menos de 1/2</td><td><span class="pill ok">Normal o leve</span></td></tr>
+            <tr><td class="v">1/2 a 2/3</td><td><span class="pill warn">Moderadamente elevada</span></td></tr>
+            <tr><td class="v">más de 2/3</td><td><span class="pill alert">Severamente elevada</span> Si es nueva, la guía la incluye entre los <b>hallazgos críticos</b></td></tr>
+            <tr><td class="v">igual o mayor que 1</td><td><span class="pill alert">Suprasistémica</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- TOOL: PH estimator -->
+        <div class="tool" id="phtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Estimador de presión del VD y pulmonar</div>
+          <div class="tool-body">
+            <div class="field">
+              <label>¿Qué chorro trae el informe?</label>
+              <div class="seg" role="group" data-k="m">
+                <button type="button" data-v="tr" aria-pressed="true">Insuficiencia tricuspídea</button>
+                <button type="button" data-v="civ" aria-pressed="false">CIV</button>
+                <button type="button" data-v="dap" aria-pressed="false">Ductus</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="phV">Velocidad pico del chorro <span class="hint">(m/s)</span> · <span class="val" id="phVV">3,0</span></label>
+              <input type="range" id="phV" min="0.5" max="6" step="0.1" value="3">
+            </div>
+            <div class="field" id="phRAf">
+              <label>Presión de aurícula derecha asumida</label>
+              <div class="seg" role="group" data-k="ra">
+                <button type="button" data-v="5" aria-pressed="true">5 mmHg</button>
+                <button type="button" data-v="10" aria-pressed="false">10 mmHg</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="phSBP">Presión arterial sistólica del niño <span class="hint">(mmHg, medida durante el estudio)</span> · <span class="val" id="phSBPV">95</span></label>
+              <input type="range" id="phSBP" min="50" max="140" step="1" value="95">
+            </div>
+            <div class="field" id="phDirF" hidden>
+              <label>Dirección del flujo por el defecto</label>
+              <div class="seg" role="group" data-k="dir">
+                <button type="button" data-v="lr" aria-pressed="true">Izquierda → derecha</button>
+                <button type="button" data-v="bi" aria-pressed="false">Bidireccional o derecha → izquierda</button>
+              </div>
+            </div>
+            <div class="field">
+              <div class="toggle"><span>Estenosis pulmonar o del tracto de salida del VD</span><button type="button" data-ph="ps" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Recién nacido en los primeros días de vida</span><button type="button" data-ph="nb" aria-pressed="false">No</button></div>
+            </div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Estimación</div>
+              <div class="result" id="phResult">—</div>
+              <div class="why" id="phWhy"></div>
+              <svg id="phBar" viewBox="0 0 520 54" style="width:100%;max-width:520px;display:block;margin:12px 0 2px" role="img" aria-label="Presión del VD en proporción a la sistémica">
+                <rect x="10" y="16" width="166" height="14" fill="#e2f1ea"/>
+                <rect x="176" y="16" width="55" height="14" fill="#f7edd4"/>
+                <rect x="231" y="16" width="279" height="14" fill="#f5e0d9"/>
+                <g font-family="IBM Plex Mono" font-size="13" fill="#5e7480" text-anchor="middle">
+                  <text x="12" y="48">0</text><text x="176" y="46">1/2</text><text x="231" y="46">2/3</text><text x="343" y="46">1</text><text x="510" y="46">1,5</text>
+                </g>
+                <line x1="343" y1="12" x2="343" y2="34" stroke="#b3452e" stroke-width="1" stroke-dasharray="3 2"/>
+                <polygon id="phPtr" points="0,0 -7,-10 7,-10" transform="translate(120,16)" fill="#205070"/>
+              </svg>
+              <ul class="warnlist" id="phNotes"></ul>
+              <div class="srcline">Ecuaciones y advertencias según la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024). Las franjas de proporción sistémica son las de uso habitual en informes pediátricos; el umbral de 2/3 es el que la guía usa como hallazgo crítico.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trap"><b>Trampa: el recién nacido tiene la presión pulmonar alta.</b> En los primeros días de vida la presión pulmonar es normalmente elevada y va bajando. Una presión del VD alta en un neonato de horas no tiene el mismo significado que en un lactante de dos meses.</div>
+        <div class="trap"><b>Trampa: la insuficiencia tricuspídea que no se ve.</b> Si no hay chorro tricuspídeo medible, el informe no puede estimar la presión por esa vía. "No se pudo estimar" no significa "presión normal": mira los signos indirectos.</div>
+
+        <h3>Signos indirectos de presión alta en el VD</h3>
+        <ul>
+          <li><b>Aplanamiento sistólico del septo</b> o septo abombado hacia el VI.</li>
+          <li><b>Índice de excentricidad del VI</b> aumentado: el VI deja de ser redondo (un índice de 1 es un círculo perfecto).</li>
+          <li><b>Relación VD/VI</b> en telesístole aumentada.</li>
+          <li><b>Relación sístole/diástole</b> (duración del chorro tricuspídeo frente al resto del ciclo) prolongada: predice evolución en hipertensión pulmonar, miocardiopatía y ventrículo único.</li>
+        </ul>
+
+        <h3>Función del VD</h3>
+        <table>
+          <thead><tr><th>Parámetro</th><th>Qué mide</th><th>Límites</th></tr></thead>
+          <tbody>
+            <tr><td><b>Impresión visual</b></td><td>Tamaño y función global</td><td>Da contexto a todo lo demás; poco reproducible</td></tr>
+            <tr><td><b>TAPSE</b></td><td>Cuánto baja el anillo tricuspídeo en sístole (función longitudinal)</td><td>Leer en Z-score. Más útil en sobrecarga de presión que de volumen. No refleja el ápex ni el tracto de salida</td></tr>
+            <tr><td><b>Cambio fraccional de área (FAC)</b></td><td>Cambio del área del VD entre diástole y sístole</td><td>Incluye función longitudinal y radial; las trabéculas dificultan medirlo</td></tr>
+            <tr><td><b>Strain del VD</b></td><td>Deformación de la pared libre (y del septo)</td><td>Útil en hipertensión pulmonar, Fallot reparado y VD sistémico; varía entre equipos</td></tr>
+            <tr><td><b>FE del VD por 3D</b></td><td>Volúmenes y fracción de eyección</td><td>La mejor aproximación por eco; tiende a subestimar frente a la resonancia</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>En hipertensión pulmonar pediátrica,</b> la guía destaca que el TAPSE se correlaciona con el trabajo del VD, refleja cuán bien se adapta a la sobrecarga de presión y predice eventos adversos. El strain del VD también predice evolución. La confirmación diagnóstica sigue siendo por cateterismo; el eco estima y sigue en el tiempo.</div>
+        <div class="trap"><b>Trampa: el TAPSE en la sobrecarga de volumen.</b> Con un VD dilatado por volumen (CIA grande, insuficiencia pulmonar tras reparación de Fallot) el anillo tricuspídeo "se mece" de forma pasiva y el TAPSE puede verse normal o alto aunque la función no sea buena.</div>
+      </section>
+
+      <section id="valvulas">
+        <div class="kicker">06 · Válvulas y tractos de salida</div>
+        <h2>Estenosis e insuficiencias en el niño</h2>
+        <p class="sub">En el adulto la severidad valvular se apoya en números con cortes precisos. En el niño muchos de esos números no están validados, y el gradiente —el dato que más se mira— es justamente el que más engaña.</p>
+
+        <h3>Insuficiencias: se gradúan de forma cualitativa</h3>
+        <p>Los parámetros cuantitativos del adulto (orificio regurgitante efectivo, vena contracta, volumen regurgitante) tienen poca reproducibilidad en niños, sobre todo con chorros múltiples. La guía describe que la mayoría de los centros pediátricos gradúan la insuficiencia con tres elementos:</p>
+        <ol>
+          <li>El aspecto del chorro con Doppler color.</li>
+          <li>La <b>dilatación de la aurícula o el ventrículo</b> que recibe el volumen, en Z-score.</li>
+          <li>La <b>inversión del flujo</b> en las venas (sistémicas o pulmonares) o en la aorta.</li>
+        </ol>
+        <div class="clin"><b>La cavidad dilatada pesa más que el adjetivo.</b> Una insuficiencia descrita como "moderada" con un VI de Z +3 dice más que una "severa" con cavidades normales. Para la insuficiencia aórtica, la <b>inversión holodiastólica del flujo en la aorta abdominal</b> sugiere que es al menos moderada (capítulo 8).</div>
+
+        <h3>Estenosis de las válvulas mitral y tricúspide</h3>
+        <p>Se mide el <b>gradiente medio</b>. Con taquicardia la diástole se acorta y el gradiente sube, por eso el informe debe anotar la frecuencia cardiaca. El gradiente también aumenta si pasa más flujo por la válvula (una CIV o un ductus para la mitral, una CIA para la tricúspide) y disminuye si una CIA "descomprime" la aurícula.</p>
+
+        <h3>Estenosis pulmonar y aórtica: por qué el gradiente engaña</h3>
+        <p>El eco mide el <b>gradiente máximo instantáneo</b>. Los estudios de historia natural se hicieron con el <b>gradiente pico a pico</b> del cateterismo, que es otra medida y suele ser menor. Además, la guía enumera situaciones en que el gradiente <b>subestima</b> la severidad:</p>
+        <table>
+          <thead><tr><th>Situación</th><th>Por qué el gradiente sale bajo</th></tr></thead>
+          <tbody>
+            <tr><td><b>Recién nacido</b></td><td>Presión pulmonar normalmente alta (en estenosis pulmonar); gradientes menores aunque la estenosis sea significativa (en estenosis aórtica)</td></tr>
+            <tr><td><b>Disfunción ventricular</b></td><td>Menos gasto cardiaco, menos gradiente aunque la válvula esté muy estrecha</td></tr>
+            <tr><td><b>Cortocircuito grande</b></td><td>Iguala las presiones y reduce el gradiente a través de la válvula pulmonar</td></tr>
+            <tr><td><b>Insuficiencia tricuspídea severa</b></td><td>El VD no genera toda su presión hacia adelante</td></tr>
+            <tr><td><b>Mala alineación del Doppler</b></td><td>El ángulo subestima la velocidad</td></tr>
+          </tbody>
+        </table>
+        <p>En esas situaciones la guía recomienda apoyarse más en la <b>morfología de la válvula y el Z-score del anillo</b> que en el gradiente. Y como el gradiente cambia según la vista (en la estenosis aórtica suele ser mayor desde la ventana paraesternal derecha que desde la apical), el informe debe decir <b>desde qué vista</b> se midió el máximo.</p>
+
+        <!-- TOOL: gradient reliability -->
+        <div class="tool" id="grtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> ¿Puedo confiar en este gradiente?</div>
+          <div class="tool-body">
+            <div class="field">
+              <label>Válvula</label>
+              <div class="seg" role="group" data-k="v">
+                <button type="button" data-v="ao" aria-pressed="true">Aórtica</button>
+                <button type="button" data-v="pu" aria-pressed="false">Pulmonar</button>
+                <button type="button" data-v="av" aria-pressed="false">Mitral o tricúspide</button>
+              </div>
+            </div>
+            <div class="field" id="grList"></div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Confiabilidad</div>
+              <div class="result" id="grResult">—</div>
+              <div class="why" id="grWhy"></div>
+              <ul class="warnlist" id="grNotes"></ul>
+              <div class="srcline">Factores tomados de la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024).</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Válvula aórtica bicúspide</h3>
+        <p>La cardiopatía congénita más frecuente. La morfología se ve mejor en el eje corto paraesternal; el patrón más común es la fusión de la comisura entre las dos valvas coronarias. Importa por dos razones: puede evolucionar a estenosis o insuficiencia, y se asocia a <b>dilatación de la aorta</b>, que se sigue en Z-score con el mismo modelo (capítulo 8).</p>
+
+        <h3>Obstrucción en varios niveles</h3>
+        <p>La obstrucción puede estar debajo de la válvula (subvalvular), en la válvula o por encima (supravalvular), y puede haber más de un nivel. La guía pide recorrer con Doppler pulsado cada nivel antes del continuo. Cuando hay obstrucciones en serie, <b>la más estrecha domina</b> y distorsiona la medida de las otras.</p>
+        <div class="clin"><b>Asociaciones que el informe puede mencionar.</b> Estenosis pulmonar con arterias pulmonares pequeñas en el síndrome de Alagille o de Williams; estenosis aórtica supravalvular en el síndrome de Williams; obstrucción del tracto de salida del VD por desviación del septo conal en la tetralogía de Fallot.</div>
+      </section>
+
+      <section id="coronarias">
+        <div class="kicker">07 · Coronarias</div>
+        <h2>Kawasaki, MIS-C y origen anómalo</h2>
+        <p class="sub">A diferencia del eco de adultos, el eco pediátrico sí evalúa las coronarias: su origen, su tamaño y su trayecto inicial. Dos preguntas llevan a mirarlas: ¿están dilatadas? ¿nacen donde deben?</p>
+
+        <h3>Coronarias dilatadas: se leen en Z-score</h3>
+        <p>La dilatación coronaria aparece en la enfermedad de Kawasaki, en el síndrome inflamatorio multisistémico pediátrico asociado a COVID-19 (MIS-C) y, con menos frecuencia, en artritis idiopática juvenil, poliarteritis nodosa, hipertrofia ventricular o una fístula coronaria. El diámetro se mide en el punto de máxima dilatación y se convierte a Z-score.</p>
+        <table>
+          <thead><tr><th>Z-score de la coronaria</th><th>Clasificación de la AHA</th></tr></thead>
+          <tbody>
+            <tr><td class="v">siempre &lt; 2</td><td><span class="pill ok">Sin compromiso</span></td></tr>
+            <tr><td class="v">2 a &lt; 2,5</td><td><span class="pill warn">Solo dilatación</span> También si el Z inicial era &lt; 2 y cae 1 punto o más en el seguimiento</td></tr>
+            <tr><td class="v">2,5 a &lt; 5</td><td><span class="pill warn">Aneurisma pequeño</span></td></tr>
+            <tr><td class="v">5 a &lt; 10 y &lt; 8 mm</td><td><span class="pill alert">Aneurisma mediano</span></td></tr>
+            <tr><td class="v">≥ 10 o ≥ 8 mm</td><td><span class="pill alert">Aneurisma grande o gigante</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:0"><button type="button" class="primary" id="goCor">Abrir el intérprete en modo coronaria</button></p>
+        <div class="trap"><b>Trampa: cambiar de modelo de Z entre controles.</b> Las diferencias entre modelos son mayores justamente en las estructuras más pequeñas, como la descendente anterior. La guía insiste: para decidir si una coronaria mejora o empeora, todos los controles deben usar el mismo modelo.</div>
+        <div class="trap"><b>Trampa: el ajuste de la imagen.</b> Demasiada ganancia o la imagen armónica pueden hacer ver las paredes coronarias más brillantes y "anormales"; demasiada compresión puede borrar un trombo dentro de la luz. Si un control cambia mucho sin explicación clínica, la técnica puede ser la causa.</div>
+
+        <h3>Origen anómalo de coronaria: cuándo pensarlo</h3>
+        <p>La guía indica que el color es indispensable para excluir un origen anormal de las coronarias en tres escenarios: <b>miocardiopatía</b>, <b>síncope</b> y <b>dolor torácico</b> (además de algunas cardiopatías congénitas).</p>
+        <ul>
+          <li>Se necesita <b>imagen 2D y Doppler color</b> en el eje corto para confirmar que ambas coronarias nacen normalmente. <b>Una imagen fija no basta.</b></li>
+          <li>Un <b>flujo invertido</b> en una coronaria (que va hacia la aorta en lugar de salir de ella) sugiere origen anómalo desde la arteria pulmonar o atresia del ostium.</li>
+        </ul>
+        <div class="clin"><b>Por qué importa en urgencias y en la consulta.</b> Un lactante con miocardiopatía dilatada puede tener en realidad una coronaria izquierda que nace de la arteria pulmonar, que es tratable con cirugía. Un adolescente con síncope o dolor de esfuerzo puede tener una coronaria con origen o trayecto anómalo, causa de muerte súbita. En ambos casos, un eco que no documenta el origen de las coronarias <b>no responde la pregunta</b> (capítulo 2).</div>
+      </section>
+
+      <section id="aorta">
+        <div class="kicker">08 · Aorta y arco</div>
+        <h2>Coartación, dilatación y el Doppler de la aorta abdominal</h2>
+        <p class="sub">La aorta se sigue en pediatría por dos motivos principales: puede estar estrecha (coartación, arco hipoplásico) o dilatada (síndromes genéticos, válvula bicúspide). Ambos se leen en Z-score y con técnica pediátrica.</p>
+
+        <h3>Aorta dilatada</h3>
+        <p>El seguimiento seriado de la aorta es esencial en el síndrome de <b>Marfan</b>, el de <b>Loeys-Dietz</b>, el de <b>Turner</b> y la <b>válvula aórtica bicúspide</b>. El informe da el diámetro y el Z en cuatro niveles: anillo, raíz (senos de Valsalva), unión sinotubular y aorta ascendente.</p>
+        <div class="trap"><b>Trampa: comparar con un informe de adultos.</b> En niños la aorta se mide de borde interno a borde interno en <b>sístole</b>; en adultos, de borde anterior a borde anterior en <b>diástole</b>. Los Z pediátricos se construyeron con medidas en sístole. Cuando el paciente pasa a un laboratorio de adultos, un cambio de diámetro puede ser solo técnico.</div>
+        <div class="clin"><b>Aorta estrecha por encima de la válvula.</b> La estenosis aórtica supravalvular es característica del síndrome de Williams y de otras mutaciones del gen de la elastina.</div>
+
+        <h3>El arco: lado, ramas y coartación</h3>
+        <ul>
+          <li><b>Lado del arco.</b> Normalmente la primera rama (el tronco braquiocefálico) va a la derecha y se divide en carótida y subclavia derechas. Si esa bifurcación no aparece, se sospecha una <b>subclavia aberrante</b>. Saber el lado del arco importa si un ductus va a necesitar cirugía, porque decide por qué lado se abre el tórax.</li>
+          <li><b>Signos de coartación:</b> distancia aumentada entre la carótida izquierda y la subclavia izquierda, estrechamiento o repliegue posterior en el istmo, y turbulencia en el color. Con Doppler continuo aparece una curva doble: la envolvente exterior de alta velocidad corresponde a la zona estrecha.</li>
+        </ul>
+        <div class="trap"><b>Trampa: la coartación con ductus abierto.</b> En el recién nacido, un ductus abierto puede "rellenar" la aorta por debajo de la coartación y hacer que el gradiente y el Doppler abdominal parezcan casi normales. La coartación puede manifestarse de golpe cuando el ductus se cierra. La coartación crítica es una cardiopatía ductus-dependiente (capítulo 11).</div>
+
+        <h3>El Doppler de la aorta abdominal: una ventana a todo el arco</h3>
+        <p>Desde la vista subcostal se registra el flujo de la aorta abdominal. Su forma resume lo que pasa río arriba, en todo el arco y en la válvula aórtica. La guía describe cuatro patrones:</p>
+
+        <!-- TOOL: abdominal aorta Doppler -->
+        <div class="tool" id="aotool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Lector del Doppler de aorta abdominal</div>
+          <div class="tool-body">
+            <div class="field">
+              <label>¿A cuál se parece el trazado que describe el informe?</label>
+              <div class="seg" role="group" data-k="p">
+                <button type="button" data-v="A" aria-pressed="true">A · Pulsátil normal</button>
+                <button type="button" data-v="B" aria-pressed="false">B · Retorno lento</button>
+                <button type="button" data-v="C" aria-pressed="false">C · Aplanado continuo</button>
+                <button type="button" data-v="D" aria-pressed="false">D · Inversión diastólica</button>
+              </div>
+            </div>
+            <figure style="margin:8px 0 0">
+              <svg id="aoSvg" viewBox="0 0 520 170" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto" role="img" aria-label="Esquema del patrón Doppler de la aorta abdominal">
+                <line x1="20" y1="100" x2="500" y2="100" stroke="#9fb3bb" stroke-width="1"/>
+                                <path id="aoPath" fill="#dbe8ee" stroke="#205070" stroke-width="2"/>
+                <g font-family="IBM Plex Mono" font-size="9.5" fill="#5e7480"><text x="24" y="20">flujo anterógrado ↑</text><text x="24" y="160">flujo invertido ↓</text></g>
+              </svg>
+              <figcaption>Esquema didáctico de tres latidos, no un registro real. La línea horizontal es la línea de base.</figcaption>
+            </figure>
+            <div class="readout" aria-live="polite">
+              <div class="label">Qué sugiere</div>
+              <div class="result" id="aoResult">—</div>
+              <div class="why" id="aoWhy"></div>
+              <div class="srcline">Patrones descritos en la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024, Figura 3).</div>
+            </div>
+          </div>
+        </div>
+        <div class="trap"><b>Trampa: la sedación.</b> La guía advierte que la anestesia general o la sedación moderada también pueden producir inversión diastólica del flujo en la aorta abdominal sin enfermedad estructural.</div>
+      </section>
+
+      <section id="pericardio">
+        <div class="kicker">09 · Pericardio</div>
+        <h2>Derrame pericárdico en el niño</h2>
+        <p class="sub">La guía pide descartar derrame pericárdico desde varias vistas en todo eco pediátrico, y con especial cuidado después de cirugía cardiaca. Lo que importa no es solo cuánto líquido hay, sino si está comprimiendo el corazón.</p>
+
+        <h3>Tamaño no es gravedad</h3>
+        <p>En niños no hay un corte en milímetros universalmente aceptado: el mismo volumen de líquido pesa distinto en un lactante que en un adolescente. Por eso el informe suele describirlo como pequeño, moderado o grande, y lo decisivo es si hay <b>signos de compromiso hemodinámico</b>.</p>
+        <div class="clin"><b>Cuándo es crítico.</b> Un derrame pericárdico <b>moderado o grande de aparición nueva</b> está en la lista de hallazgos críticos de la guía: debe comunicarse de inmediato al equipo tratante.</div>
+        <div class="trap"><b>Trampa: el derrame del posoperatorio.</b> En los días o semanas siguientes a una cirugía cardiaca puede acumularse líquido (por ejemplo, en el síndrome pospericardiotomía). Un niño operado con decaimiento, taquicardia o hipotensión necesita un eco que busque derrame aunque el control previo fuera normal. La velocidad de acumulación importa más que el volumen.</div>
+
+        <!-- TOOL: tamponade -->
+        <div class="tool" id="tptool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Signos de taponamiento en el informe</div>
+          <div class="tool-body">
+            <p style="margin-top:0;font-size:14px;color:var(--muted)">Marca los hallazgos que describe el informe.</p>
+            <div class="toggle"><span>Colapso de la aurícula derecha</span><button type="button" data-tp="ra" aria-pressed="false">No</button></div>
+            <div class="toggle"><span>Colapso diastólico del ventrículo derecho</span><button type="button" data-tp="rv" aria-pressed="false">No</button></div>
+            <div class="toggle"><span>Variación respiratoria exagerada de los flujos de entrada (más llenado derecho en inspiración, más izquierdo en espiración)</span><button type="button" data-tp="resp" aria-pressed="false">No</button></div>
+            <div class="toggle"><span>Vena cava inferior dilatada que no colapsa</span><button type="button" data-tp="ivc" aria-pressed="false">No</button></div>
+            <div class="toggle"><span>El niño está taquicárdico o hipotenso</span><button type="button" data-tp="clin" aria-pressed="false">No</button></div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Lectura</div>
+              <div class="result" id="tpResult">—</div>
+              <div class="why" id="tpWhy"></div>
+            </div>
+          </div>
+        </div>
+        <div class="clin"><b>El taponamiento es un diagnóstico clínico.</b> El eco muestra el derrame y sus efectos, pero la decisión se toma con el niño: taquicardia, pulso paradójico, hipotensión, mala perfusión. Y en niños la vena cava inferior no refleja bien la presión de la aurícula derecha (capítulo 5), así que ese signo se interpreta con más cautela que en el adulto.</div>
+        <p>La misma interdependencia entre ventrículos (llenado derecho en inspiración, izquierdo en espiración) aparece en la <b>pericarditis constrictiva</b>, rara en niños.</p>
+      </section>
+
+      <section id="posop">
+        <div class="kicker">10 · Posoperatorios</div>
+        <h2>El informe del niño ya operado</h2>
+        <p class="sub">Muchos niños y adolescentes operados de cardiopatías congénitas llegan a urgencias, a la consulta general o a la UCI con un informe de control. La cirugía cambia la anatomía y, con ella, lo que hay que vigilar. Estas son las tres cirugías que más verás.</p>
+
+        <h3>Tetralogía de Fallot reparada</h3>
+        <p>La reparación cierra la CIV y amplía el tracto de salida del VD, muchas veces a costa de dejar la válvula pulmonar <b>insuficiente</b>. Esa insuficiencia pulmonar crónica sobrecarga de volumen al VD durante años.</p>
+        <ul>
+          <li><b>Insuficiencia pulmonar</b> y <b>tamaño del VD</b>: el tamaño del VD ayuda a predecir cuándo se necesitará reemplazar la válvula pulmonar. La decisión suele apoyarse en la resonancia, y el eco ayuda a decidir cuándo pedirla.</li>
+          <li><b>Obstrucción residual</b> del tracto de salida del VD o <b>estenosis de las ramas pulmonares</b>.</li>
+          <li><b>Función del VD:</b> el TAPSE puede engañar por la sobrecarga de volumen (capítulo 5); el strain del VD ayuda a identificar disincronía y el momento del reemplazo valvular.</li>
+          <li><b>CIV residual</b>, insuficiencia tricuspídea, función del VI y tamaño de la raíz aórtica.</li>
+        </ul>
+
+        <h3>Switch arterial (corrección de la transposición)</h3>
+        <p>Se cortan la aorta y la pulmonar y se reimplantan en el ventrículo correcto, <b>trasladando las coronarias</b> a la nueva aorta (neoaorta). Por eso el control vigila justo las zonas que se suturaron o se movieron:</p>
+        <ul>
+          <li><b>Estenosis supravalvular pulmonar</b> y <b>de las ramas pulmonares</b>, que quedan estiradas por delante de la aorta.</li>
+          <li><b>Dilatación de la raíz neoaórtica</b> e <b>insuficiencia neoaórtica</b>.</li>
+          <li><b>Coronarias reimplantadas:</b> una alteración de la contracción regional o una caída de la función del VI puede ser la pista de un problema coronario.</li>
+        </ul>
+        <div class="clin"><b>Un control con metas definidas.</b> La red de calidad del American College of Cardiology (ACPC) tiene una métrica específica para el eco ambulatorio en el primer año tras el switch arterial, con los componentes que ese estudio debe incluir.</div>
+
+        <h3>Circulación de Fontan</h3>
+        <p>Es el destino final de los corazones funcionalmente univentriculares. Las venas cavas se conectan directamente a las arterias pulmonares, <b>sin un ventrículo que bombee hacia el pulmón</b>: la sangre llega a los pulmones de forma pasiva. El único ventrículo bombea a la aorta.</p>
+        <ul>
+          <li><b>Conducto de Fontan:</b> el flujo normal es de <b>baja velocidad y fásico</b> (varía con la respiración). Un flujo acelerado o que pierde la fasicidad sugiere obstrucción. Buscar también trombos.</li>
+          <li><b>Fenestración</b> (si la tiene): dirección del flujo y gradiente.</li>
+          <li><b>Función del ventrículo único</b> e <b>insuficiencia de la válvula auriculoventricular</b>. El strain permite evaluar la función sin depender de la forma del ventrículo.</li>
+          <li><b>Derrames</b> pleurales o pericárdicos.</li>
+        </ul>
+        <div class="trap"><b>Trampa: la presión pulmonar en el Fontan.</b> Como no hay ventrículo subpulmonar, el chorro de insuficiencia de la válvula auriculoventricular refleja la presión del ventrículo <b>sistémico</b>, no la pulmonar. Un "PSVD estimada" en un Fontan no significa lo mismo que en un corazón biventricular.</div>
+
+        <!-- TOOL: postop checklist -->
+        <div class="tool" id="potool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> ¿El control posoperatorio está completo?</div>
+          <div class="tool-body">
+            <div class="field">
+              <label>Cirugía</label>
+              <div class="seg" role="group" data-k="s">
+                <button type="button" data-v="tof" aria-pressed="true">Fallot reparado</button>
+                <button type="button" data-v="aso" aria-pressed="false">Switch arterial</button>
+                <button type="button" data-v="fon" aria-pressed="false">Fontan</button>
+              </div>
+            </div>
+            <p style="font-size:14px;color:var(--muted);margin:6px 0">Marca lo que el informe sí describe:</p>
+            <div id="poList"></div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Revisión</div>
+              <div class="result" id="poResult">—</div>
+              <div class="why" id="poWhy"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="criticos">
+        <div class="kicker">11 · Hallazgos críticos</div>
+        <h2>Lo que exige llamar de inmediato</h2>
+        <p class="sub">La guía pide que cada laboratorio tenga una lista de hallazgos críticos, que se comuniquen por una vía directa en 1 a 2 horas y que el informe deje constancia de a quién se avisó y cuándo. Si recibes un informe con uno de estos hallazgos, el niño necesita valoración por cardiología pediátrica sin demora.</p>
+
+        <h3>La lista de la guía</h3>
+        <table>
+          <thead><tr><th>Hallazgo crítico</th><th>Por qué no puede esperar</th></tr></thead>
+          <tbody>
+            <tr><td><b>Cardiopatía crítica nueva dependiente del ductus:</b> estenosis aórtica crítica, estenosis pulmonar crítica, coartación crítica, ventrículo único con estenosis pulmonar severa o atresia pulmonar, síndrome de corazón izquierdo hipoplásico</td><td>La circulación depende de que el ductus siga abierto. Cuando se cierra, en los primeros días de vida, el niño puede entrar en choque o en hipoxemia severa</td></tr>
+            <tr><td><b>Drenaje venoso pulmonar anómalo total</b> infradiafragmático u obstruido</td><td>Edema pulmonar e hipoxemia severa; es una urgencia quirúrgica</td></tr>
+            <tr><td><b>Disfunción ventricular sistólica moderada o severa</b> nueva</td><td>Riesgo de insuficiencia cardiaca y bajo gasto (miocarditis, miocardiopatía, origen anómalo de coronaria)</td></tr>
+            <tr><td><b>Insuficiencia o estenosis valvular severa</b> nueva</td><td>Puede requerir intervención</td></tr>
+            <tr><td><b>Derrame pericárdico moderado o grande</b> nuevo</td><td>Riesgo de taponamiento (capítulo 9)</td></tr>
+            <tr><td><b>Vegetación o masa intracardiaca</b> nueva</td><td>Endocarditis, trombo o tumor con riesgo de embolia u obstrucción</td></tr>
+            <tr><td><b>Hipertensión pulmonar nueva</b> con presión pulmonar mayor de 2/3 de la sistémica</td><td>Riesgo de crisis hipertensiva y falla del VD (capítulo 5)</td></tr>
+            <tr><td><b>Cambio significativo</b> respecto al estudio previo</td><td>Todo deterioro relevante se comunica</td></tr>
+          </tbody>
+        </table>
+
+        <!-- TOOL: critical checklist -->
+        <div class="tool" id="crtool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> ¿Tiene este informe un hallazgo crítico?</div>
+          <div class="tool-body">
+            <p style="margin-top:0;font-size:14px;color:var(--muted)">Marca lo que describe el informe.</p>
+            <div id="crList"></div>
+            <div class="readout" aria-live="polite">
+              <div class="label">Conducta</div>
+              <div class="result" id="crResult">—</div>
+              <div class="why" id="crWhy"></div>
+              <div class="srcline">Lista basada en la Tabla 19 de la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024), tomada de la métrica de calidad del ACPC.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>El recién nacido con cardiopatía ductus-dependiente</h3>
+        <p>Es la situación en la que el eco cambia la conducta en minutos. Hay dos grandes grupos:</p>
+        <div class="analogy">
+          <div><div class="h">Flujo sistémico dependiente del ductus</div>Corazón izquierdo hipoplásico, estenosis aórtica crítica, coartación crítica. Al cerrarse el ductus: choque, pulsos débiles, acidosis.</div>
+          <div><div class="h">Flujo pulmonar dependiente del ductus</div>Atresia pulmonar, estenosis pulmonar crítica, ventrículo único con obstrucción pulmonar. Al cerrarse el ductus: cianosis profunda.</div>
+        </div>
+        <div class="clin"><b>Qué suele hacerse.</b> El manejo inicial habitual es mantener el ductus abierto con prostaglandina E1 mientras se traslada o se define la intervención, decisión que se toma con cardiología pediátrica y neonatología. Tu papel ante el informe es reconocer el hallazgo, verificar que el equipo especializado lo sabe y no perder tiempo.</div>
+        <div class="trap"><b>Trampa: el ductus que "salva" el informe.</b> Mientras el ductus está abierto, un recién nacido con coartación crítica puede tener gradientes y pulsos casi normales. Un eco normal en las primeras horas no garantiza que siga así cuando el ductus se cierre (capítulo 8).</div>
+      </section>
+
+      <section id="caso">
+        <div class="kicker">12 · Caso resuelto</div>
+        <h2>Un informe, paso a paso</h2>
+        <p class="sub">Lactante de 7 semanas, 4,2 kg. Consulta por soplo, sudoración con las tomas, respiración rápida y poca ganancia de peso. Presión arterial sistólica medida durante el eco: 82 mmHg.</p>
+
+        <div class="card">
+          <div class="label mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Lo que dice el informe</div>
+          <ul style="margin:8px 0 0;font-size:14.5px">
+            <li>Situs solitus, levocardia. Conexiones auriculoventriculares y ventriculoarteriales concordantes.</li>
+            <li>CIV perimembranosa grande. Flujo de izquierda a derecha. Velocidad pico a través de la CIV: 2,2 m/s.</li>
+            <li>Aurícula izquierda dilatada. Diámetro diastólico del VI: Z +3,1. FA 38 %.</li>
+            <li>Insuficiencia tricuspídea leve, velocidad pico 3,8 m/s. Aplanamiento sistólico del septo.</li>
+            <li>Sin ductus. Arco aórtico izquierdo sin obstrucción. Origen normal de ambas coronarias.</li>
+            <li>Limitaciones: niño irritable, ventanas aceptables.</li>
+          </ul>
+        </div>
+
+        <h3>1. Anatomía (capítulo 2)</h3>
+        <p>Arquitectura normal con un defecto aislado: una CIV. No hay otra malformación descrita y el informe documenta el arco y las coronarias.</p>
+
+        <h3>2. El cortocircuito (capítulo 3)</h3>
+        <p>La velocidad a través de la CIV es <b>baja</b> (2,2 m/s, gradiente ≈ 19 mmHg). Eso no significa que sea pequeña: significa que las presiones de los dos ventrículos están cerca. Es una CIV <b>poco restrictiva</b>.</p>
+
+        <h3>3. La presión pulmonar (capítulo 5)</h3>
+        <p>Por la CIV: 82 − 19 = <b>≈ 63 mmHg</b>. Por la insuficiencia tricuspídea: 4 × 3,8² ≈ 58 + 5 = <b>≈ 63 mmHg</b>. Los dos caminos coinciden, lo que da confianza. Proporción con la sistémica: 63 / 82 ≈ <b>0,77, más de 2/3</b>. El aplanamiento sistólico del septo lo confirma.</p>
+
+        <h3>4. La repercusión (capítulos 1 y 4)</h3>
+        <p>VI con <b>Z +3,1</b> y aurícula izquierda dilatada: sobrecarga de volumen del lado izquierdo por un cortocircuito grande. La FA de 38 % es normal; con sobrecarga de volumen el VI suele verse con buena o alta contractilidad.</p>
+
+        <h3>5. ¿Hay un hallazgo crítico? (capítulo 11)</h3>
+        <p>Sí: presión pulmonar mayor de 2/3 de la sistémica. En una CIV grande del lactante la presión alta se explica sobre todo por el hiperflujo, pero sigue cumpliendo el criterio de la guía y el informe debe dejar constancia de que se comunicó.</p>
+
+        <div class="clin"><b>Lectura integrada.</b> CIV perimembranosa grande, poco restrictiva, con cortocircuito de izquierda a derecha significativo (VI y aurícula izquierda dilatados) e hipertensión pulmonar severa por hiperflujo. Explica la insuficiencia cardiaca del lactante. Necesita cardiología pediátrica de forma prioritaria: manejo de la insuficiencia cardiaca y definición del momento del cierre antes de que el hiperflujo dañe la vasculatura pulmonar.</div>
+        <div class="trap"><b>Lo que habría sido un error.</b> Leer "velocidad baja" como CIV pequeña, o "FA normal" como corazón sano, y citar a control en seis meses.</div>
+      </section>
+
+      <section id="referencia">
+        <div class="kicker">13 · Referencia rápida</div>
+        <h2>Tablas de consulta</h2>
+        <p class="sub">Lo esencial de cada capítulo para tener a mano. Toca cada tabla para abrirla.</p>
+
+        <details><summary>Z-score (capítulo 1)</summary><div class="inner">
+          <table><tbody>
+            <tr><td class="v">−2 a +2</td><td>Rango normal (≈ 95 % de los sanos)</td></tr>
+            <tr><td class="v">≥ +2</td><td>Aumentado: dilatación o engrosamiento</td></tr>
+            <tr><td class="v">≤ −2</td><td>Pequeño: posible hipoplasia</td></tr>
+            <tr><td colspan="2">Seguimiento siempre con el mismo modelo. Desconfiar en obesidad, prematuros y modo M con Z del PHN.</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Coronarias, AHA 2017 (capítulo 7)</summary><div class="inner">
+          <table><tbody>
+            <tr><td class="v">&lt; 2</td><td>Sin compromiso</td></tr>
+            <tr><td class="v">2 a &lt; 2,5</td><td>Solo dilatación (o caída ≥ 1 desde un Z inicial &lt; 2)</td></tr>
+            <tr><td class="v">2,5 a &lt; 5</td><td>Aneurisma pequeño</td></tr>
+            <tr><td class="v">5 a &lt; 10 y &lt; 8 mm</td><td>Aneurisma mediano</td></tr>
+            <tr><td class="v">≥ 10 o ≥ 8 mm</td><td>Aneurisma grande o gigante</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Ventrículo izquierdo (capítulo 4)</summary><div class="inner">
+          <table><tbody>
+            <tr><td>Masa Z ≥ 2</td><td>Hipertrofia</td></tr>
+            <tr><td>Masa/volumen Z ≥ 2</td><td>Concéntrica (presión)</td></tr>
+            <tr><td>Masa/volumen Z &lt; 2</td><td>Excéntrica (volumen)</td></tr>
+            <tr><td>GLS endocárdico</td><td>Límite inferior entre −17 % y −18 %</td></tr>
+            <tr><td colspan="2">No usar FA con movimiento septal paradójico, alteración regional o VI no circular. En sanos, 17 % tuvo FA &lt; 25 % o FE &lt; 50 % (PHN).</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Presión del VD (capítulo 5)</summary><div class="inner">
+          <table><tbody>
+            <tr><td>Por IT</td><td class="v">4v² + AD asumida (5–10)</td></tr>
+            <tr><td>Por CIV (I→D)</td><td class="v">PAS brazo − 4v²</td></tr>
+            <tr><td>Por ductus (I→D)</td><td class="v">PAS brazo − 4v²</td></tr>
+            <tr><td>Media por IP</td><td class="v">4v² protodiastólica + AD</td></tr>
+            <tr><td>&lt; 1/2 sistémica</td><td>Normal o leve</td></tr>
+            <tr><td>1/2 a 2/3</td><td>Moderada</td></tr>
+            <tr><td>&gt; 2/3</td><td>Severa · crítica si es nueva</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Cortocircuitos y test de burbujas (capítulo 3)</summary><div class="inner">
+          <table><tbody>
+            <tr><td>CIA</td><td>Dilata cavidades derechas</td></tr>
+            <tr><td>CIV, ductus</td><td>Dilatan cavidades izquierdas</td></tr>
+            <tr><td>Velocidad alta por CIV o ductus</td><td>Restrictivo: presión derecha baja</td></tr>
+            <tr><td>Flujo D→I</td><td>Presión derecha mayor que izquierda</td></tr>
+            <tr><td>Burbujas en 3–6 ciclos</td><td>Cortocircuito intracardiaco</td></tr>
+            <tr><td>Burbujas después de 6 ciclos</td><td>Cortocircuito intrapulmonar</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Doppler de aorta abdominal (capítulo 8)</summary><div class="inner">
+          <table><tbody>
+            <tr><td>A · pulsátil, vuelve a la base</td><td>Normal</td></tr>
+            <tr><td>B · retorno diastólico lento</td><td>Sugiere obstrucción del arco</td></tr>
+            <tr><td>C · aplanado, no vuelve a la base</td><td>Obstrucción significativa del arco</td></tr>
+            <tr><td>D · inversión holodiastólica</td><td>IAo ≥ moderada, ductus grande, colateral, fístula arteriovenosa, choque o sedación</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Hallazgos críticos (capítulo 11)</summary><div class="inner">
+          <table><tbody>
+            <tr><td colspan="2">Cardiopatía ductus-dependiente nueva · drenaje venoso pulmonar anómalo total infradiafragmático u obstruido · disfunción ventricular moderada o severa nueva · valvulopatía severa nueva · derrame moderado o grande nuevo · vegetación o masa nueva · HP nueva &gt; 2/3 sistémica · cambio significativo. Comunicar en 1 a 2 horas por vía directa.</td></tr>
+          </tbody></table></div></details>
+
+        <details><summary>Abreviaturas (capítulo 2)</summary><div class="inner">
+          <table><tbody>
+            <tr><td class="v">FA</td><td>Fracción de acortamiento (no fibrilación auricular)</td></tr>
+            <tr><td class="v">FOP · CIA · CIV · DAP</td><td>Foramen oval · comunicación interauricular · interventricular · ductus</td></tr>
+            <tr><td class="v">TSVD · TSVI</td><td>Tractos de salida derecho · izquierdo</td></tr>
+            <tr><td class="v">PSVD</td><td>Presión sistólica del VD</td></tr>
+            <tr><td class="v">SC</td><td>Superficie corporal</td></tr>
+          </tbody></table></div></details>
+      </section>
+
+      <!-- 14 QUIZ -->
+      <section id="quiz">
+        <div class="kicker">14 · Autoevaluación</div>
+        <h2>Pon a prueba la lectura</h2>
+        <p class="sub">Tres niveles de dificultad y retroalimentación inmediata. Las preguntas no se repiten hasta agotar el banco. El banco cubre todos los capítulos del manual.</p>
+        <div class="tool">
+          <div class="tool-head"><span class="tag">EXAMEN</span> <span id="examTitle">Configura tu intento</span></div>
+          <div class="tool-body" id="examHost"></div>
+        </div>
+      </section>
+
+      <!-- 15 CREDITOS -->
+      <section id="creditos">
+        <div class="kicker">15 · Autor</div>
+        <h2>Sobre este manual</h2>
+        <p class="sub">La versión pediátrica del manual <a href="https://carvajaljuanfernando-prog.github.io/eco-informe/">Cómo leer un informe de ecocardiograma</a>, hecha a pedido de los colegas que lo usan.</p>
+
+        <div class="author">
+          <div class="initials" aria-hidden="true">JC</div>
+          <div class="who">
+            <div class="nm">Dr. Juan Fernando Carvajal Estupiñán</div>
+            <div class="role">Cardiólogo</div>
+            <div class="place">Instituto del Corazón de Bucaramanga<br>Bucaramanga, Colombia</div>
+            <p class="note">Autor del contenido y del diseño de los módulos interactivos. Material educativo de acceso libre; puede compartirse y usarse con fines docentes citando la autoría.</p>
+          </div>
+        </div>
+
+        <h3>Comentarios y sugerencias</h3>
+        <div class="contact">
+          <div class="contact-txt"><b>Este manual está en construcción.</b> Si encuentras un error, algo que se pueda explicar mejor o un tema que falte, escríbeme.</div>
+          <a class="mailbtn" id="mailLink" href="#" rel="nofollow"><span>carvajaljuanfernando</span><span>&#64;</span><span>gmail</span><span>&#46;</span><span>com</span></a>
+        </div>
+
+        <div class="clin"><b>Cómo citar.</b> Carvajal Estupiñán JF. <i>Cómo leer un informe de ecocardiograma pediátrico: manual interactivo para médicos no cardiólogos.</i> Bucaramanga, Colombia; 2026. Disponible en línea.</div>
+        <div class="trap"><b>Aviso.</b> Material con fines <b>exclusivamente educativos</b>. No sustituye el juicio clínico, la valoración por cardiología pediátrica ni las guías vigentes.</div>
+      </section>
+
+    </div><!-- /wrap -->
+
+    <footer>
+      <div class="wrap">
+        <b>Cómo leer un informe de ecocardiograma pediátrico</b> · Manual interactivo para médicos no cardiólogos.<br>
+        © 2026 <b>Dr. Juan Fernando Carvajal Estupiñán</b> — Cardiólogo, Instituto del Corazón de Bucaramanga · Bucaramanga, Colombia.<br>
+        Comentarios y sugerencias: <a href="#creditos" style="color:#bcd9e6">ver sección 15</a>.
+        <div class="disc">Contenido basado en la guía de la ASE para el ecocardiograma transtorácico pediátrico completo (Lopez L et al. J Am Soc Echocardiogr 2024;37:119-70). Clasificación coronaria según la declaración científica de la AHA sobre enfermedad de Kawasaki (McCrindle BW et al. Circulation 2017;135:e927-99). Material educativo; no sustituye el juicio clínico ni la valoración especializada.</div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s,c){return (c||document).querySelector(s);};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+  /* ---- mobile nav ---- */
+  var nav=$("#nav"), scrim=$("#scrim"), toggle=$("#navToggle");
+  function closeNav(){nav.classList.remove("open");scrim.classList.remove("show");}
+  toggle.addEventListener("click",function(){nav.classList.toggle("open");scrim.classList.toggle("show");});
+  scrim.addEventListener("click",closeNav);
+  $$(".nav a").forEach(function(a){a.addEventListener("click",closeNav);});
+
+  /* ---- contact link (assembled at runtime) ---- */
+  var ml=$("#mailLink");
+  if(ml){
+    var u="carvajaljuanfernando", d=["gmail","com"].join(".");
+    ml.setAttribute("href","mail"+"to:"+u+String.fromCharCode(64)+d+
+      "?subject="+encodeURIComponent("Comentarios — Manual de eco pediátrico"));
+  }
+
+  /* ---- glossary tooltips ---- */
+  $$(".g").forEach(function(g){
+    function place(){
+      g.classList.remove("tip-left");
+      var t=g.querySelector(".tip"); if(!t)return;
+      var r=t.getBoundingClientRect();
+      if(r.right>document.documentElement.clientWidth-8) g.classList.add("tip-left");
+    }
+    g.addEventListener("mouseenter",place);
+    g.addEventListener("focus",place);
+    g.addEventListener("touchstart",place,{passive:true});
+  });
+
+  /* ---- active section highlight ---- */
+  var links={};
+  $$(".nav a").forEach(function(a){links[a.getAttribute("href").slice(1)]=a;});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          $$(".nav a").forEach(function(a){a.classList.remove("active");});
+          var l=links[e.target.id]; if(l)l.classList.add("active");
+        }
+      });
+    },{rootMargin:"-45% 0px -50% 0px"});
+    $$("section").forEach(function(s){io.observe(s);});
+  }
+
+  /* =========================================================
+     TOOL · Intérprete de Z-score
+     Fuentes: Lopez L et al. JASE 2024 (límites ±2, advertencias de modelo,
+     obesidad, prematuros, modo M); McCrindle BW et al. Circulation 2017
+     (clasificación coronaria de la AHA).
+     ========================================================= */
+  var zIn=$("#zIn"), zRange=$("#zRange"), mmIn=$("#mmIn"), mmField=$("#mmField");
+  var kGen=$("#zkGen"), kCor=$("#zkCor");
+  var zKind="gen", zW={obes:false,prem:false,lab:false,mod:false};
+
+  function fmt(x,dec){return x.toFixed(dec==null?1:dec).replace(".",",").replace(/^-/,"−");}
+  function erf(x){ // Abramowitz & Stegun 7.1.26
+    var s=x<0?-1:1; x=Math.abs(x);
+    var t=1/(1+0.3275911*x);
+    var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);
+    return s*y;
+  }
+  function pctl(z){return 50*(1+erf(z/Math.SQRT2));}
+  function pctlTxt(z){
+    var p=pctl(z);
+    if(p>99.9)return "por encima del percentil 99,9";
+    if(p<0.1)return "por debajo del percentil 0,1";
+    return "percentil ≈ "+fmt(p,p>=99||p<=1?1:0);
+  }
+
+  /* curve */
+  var X0=260, SX=50, YB=150, H=112;
+  function cx(z){return X0+SX*z;}
+  (function drawBell(){
+    var d="", z;
+    for(z=-4;z<=4.0001;z+=0.05){
+      var y=YB-H*Math.exp(-z*z/2);
+      d+=(d?" L":"M")+cx(z).toFixed(1)+" "+y.toFixed(1);
+    }
+    $("#zBell").setAttribute("d",d);
+    var g=$("#zTicks"), NS="http://www.w3.org/2000/svg";
+    for(z=-4;z<=4;z++){
+      var t=document.createElementNS(NS,"text");
+      t.setAttribute("x",cx(z)); t.setAttribute("y",YB+16);
+      t.textContent=(z>0?"+":z<0?"−":"")+Math.abs(z);
+      if(z===-2||z===2){t.setAttribute("fill","#1f8a6d");t.setAttribute("font-weight","600");}
+      g.appendChild(t);
+      var tk=document.createElementNS(NS,"line");
+      tk.setAttribute("x1",cx(z));tk.setAttribute("x2",cx(z));tk.setAttribute("y1",YB);tk.setAttribute("y2",YB+4);
+      tk.setAttribute("stroke","#9fb3bb"); g.appendChild(tk);
+    }
+  })();
+
+  function setKind(k){
+    zKind=k;
+    kGen.setAttribute("aria-pressed",String(k==="gen"));
+    kCor.setAttribute("aria-pressed",String(k==="cor"));
+    mmField.hidden=(k!=="cor");
+    zRun();
+  }
+  kGen.addEventListener("click",function(){setKind("gen");});
+  kCor.addEventListener("click",function(){setKind("cor");});
+
+  $$("#ztool .toggle button").forEach(function(b){
+    b.addEventListener("click",function(){
+      var k=b.getAttribute("data-w"); zW[k]=!zW[k];
+      b.setAttribute("aria-pressed",String(zW[k])); b.textContent=zW[k]?"Sí":"No";
+      zRun();
+    });
+  });
+  zIn.addEventListener("input",function(){var v=parseFloat(zIn.value); if(!isNaN(v))zRange.value=Math.max(-5,Math.min(12,v)); zRun();});
+  zRange.addEventListener("input",function(){zIn.value=zRange.value; zRun();});
+  mmIn.addEventListener("input",zRun);
+
+  function mark(z,color){
+    var zc=Math.max(-4.3,Math.min(4.3,z)), x=cx(zc);
+    var y=YB-H*Math.exp(-zc*zc/2);
+    $("#zLine").setAttribute("x1",x);$("#zLine").setAttribute("x2",x);$("#zLine").setAttribute("y1",Math.min(y,YB-6));
+    $("#zDot").setAttribute("cx",x);
+    var lbl=$("#zLbl"); lbl.setAttribute("x",Math.max(40,Math.min(480,x)));
+    lbl.setAttribute("y",Math.max(14,Math.min(y,YB-6)-8));
+    lbl.textContent=(z>4.3?"Z "+fmt(z)+" →":z<-4.3?"← Z "+fmt(z):"Z "+fmt(z));
+    ["#zLine","#zDot"].forEach(function(s){var e=$(s); e.setAttribute(s==="#zLine"?"stroke":"fill",color);});
+    lbl.setAttribute("fill",color);
+  }
+
+  function zRun(){
+    var z=parseFloat(zIn.value), res=$("#zResult"), why=$("#zWhy"), wl=$("#zWarn"), src=$("#zSrc");
+    wl.innerHTML="";
+    if(isNaN(z)){res.textContent="—";why.textContent="Escribe un valor de Z.";return;}
+    var C={ok:"var(--ok)",warn:"var(--warn)",alert:"var(--alert)"}, HEX={ok:"#1f8a6d",warn:"#b9821c",alert:"#b3452e"};
+    var tone="ok", title="", text="";
+
+    if(zKind==="gen"){
+      if(z>=2){
+        tone=z>=3?"alert":"warn";
+        title="Por encima de lo normal para su tamaño";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). La estructura es más grande de lo esperado: cavidad o vaso dilatado, o pared engrosada, según qué se midió. ";
+        text+=z>=3?"Se aleja claramente del límite de +2.":"Está cerca del límite: pesa más si coincide con otros hallazgos o si aumenta en controles con el mismo modelo.";
+      }else if(z<=-2){
+        tone=z<=-3?"alert":"warn";
+        title="Por debajo de lo normal para su tamaño";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). La estructura es más pequeña de lo esperado. En un anillo valvular, una arteria pulmonar o el arco aórtico puede indicar hipoplasia, y en cardiopatías congénitas ese tamaño pesa tanto como el gradiente.";
+      }else{
+        tone="ok";
+        title="Dentro del rango normal";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). Entre −2 y +2 está el 95 % de los niños sanos de su mismo tamaño.";
+        if(Math.abs(z)>=1.7) text+=" Está cerca del límite: vale la pena mirar la tendencia en controles con el mismo modelo.";
+      }
+      src.textContent="Límites ±2 según la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024).";
+    }else{
+      var mm=parseFloat(mmIn.value), big=!isNaN(mm)&&mm>=8;
+      if(big||z>=10){
+        tone="alert"; title="Aneurisma grande o gigante";
+        text=(big&&z<10?"El diámetro absoluto de "+fmt(mm)+" mm (≥ 8 mm) basta para clasificarlo como gigante, aunque el Z sea "+fmt(z)+". ":"Z "+fmt(z)+" (≥ 10). ")+"Es la categoría de mayor riesgo de trombosis y estenosis; requiere manejo y seguimiento por cardiología pediátrica.";
+      }else if(z>=5){
+        tone="alert"; title="Aneurisma mediano";
+        text="Z "+fmt(z)+" (entre 5 y menos de 10) con diámetro absoluto menor de 8 mm."+(isNaN(mm)?" Si el diámetro llegara a 8 mm o más, pasaría a gigante.":"");
+      }else if(z>=2.5){
+        tone="warn"; title="Aneurisma pequeño";
+        text="Z "+fmt(z)+" (entre 2,5 y menos de 5).";
+      }else if(z>=2){
+        tone="warn"; title="Solo dilatación";
+        text="Z "+fmt(z)+" (entre 2 y menos de 2,5). No es aneurisma, pero sí compromiso coronario.";
+      }else{
+        tone="ok"; title="Sin compromiso coronario (por Z)";
+        text="Z "+fmt(z)+" (menor de 2). Recuerda la regla de seguimiento: si el Z inicial era menor de 2 y en los controles cae 1 punto o más, esa coronaria se considera dilatada en retrospectiva.";
+      }
+      src.textContent="Clasificación de la AHA para enfermedad de Kawasaki (McCrindle et al., Circulation 2017). En MIS-C suele aplicarse la misma escala.";
+    }
+
+    res.textContent=title; res.style.color=C[tone]; why.textContent=text;
+    mark(z,HEX[tone]);
+
+    var W=[];
+    if(zW.obes) W.push("<b>Obesidad.</b> La grasa aumenta la superficie corporal sin que el corazón crezca en proporción: el Z sale falsamente bajo."+(z<2?" Un Z “normal” aquí no descarta una dilatación real.":""));
+    if(zW.prem) W.push("<b>Prematuro.</b> La mayoría de los modelos se construyeron con niños a término; el Z orienta pero no es exacto.");
+    if(zW.lab) W.push("<b>Otro laboratorio.</b> Los modelos dan Z distintos para la misma medida, sobre todo en estructuras pequeñas como las coronarias. Compara solo si ambos informes usaron el mismo modelo.");
+    if(zW.mod) W.push("<b>Modelo no especificado.</b> Sin saber qué modelo se usó no puedes seguir la tendencia con seguridad. Pide que el informe lo diga.");
+    W.forEach(function(h){var li=document.createElement("li"); li.innerHTML=h; wl.appendChild(li);});
+  }
+  zRun();
+
+  /* =========================================================
+     TOOL · Decodificador del análisis segmentario
+     ========================================================= */
+  var SEG={situs:"S",pos:"L",av:"C",va:"C"};
+  $$("#segtool .seg").forEach(function(g){
+    var k=g.getAttribute("data-k");
+    $$("button",g).forEach(function(b){
+      b.addEventListener("click",function(){
+        SEG[k]=b.getAttribute("data-v");
+        $$("button",g).forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+        segRun();
+      });
+    });
+  });
+  function segRun(){
+    var t="", w="", tone="ok", N=[];
+    var s=SEG.situs, p=SEG.pos, av=SEG.av, va=SEG.va;
+    if(av==="U"){
+      tone="alert"; t="Conexión univentricular";
+      w="Las dos aurículas drenan a un solo ventrículo dominante, o una de las válvulas auriculoventriculares no existe (atresia). Es un corazón funcionalmente univentricular: suele tratarse con cirugías por etapas hasta la circulación de Fontan (capítulo 10).";
+      if(va!=="C") N.push("<b>Conexión ventriculoarterial también anormal.</b> En corazones univentriculares es frecuente; el informe debe precisar de qué ventrículo sale cada arteria.");
+    }else if(va==="T"){
+      tone="alert"; t="Tronco arterial común";
+      w="Sale una sola arteria del corazón, que da origen a la aorta, las pulmonares y las coronarias, casi siempre sobre una CIV. El flujo pulmonar es excesivo y la insuficiencia cardiaca aparece en las primeras semanas; la corrección es quirúrgica en los primeros meses.";
+      N.push("<b>Asociación genética.</b> El tronco arterial común se asocia con la deleción 22q11; vale la pena considerarla.");
+    }else if(va==="O"){
+      tone="alert"; t="Doble salida (casi siempre del ventrículo derecho)";
+      w="Las dos grandes arterias salen del mismo ventrículo. La fisiología depende de dónde esté la CIV respecto a las arterias: puede comportarse como una CIV grande, como una tetralogía de Fallot o como una transposición. El informe debe decir cuál de esas situaciones es.";
+    }else if(av==="C"&&va==="C"){
+      if(s==="S"&&p==="L"){t="Arquitectura cardiaca normal"; w="Situs solitus, levocardia y conexiones concordantes ({S,D,S}). El corazón está armado de forma normal. Aun así puede tener un defecto aislado (CIA, CIV, una válvula anormal): eso se describe en los segmentos siguientes.";}
+      else if(s==="I"&&p==="D"){t="Imagen en espejo de lo normal"; w="Situs inversus con dextrocardia y conexiones concordantes: el corazón suele ser normal, solo invertido.";
+        N.push("<b>Infecciones respiratorias de repetición.</b> Si las hay, considera discinesia ciliar primaria (síndrome de Kartagener).");}
+      else{t="Conexiones concordantes"; tone="warn"; w="Cada cámara se conecta con la que le corresponde, pero la posición del corazón o de las vísceras no es la habitual. Revisa las notas.";}
+    }else if(av==="C"&&va==="D"){
+      tone="alert"; t="Transposición de las grandes arterias (TGA-d)";
+      w="La aorta sale del ventrículo derecho y la pulmonar del izquierdo: las dos circulaciones van en paralelo. El recién nacido sobrevive solo si la sangre se mezcla a través de una CIA, el ductus o una CIV. Es una cardiopatía crítica del neonato.";
+      N.push("<b>Operado.</b> Tras la corrección con switch arterial, el informe vigila arterias pulmonares, neoaorta y coronarias (capítulo 10).");
+    }else if(av==="D"&&va==="D"){
+      tone="warn"; t="TGA congénitamente corregida (doble discordancia)";
+      w="Las dos conexiones están invertidas, así que la sangre termina en el lugar correcto. Pero el ventrículo que bombea a la aorta es un ventrículo derecho morfológico. A largo plazo se vigila la función de ese VD sistémico, la insuficiencia de su válvula (la tricúspide) y la aparición de bloqueo auriculoventricular.";
+    }else if(av==="D"&&va==="C"){
+      tone="alert"; t="Discordancia auriculoventricular aislada";
+      w="Combinación rara con fisiología de transposición: la sangre venosa sistémica termina en la aorta. Requiere valoración por cardiología pediátrica.";
+    }
+    if(s==="A"){
+      tone="alert";
+      N.unshift("<b>Heterotaxia (situs ambiguo).</b> Se asocia a cardiopatías complejas y, fuera del corazón, a asplenia o poliesplenia y malrotación intestinal. Requiere cardiología pediátrica aunque el resto de la anatomía parezca simple.");
+    }
+    if(s==="S"&&p==="D") N.push("<b>Dextrocardia con situs solitus.</b> Se asocia con frecuencia a cardiopatía congénita. El eco usa un protocolo propio con vistas modificadas (la guía lo detalla).");
+    if(s==="I"&&p!=="D") N.push("<b>Situs inversus sin dextrocardia.</b> Esta combinación casi siempre acompaña a una cardiopatía compleja.");
+    if(p==="M") N.push("<b>Mesocardia.</b> El corazón en la línea media puede acompañar a cardiopatías congénitas y obliga a usar vistas modificadas.");
+    var C={ok:"var(--ok)",warn:"var(--warn)",alert:"var(--alert)"};
+    var r=$("#segResult"); r.textContent=t; r.style.color=C[tone];
+    $("#segWhy").textContent=w;
+    var ul=$("#segNotes"); ul.innerHTML="";
+    N.forEach(function(h){var li=document.createElement("li"); li.innerHTML=h; ul.appendChild(li);});
+  }
+  segRun();
+
+  /* ---- helpers shared by chapter tools ---- */
+  var TONE={ok:"var(--ok)",warn:"var(--warn)",alert:"var(--alert)"};
+  function setOut(prefix,tone,title,why,notes){
+    var r=$("#"+prefix+"Result"); r.textContent=title; r.style.color=TONE[tone];
+    $("#"+prefix+"Why").textContent=why||"";
+    var ul=$("#"+prefix+"Notes"); if(ul){ul.innerHTML=""; (notes||[]).forEach(function(h){var li=document.createElement("li");li.innerHTML=h;ul.appendChild(li);});}
+  }
+  function segGroup(root,state,cb){
+    $$(".seg[data-k]",root).forEach(function(g){
+      var k=g.getAttribute("data-k");
+      $$("button",g).forEach(function(b){
+        b.addEventListener("click",function(){
+          state[k]=b.getAttribute("data-v");
+          $$("button",g).forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+          cb();
+        });
+      });
+    });
+  }
+  function toggles(root,attr,state,cb){
+    $$("button["+attr+"]",root).forEach(function(b){
+      b.addEventListener("click",function(){
+        var k=b.getAttribute(attr); state[k]=!state[k];
+        b.setAttribute("aria-pressed",String(state[k])); b.textContent=state[k]?"Sí":"No"; cb();
+      });
+    });
+  }
+  function makeToggle(label,key,attr){
+    var d=document.createElement("div"); d.className="toggle";
+    var s=document.createElement("span"); s.textContent=label; d.appendChild(s);
+    var b=document.createElement("button"); b.type="button"; b.setAttribute(attr,key); b.setAttribute("aria-pressed","false"); b.textContent="No"; d.appendChild(b);
+    return d;
+  }
+
+  /* ---- Cap. 3 · test de burbujas ---- */
+  (function(){
+    var root=$("#bubtool"), st={seen:"si"}, fl={val:false,valLong:false,laP:false,eus:false}, cyc=$("#bubCyc");
+    function run(){
+      $("#bubCycV").textContent=cyc.value;
+      $("#bubCycF").hidden=(st.seen!=="si");
+      var n=parseInt(cyc.value,10), N=[];
+      if(st.seen==="si"){
+        if(n<=6){
+          setOut("bub","alert","Sugiere cortocircuito intracardiaco","Las burbujas llegan al lado izquierdo en los primeros 3 a 6 ciclos después de llenar la aurícula derecha: pasaron por un atajo dentro del corazón, habitualmente a nivel auricular (foramen oval o CIA).",N);
+          if(n<3) N.push("<b>Aparición muy temprana.</b> Sigue siendo un cortocircuito intracardiaco; la guía fija el rango en 3 a 6 ciclos.");
+          if(fl.valLong) N.push("<b>Valsalva prolongado.</b> Puede dar un falso positivo al liberar sangre acumulada en las venas pulmonares; confírmalo con la imagen.");
+        }else{
+          setOut("bub","warn","Sugiere cortocircuito intrapulmonar","Las burbujas aparecen después del sexto ciclo: atravesaron el pulmón por comunicaciones arteriovenosas intrapulmonares.",N);
+          if(fl.valLong) N.push("<b>Valsalva prolongado.</b> La liberación de sangre acumulada en las venas pulmonares puede simular un paso tardío.");
+        }
+      }else{
+        var fn=[];
+        if(!fl.val) N.push("<b>Sin maniobra de provocación.</b> La guía sugiere repetir con Valsalva o presión abdominal si el primer intento es negativo, confirmando que el septo se desplaza hacia la izquierda.");
+        if(fl.laP) fn.push("presión de la aurícula izquierda elevada");
+        if(fl.eus) fn.push("válvula de Eustaquio prominente");
+        if(fn.length) N.push("<b>Posible falso negativo:</b> "+fn.join(" y ")+". La guía la describe como causa de resultado negativo pese a existir el cortocircuito.");
+        setOut("bub",fn.length||!fl.val?"warn":"ok",fn.length||!fl.val?"Negativo, con reservas":"Negativo","No hay paso de burbujas al lado izquierdo."+(fn.length||!fl.val?" Revisa las condiciones antes de descartar un cortocircuito.":" Va en contra de un cortocircuito de derecha a izquierda en las condiciones del estudio."),N);
+      }
+      var ul=$("#bubNotes"); ul.innerHTML=""; N.forEach(function(h){var li=document.createElement("li");li.innerHTML=h;ul.appendChild(li);});
+    }
+    segGroup(root,st,run); toggles(root,"data-b",fl,run); cyc.addEventListener("input",run); run();
+  })();
+
+  /* ---- Cap. 4 · hipertrofia y validez de la FA ---- */
+  (function(){
+    var root=$("#lvtool"), m=$("#lvMass"), mv=$("#lvMV"), fl={par:false,flat:false};
+    function run(){
+      var zm=parseFloat(m.value), zv=parseFloat(mv.value), N=[];
+      $("#lvMassV").textContent=fmt(zm); $("#lvMVV").textContent=fmt(zv);
+      var x=150+Math.max(-1,Math.min(1,(zv-2)/4))*110*0.9, y=110-Math.max(-1,Math.min(1,(zm-2)/4))*90*0.9;
+      $("#lvPt").setAttribute("cx",x); $("#lvPt").setAttribute("cy",y);
+      var tone,t,w;
+      if(zm>=2&&zv>=2){tone="alert";t="Hipertrofia concéntrica";w="Masa aumentada con relación masa/volumen alta: sobrecarga de presión. Piensa en estenosis aórtica, coartación, hipertensión arterial o miocardiopatía hipertrófica.";}
+      else if(zm>=2){tone="alert";t="Hipertrofia excéntrica";w="Masa aumentada con relación masa/volumen normal: sobrecarga de volumen, como una CIV, un ductus o una insuficiencia valvular.";}
+      else if(zv>=2){tone="warn";t="Paredes gruesas para el volumen, sin hipertrofia";w="La masa está en rango normal pero la relación masa/volumen está alta. No cumple la definición de hipertrofia; interprétalo con el contexto y en controles.";}
+      else{tone="ok";t="Sin hipertrofia";w="Masa y relación masa/volumen dentro de lo normal para su tamaño.";}
+      if(fl.par||fl.flat){N.push("<b>FA no válida en este estudio.</b> "+(fl.par?"Con movimiento paradójico del septo o alteraciones regionales":"Con el VI deformado por la sobrecarga del VD")+", la guía indica no usar la fracción de acortamiento. Busca la FE por volúmenes, por 3D o el strain.");}
+      else N.push("<b>La FA es utilizable,</b> recordando que solo mide el acortamiento radial y que su variabilidad es alta (17 % de sanos con FA &lt; 25 % o FE &lt; 50 % en el PHN).");
+      setOut("lv",tone,t,w,N);
+    }
+    m.addEventListener("input",run); mv.addEventListener("input",run); toggles(root,"data-lv",fl,run); run();
+  })();
+
+  /* ---- Cap. 5 · presión del VD ---- */
+  (function(){
+    var root=$("#phtool"), st={m:"tr",ra:"5",dir:"lr"}, fl={ps:false,nb:false}, v=$("#phV"), sbp=$("#phSBP");
+    function run(){
+      var vel=parseFloat(v.value), S=parseFloat(sbp.value), g=4*vel*vel, ra=parseFloat(st.ra), p, lab, N=[];
+      $("#phVV").textContent=fmt(vel); $("#phSBPV").textContent=S;
+      $("#phRAf").hidden=(st.m!=="tr"); $("#phDirF").hidden=(st.m==="tr");
+      if(st.m==="tr"){p=g+ra; lab="Presión sistólica del VD ≈ "+Math.round(p)+" mmHg"; N.push("Cálculo: 4 × "+fmt(vel)+"² = "+Math.round(g)+" mmHg + "+ra+" mmHg de aurícula derecha asumida.");}
+      else{
+        if(st.dir!=="lr"){
+          setOut("ph","alert","No se puede calcular con esta fórmula","Con flujo bidireccional o de derecha a izquierda, la presión del lado derecho iguala o supera la izquierda: la presión pulmonar es al menos sistémica. Es un hallazgo de alta gravedad.",["<b>Cianosis.</b> El flujo de derecha a izquierda explica la desaturación."]);
+          $("#phPtr").setAttribute("transform","translate(343,16)"); return;
+        }
+        p=S-g; lab=(st.m==="civ"?"Presión sistólica del VD":"Presión sistólica pulmonar")+" ≈ "+Math.max(0,Math.round(p))+" mmHg";
+        N.push("Cálculo: "+S+" mmHg de presión arterial − 4 × "+fmt(vel)+"² ("+Math.round(g)+" mmHg).");
+        if(g>=S) N.push("<b>El gradiente iguala o supera la presión arterial.</b> Revisa la velocidad y la presión medida: el resultado no es plausible.");
+        N.push(g>S*0.5?"<b>Velocidad alta:</b> defecto restrictivo que protege al lado derecho.":"<b>Velocidad baja:</b> defecto poco restrictivo; las presiones tienden a igualarse.");
+      }
+      p=Math.max(0,p);
+      var r=p/S, tone, t;
+      if(r<0.5){tone="ok";t="menos de 1/2 de la sistémica";}
+      else if(r<=2/3){tone="warn";t="entre 1/2 y 2/3 de la sistémica: moderadamente elevada";}
+      else if(r<1){tone="alert";t="más de 2/3 de la sistémica: severamente elevada";}
+      else{tone="alert";t="igual o mayor que la sistémica: suprasistémica";}
+      if(r>2/3) N.push("<b>Hallazgo crítico si es nuevo.</b> La guía incluye la hipertensión pulmonar nueva mayor de 2/3 de la sistémica entre los hallazgos que se comunican de inmediato.");
+      if(fl.ps) N.push("<b>Hay estenosis pulmonar o del tracto de salida.</b> La presión del VD ya no equivale a la pulmonar: parte de ella se pierde en la obstrucción.");
+      if(fl.nb) N.push("<b>Recién nacido.</b> En los primeros días la presión pulmonar es normalmente alta y va bajando; interprétala con la edad en horas o días.");
+      setOut("ph",tone,lab,"Proporción: "+fmt(r,2)+" · "+t+".",N);
+      $("#phPtr").setAttribute("transform","translate("+(10+Math.min(1.5,r)*333.3).toFixed(1)+",16)");
+    }
+    segGroup(root,st,run); toggles(root,"data-ph",fl,run); v.addEventListener("input",run); sbp.addEventListener("input",run); run();
+  })();
+
+  /* ---- Cap. 6 · confiabilidad del gradiente ---- */
+  (function(){
+    var root=$("#grtool"), st={v:"ao"}, fl={}, list=$("#grList");
+    var F={
+      ao:[["nb","Recién nacido","Las estenosis aórticas significativas del neonato pueden dar gradientes menores que en niños mayores."],["dys","Disfunción del VI","Con bajo gasto, el gradiente cae aunque la válvula esté muy estrecha."],["view","El informe no dice desde qué vista se midió","El gradiente aórtico suele ser mayor desde la ventana paraesternal derecha que desde la apical."],["ang","Doppler mal alineado o envolvente incompleta","El ángulo subestima la velocidad."],["cat","Lo comparas con un gradiente de cateterismo","El eco mide el gradiente máximo instantáneo; el cateterismo, el pico a pico. No son equivalentes y la recuperación de presión amplía la diferencia, sobre todo en niños pequeños."]],
+      pu:[["nb","Recién nacido","La presión pulmonar normalmente alta reduce el gradiente a través de la válvula."],["shunt","Cortocircuito grande (CIV, ductus)","Iguala las presiones y reduce el gradiente."],["tr","Insuficiencia tricuspídea severa","El VD no genera toda su presión hacia adelante."],["dys","Disfunción del VD","Con bajo gasto el gradiente cae."],["ang","Doppler mal alineado o envolvente incompleta","El ángulo subestima la velocidad."]],
+      av:[["hr","Frecuencia cardiaca alta o distinta al control previo","La taquicardia acorta la diástole y eleva el gradiente medio."],["flow","Más flujo por la válvula (CIV o ductus para la mitral; CIA para la tricúspide)","El gradiente sube sin que la estenosis sea mayor."],["popoff","CIA que descomprime la aurícula","La aurícula se descarga y el gradiente baja."],["reg","Insuficiencia de la misma válvula","Aumenta el flujo anterógrado y el gradiente."]]
+    };
+    var UNDER={ao:["nb","dys","ang"],pu:["nb","shunt","tr","dys","ang"],av:["popoff"]};
+    function build(){
+      list.innerHTML=""; fl={};
+      F[st.v].forEach(function(f){list.appendChild(makeToggle(f[1],f[0],"data-gr"));});
+      toggles(list,"data-gr",fl,run); run();
+    }
+    function run(){
+      var on=F[st.v].filter(function(f){return fl[f[0]];}), N=on.map(function(f){return "<b>"+f[1]+".</b> "+f[2];});
+      var under=on.some(function(f){return UNDER[st.v].indexOf(f[0])>=0;}), over=on.some(function(f){return UNDER[st.v].indexOf(f[0])<0;});
+      if(!on.length) setOut("gr","ok","Sin factores de confusión marcados","El gradiente puede leerse, siempre junto con la morfología de la válvula y el tamaño de las cavidades.",N);
+      else{
+        var w=under&&over?"Hay factores que lo bajan y otros que lo suben o lo hacen incomparable.":under?"El gradiente puede subestimar la severidad real.":"El gradiente puede no reflejar la severidad real o no ser comparable.";
+        if(st.v!=="av") w+=" La guía recomienda apoyarse más en la morfología valvular y el Z-score del anillo.";
+        setOut("gr",under?"alert":"warn","Gradiente con reservas",w,N);
+      }
+    }
+    segGroup(root,st,build); build();
+  })();
+
+  /* ---- Cap. 7 · atajo al intérprete coronario ---- */
+  var goCor=$("#goCor");
+  if(goCor) goCor.addEventListener("click",function(){ setKind("cor"); $("#ztool").scrollIntoView({behavior:"smooth",block:"start"}); });
+
+  /* ---- Cap. 8 · Doppler de aorta abdominal ---- */
+  (function(){
+    var root=$("#aotool"), st={p:"A"};
+    var D={
+      A:["ok","Patrón normal","Ascenso rápido en sístole y retorno a la línea de base en diástole. Va en contra de obstrucción significativa del arco y de un robo diastólico importante."],
+      B:["warn","Retorno diastólico lento","El flujo tarda en volver a la línea de base: sugiere obstrucción del arco aórtico (coartación o arco hipoplásico)."],
+      C:["alert","Flujo aplanado sin retorno a la base","Ascenso amortiguado y flujo continuo durante la diástole: obstrucción significativa del arco aórtico o de la aorta torácica descendente."],
+      D:["alert","Inversión holodiastólica del flujo","La sangre vuelve hacia atrás durante toda la diástole. Causas: insuficiencia aórtica al menos moderada, ductus significativo, colateral aortopulmonar, malformación arteriovenosa, choque, o sedación moderada o anestesia general."]
+    };
+    function beat(x0,w,p){
+      var y=100, s="";
+      if(p==="A"){s+="L"+(x0+w*0.08)+" 32 L"+(x0+w*0.26)+" 70 L"+(x0+w*0.38)+" "+y+" L"+(x0+w)+" "+y;}
+      if(p==="B"){s+="L"+(x0+w*0.14)+" 42 C"+(x0+w*0.3)+" 50 "+(x0+w*0.45)+" 80 "+(x0+w*0.72)+" "+y+" L"+(x0+w)+" "+y;}
+      if(p==="C"){s+="L"+(x0+w*0.25)+" 58 C"+(x0+w*0.45)+" 62 "+(x0+w*0.7)+" 72 "+(x0+w)+" 76";}
+      if(p==="D"){s+="L"+(x0+w*0.08)+" 30 L"+(x0+w*0.26)+" 72 L"+(x0+w*0.36)+" "+y+" L"+(x0+w*0.42)+" 128 C"+(x0+w*0.6)+" 124 "+(x0+w*0.85)+" 114 "+(x0+w)+" "+y;}
+      return s;
+    }
+    function run(){
+      var p=st.p, x0=40, w=150, d="M"+x0+" 100";
+      if(p==="C") d="M"+x0+" 80";
+      for(var i=0;i<3;i++) d+=" "+beat(x0+i*w,w,p);
+      d+=" L"+(x0+3*w)+" 100 L"+x0+" 100 Z";
+      $("#aoPath").setAttribute("d",d);
+      setOut("ao",D[p][0],D[p][1],D[p][2]);
+    }
+    segGroup(root,st,run); run();
+  })();
+
+  /* ---- Cap. 9 · taponamiento ---- */
+  (function(){
+    var root=$("#tptool"), fl={ra:false,rv:false,resp:false,ivc:false,clin:false};
+    function run(){
+      var echo=["ra","rv","resp","ivc"].filter(function(k){return fl[k];}).length;
+      if(echo===0&&!fl.clin) setOut("tp","ok","Sin signos de compromiso descritos","El derrame, si lo hay, no muestra en el informe signos de comprimir el corazón. Sigue importando su tamaño, su evolución y el contexto (por ejemplo, un posoperatorio).");
+      else if(fl.clin&&echo>=1) setOut("tp","alert","Probable taponamiento: urgencia","Signos ecocardiográficos de compresión en un niño con compromiso clínico. Requiere valoración inmediata para drenaje.");
+      else if(fl.clin) setOut("tp","alert","Compromiso clínico sin signos descritos en el eco","Si el niño está taquicárdico o hipotenso con derrame, no te tranquilices por un informe sin signos: el taponamiento es clínico. Reevalúa con el equipo de cardiología.");
+      else setOut("tp","warn","Signos de compresión en el eco","El informe describe efectos del derrame sobre el corazón. Correlaciona de inmediato con la clínica (frecuencia cardiaca, presión arterial, pulso paradójico, perfusión)."+(fl.ivc&&echo===1?" La vena cava dilatada sola es un signo débil en niños.":""));
+    }
+    toggles(root,"data-tp",fl,run); run();
+  })();
+
+  /* ---- Cap. 10 · control posoperatorio ---- */
+  (function(){
+    var root=$("#potool"), st={s:"tof"}, fl={}, list=$("#poList");
+    var L={
+      tof:[["pr","Grado de insuficiencia pulmonar"],["rvsize","Tamaño del VD"],["rvf","Función del VD"],["rvot","Obstrucción residual del tracto de salida del VD"],["bpa","Ramas pulmonares (estenosis)"],["vsd","CIV residual"],["tr","Insuficiencia tricuspídea y presión del VD"],["ao","Raíz aórtica y función del VI"]],
+      aso:[["svps","Estenosis supravalvular pulmonar"],["bpa","Ramas pulmonares"],["root","Raíz neoaórtica (diámetro y Z)"],["ar","Insuficiencia neoaórtica"],["cor","Coronarias o contracción regional del VI"],["lvf","Función del VI"]],
+      fon:[["path","Conducto de Fontan: flujo fásico, sin obstrucción ni trombo"],["fen","Fenestración (si existe): dirección y gradiente"],["vf","Función del ventrículo único"],["avv","Insuficiencia de la válvula auriculoventricular"],["out","Tracto de salida y arco sin obstrucción"],["eff","Derrames pleurales o pericárdicos"]]
+    };
+    function build(){
+      list.innerHTML=""; fl={};
+      L[st.s].forEach(function(it){list.appendChild(makeToggle(it[1],it[0],"data-po"));});
+      toggles(list,"data-po",fl,run); run();
+    }
+    function run(){
+      var items=L[st.s], miss=items.filter(function(it){return !fl[it[0]];});
+      if(!miss.length) setOut("po","ok","Control completo","El informe cubre los puntos clave para esta cirugía.");
+      else setOut("po",miss.length>items.length/2?"alert":"warn","Faltan "+miss.length+" de "+items.length+" puntos","No descritos: "+miss.map(function(it){return it[1].charAt(0).toLowerCase()+it[1].slice(1);}).join("; ")+". Si alguno es relevante para tu pregunta clínica, pide que se complemente.");
+    }
+    segGroup(root,st,build); build();
+  })();
+
+  /* ---- Cap. 11 · hallazgos críticos ---- */
+  (function(){
+    var list=$("#crList"), fl={};
+    [["duct","Cardiopatía nueva dependiente del ductus (corazón izquierdo hipoplásico, estenosis aórtica o pulmonar crítica, coartación crítica, ventrículo único con obstrucción pulmonar)"],["tapvr","Drenaje venoso pulmonar anómalo total infradiafragmático u obstruido"],["dys","Disfunción ventricular sistólica moderada o severa nueva"],["valv","Insuficiencia o estenosis valvular severa nueva"],["eff","Derrame pericárdico moderado o grande nuevo"],["mass","Vegetación o masa intracardiaca nueva"],["ph","Hipertensión pulmonar nueva mayor de 2/3 de la sistémica"],["chg","Cambio significativo respecto al estudio previo"]]
+      .forEach(function(it){list.appendChild(makeToggle(it[1],it[0],"data-cr"));});
+    var notif={on:false};
+    var nt=makeToggle("El informe deja constancia de a quién se avisó y cuándo","on","data-crn"); nt.style.borderStyle="dashed"; list.appendChild(nt);
+    function run(){
+      var n=Object.keys(fl).filter(function(k){return fl[k];}).length;
+      if(!n) setOut("cr","ok","Sin hallazgos críticos marcados","Ninguno de los hallazgos de la lista de la guía está presente. Sigue el curso habitual según la indicación.");
+      else if(notif.on) setOut("cr","warn",n+" hallazgo(s) crítico(s), ya comunicado(s)","El informe documenta la comunicación. Verifica que el plan de cardiología pediátrica está en marcha y que el niño recibe el manejo acordado.");
+      else setOut("cr","alert",n+" hallazgo(s) crítico(s) sin constancia de aviso","Contacta de inmediato al cardiólogo pediatra o al laboratorio. La guía espera la comunicación en 1 a 2 horas por una vía directa."+(fl.duct?" En un recién nacido con cardiopatía ductus-dependiente, cada hora cuenta.":""));
+    }
+    toggles(list,"data-cr",fl,run); toggles(list,"data-crn",notif,run); run();
+  })();
+
+  /* ---- exam engine ---- */
+  var BANK=[
+    /* ===== BÁSICO ===== */
+    {id:"z-b1",lvl:"b",stem:"El informe dice: raíz aórtica Z +1,2. ¿Cómo se interpreta?",opts:["Dilatada","Dentro de lo normal para su tamaño","Hipoplásica","No se puede interpretar sin los milímetros"],correct:1,fb:"Entre −2 y +2 está el rango normal. +1,2 es algo mayor que el promedio, pero normal para su tamaño."},
+    {id:"z-b2",lvl:"b",stem:"¿Qué proporción de niños sanos tiene un Z-score entre −2 y +2?",opts:["Alrededor del 50 %","Alrededor del 68 %","Alrededor del 95 %","El 100 %"],correct:2,fb:"El rango de −2 a +2 incluye cerca del 95 % de la población sana. Por eso son los límites habituales de lo normal."},
+    {id:"z-b3",lvl:"b",stem:"¿Por qué el informe pediátrico expresa las medidas en Z-score y no solo en milímetros?",opts:["Porque los milímetros no se pueden medir en niños","Porque el tamaño normal del corazón cambia con el tamaño corporal","Porque es más fácil de calcular","Porque lo exige el equipo"],correct:1,fb:"Un mismo valor en milímetros puede ser normal en un escolar y anormal en un lactante. El Z compara con niños sanos del mismo tamaño."},
+    {id:"z-b4",lvl:"b",stem:"Diámetro diastólico del VI con Z +2,7. ¿Qué indica?",opts:["VI de tamaño normal","VI dilatado para su tamaño","VI pequeño","Hipertrofia"],correct:1,fb:"Un Z por encima de +2 indica una cavidad más grande de lo esperado para su tamaño: dilatación."},
+    {id:"z-b5",lvl:"b",stem:"El Z-score de las estructuras cardiacas se calcula casi siempre en relación con:",opts:["La edad exacta en días","La superficie corporal (o la talla)","La frecuencia cardiaca","La presión arterial"],correct:1,fb:"Las estructuras crecen con el tamaño corporal, por eso sus Z se basan en superficie corporal o talla. La edad pesa más en los índices de función."},
+    /* ===== INTERMEDIO ===== */
+    {id:"z-i1",lvl:"i",stem:"Niño con obesidad: diámetro del VI con Z +1,5. ¿Cómo lo lees?",opts:["Normal, sin dudas","El Z puede estar subestimado y no descarta dilatación","Está sobreestimado, el VI es pequeño","La obesidad no afecta el Z"],correct:1,fb:"La obesidad aumenta la superficie corporal sin que el corazón crezca en proporción: el Z sale falsamente bajo. La guía advierte no confiar en los Z habituales en el niño obeso."},
+    {id:"z-i2",lvl:"i",stem:"Control de raíz aórtica: antes Z +1,8 en otra institución, ahora Z +2,6. ¿Qué verificas primero?",opts:["Nada, la aorta creció","Que ambos informes usaron el mismo modelo de Z","La frecuencia cardiaca","El ritmo"],correct:1,fb:"Distintos modelos dan Z distintos para la misma medida. Para seguir la tendencia hay que usar siempre el mismo modelo."},
+    {id:"z-i3",lvl:"i",stem:"Neonato con estenosis aórtica: gradiente moderado, anillo aórtico con Z −3. ¿Qué aporta el Z del anillo?",opts:["Nada, lo importante es el gradiente","Un anillo pequeño (hipoplásico) que pesa en la severidad","Que la válvula es normal","Que hay insuficiencia"],correct:1,fb:"En el neonato el gradiente puede subestimar la severidad. La guía indica que el Z del anillo aórtico puede orientar mejor la severidad que el gradiente."},
+    {id:"z-i4",lvl:"i",stem:"El VI se midió en modo M y se calcularon los Z con el modelo del PHN. ¿Es correcto?",opts:["Sí, el PHN sirve para todo","No, los Z del PHN se obtuvieron con medidas en 2D","Sí, si el niño es mayor de 5 años","Solo en prematuros"],correct:1,fb:"El modelo del PHN se construyó con medidas en 2D; la guía indica que no debe usarse para medidas en modo M."},
+    {id:"z-i5",lvl:"i",stem:"Escolar sano con soplo inocente: una sola medida con Z +2,2 y el resto normal. ¿Mejor lectura?",opts:["Diagnóstico de cardiopatía","Hallazgo fuera de rango que se interpreta en contexto; cerca de 2 de cada 100 sanos superan +2","Error del equipo","Repetir el eco cada mes"],correct:1,fb:"Por definición, cerca del 2 % de los niños sanos supera +2. Un valor aislado cerca del límite se interpreta con la clínica y, si hace falta, se sigue con el mismo modelo."},
+    /* ===== AVANZADO ===== */
+    {id:"z-a1",lvl:"a",stem:"Kawasaki: coronaria descendente anterior con Z 2,2. Clasificación de la AHA:",opts:["Sin compromiso","Solo dilatación","Aneurisma pequeño","Aneurisma mediano"],correct:1,fb:"Z de 2 a menos de 2,5 = solo dilatación."},
+    {id:"z-a2",lvl:"a",stem:"Kawasaki: coronaria derecha con Z 6 y diámetro de 5 mm. Clasificación:",opts:["Aneurisma pequeño","Aneurisma mediano","Aneurisma gigante","Solo dilatación"],correct:1,fb:"Z de 5 a menos de 10 con diámetro absoluto menor de 8 mm = aneurisma mediano."},
+    {id:"z-a3",lvl:"a",stem:"Kawasaki: Z 7 pero diámetro absoluto de 8,5 mm. Clasificación:",opts:["Aneurisma mediano","Aneurisma grande o gigante","Aneurisma pequeño","Depende de la edad"],correct:1,fb:"Un diámetro absoluto de 8 mm o más clasifica el aneurisma como gigante, aunque el Z sea menor de 10."},
+    {id:"z-a4",lvl:"a",stem:"Kawasaki: coronaria con Z 1,9 al diagnóstico y 0,6 a las 8 semanas. ¿Cómo se clasifica?",opts:["Sin compromiso","Solo dilatación","Aneurisma pequeño","Regresión de aneurisma"],correct:1,fb:"Si el Z inicial era menor de 2 y cae 1 punto o más en el seguimiento, la AHA considera que había dilatación."},
+    {id:"z-a5",lvl:"a",stem:"Adolescente con válvula aórtica bicúspide pasa a un laboratorio de adultos y la raíz aórtica 'cambia' respecto al control previo. ¿Qué explicación técnica debes considerar?",opts:["Ninguna, la aorta cambió","En niños se mide en sístole de borde interno a borde interno; en adultos, en diástole de borde anterior a borde anterior","Los adultos usan modo M siempre","El Z no existe en adultos"],correct:1,fb:"La guía pediátrica mide los diámetros aórticos en sístole, de borde interno a borde interno; la de adultos, en diástole, de borde anterior a borde anterior. El cambio puede ser solo técnico."},
+    {id:"z-a6",lvl:"a",stem:"Lactante con todos los Z del informe inesperadamente bajos, sin correlación clínica. ¿Qué revisas primero?",opts:["El peso y la talla registrados en el estudio","La velocidad de la tricúspide","El ritmo cardiaco","El modelo del ecógrafo"],correct:0,fb:"Todos los Z dependen de la superficie corporal calculada con el peso y la talla del día del estudio. Un dato antropométrico erróneo desplaza todos los Z."},
+    /* ===== CAPÍTULO 2 ===== */
+    {id:"s-b1",lvl:"b",stem:"En un informe pediátrico lees \"FA 32 %\". ¿Qué significa?",opts:["Fibrilación auricular el 32 % del tiempo","Fracción de acortamiento del VI","Fracción de eyección de la aurícula","Flujo auricular"],correct:1,fb:"En el informe pediátrico, FA es la fracción de acortamiento del VI, no fibrilación auricular."},
+    {id:"s-b2",lvl:"b",stem:"\"Situs solitus, levocardia, conexiones auriculoventriculares y ventriculoarteriales concordantes\". ¿Qué te dice?",opts:["Que el corazón es totalmente normal, sin ningún defecto","Que la arquitectura básica es normal, aunque puede haber un defecto aislado","Que hay una transposición","Que hay heterotaxia"],correct:1,fb:"Esa frase describe una arquitectura normal. Puede coexistir un defecto aislado como una CIV o una válvula anormal."},
+    {id:"s-b3",lvl:"b",stem:"¿Qué dos partes del informe conviene leer primero?",opts:["Las medidas y el Doppler","La conclusión y las limitaciones","Los datos demográficos y la firma","El Doppler y el situs"],correct:1,fb:"La conclusión dice qué se encontró; las limitaciones dicen cuánto confiar en ello."},
+    {id:"s-b4",lvl:"b",stem:"En un recién nacido, el informe describe un foramen oval permeable. ¿Cómo lo interpretas?",opts:["Cardiopatía que requiere cirugía","Hallazgo normal a esa edad","Hipertensión pulmonar","Comunicación interventricular"],correct:1,fb:"El foramen oval permeable es normal en el recién nacido."},
+    {id:"s-i1",lvl:"i",stem:"Escolar con síncope de esfuerzo. Eco \"normal\" con la nota \"origen de las coronarias no visualizado\". ¿Qué concluyes?",opts:["Se descartó una anomalía coronaria","El estudio no responde la pregunta clave: no descarta un origen anómalo","El síncope no es cardiaco","Las coronarias son normales"],correct:1,fb:"Una estructura no visualizada no es una estructura normal. Si la clave de tu pregunta no se vio, el eco no la responde."},
+    {id:"s-i2",lvl:"i",stem:"Neonato cianótico: conexión auriculoventricular concordante y ventriculoarterial discordante. ¿Qué es?",opts:["TGA congénitamente corregida","Transposición de las grandes arterias (TGA-d)","Tetralogía de Fallot","Heterotaxia"],correct:1,fb:"Concordancia AV con discordancia VA es la TGA-d: circulaciones en paralelo, dependientes de la mezcla. Cardiopatía crítica del neonato."},
+    {id:"s-i3",lvl:"i",stem:"El informe indica situs ambiguo. ¿Qué implicación extracardiaca debes considerar?",opts:["Ninguna","Asplenia o poliesplenia y malrotación intestinal","Hipotiroidismo","Riñón en herradura siempre"],correct:1,fb:"La heterotaxia se asocia a alteraciones del bazo (asplenia o poliesplenia) y a malrotación intestinal."},
+    {id:"s-a1",lvl:"a",stem:"Doble discordancia (AV y VA). ¿Qué vigilarás a largo plazo?",opts:["Nada, la sangre va al lugar correcto","El VD sistémico, la insuficiencia de la tricúspide sistémica y el bloqueo AV","Solo la presión pulmonar","El arco aórtico"],correct:1,fb:"En la TGA congénitamente corregida la fisiología está compensada, pero el ventrículo sistémico es un VD morfológico: se vigila su función, su válvula tricúspide y el bloqueo AV."},
+    {id:"s-a2",lvl:"a",stem:"Doble salida del ventrículo derecho. ¿Qué determina su fisiología?",opts:["El situs","La posición de la CIV respecto a las grandes arterias","La frecuencia cardiaca","El peso"],correct:1,fb:"Según dónde esté la CIV, se comporta como una CIV grande, como una tetralogía de Fallot o como una transposición."},
+    {id:"s-a3",lvl:"a",stem:"Lactante hospitalizado: el informe describe un hallazgo crítico pero no consigna a quién se avisó. Según la guía, ¿en qué plazo debía comunicarse?",opts:["En 1 a 2 horas, por vía directa, dejando constancia","En 24 horas con el informe escrito","En la siguiente consulta","No es necesario comunicarlo"],correct:0,fb:"Los hallazgos críticos se comunican por vía directa en 1 a 2 horas y se documenta a quién y cuándo."},
+    /* ===== CAPÍTULO 3 · Cortocircuitos ===== */
+    {id:"c3-b1",lvl:"b",stem:"Un informe describe aurícula y ventrículo derechos dilatados sin otra explicación. ¿Qué cortocircuito sugiere?",opts:["CIV","CIA (o defecto del seno venoso)","Ductus","Ninguno"],correct:1,fb:"La CIA sobrecarga el lado derecho. La guía indica sospecharla ante cavidades derechas dilatadas."},
+    {id:"c3-b2",lvl:"b",stem:"CIV con flujo de izquierda a derecha y velocidad alta (4,5 m/s). ¿Qué significa la velocidad alta?",opts:["Que la CIV es grande","Que es restrictiva y la presión del VD es baja","Que hay hipertensión pulmonar","Que hay estenosis aórtica"],correct:1,fb:"En una CIV, velocidad alta = gran diferencia de presión = defecto restrictivo que protege al VD."},
+    {id:"c3-b3",lvl:"b",stem:"Test de burbujas: aparecen en la aurícula izquierda en el tercer ciclo tras llenar la derecha. ¿Qué sugiere?",opts:["Cortocircuito intrapulmonar","Cortocircuito intracardiaco","Resultado normal","Artefacto"],correct:1,fb:"La llegada en 3 a 6 ciclos sugiere un cortocircuito intracardiaco (auricular)."},
+    {id:"c3-i1",lvl:"i",stem:"Test de burbujas con llegada al lado izquierdo en el noveno ciclo. ¿Qué sugiere?",opts:["Foramen oval","Cortocircuito intrapulmonar","CIV","Test negativo"],correct:1,fb:"Después de 6 ciclos las burbujas atravesaron el pulmón: cortocircuito intrapulmonar."},
+    {id:"c3-i2",lvl:"i",stem:"CIV grande con velocidad de 1,5 m/s. Un colega la llama \"CIV pequeña, sin gradiente importante\". ¿Qué respondes?",opts:["Está bien, sin gradiente no hay problema","Gradiente bajo en una CIV grande indica presiones igualadas y probable presión pulmonar alta","La velocidad no importa","Es una CIA"],correct:1,fb:"Un gradiente bajo en una CIV significa que las presiones de los ventrículos se parecen: la presión pulmonar suele ser alta."},
+    {id:"c3-i3",lvl:"i",stem:"Test de burbujas negativo en un niño con disfunción del VI y presión auricular izquierda alta. ¿Descarta el foramen oval?",opts:["Sí, siempre","No: la presión auricular izquierda elevada puede dar un falso negativo","Sí, si se hizo con sangre","Solo si se usó modo M"],correct:1,fb:"La guía describe la presión auricular izquierda elevada como causa de falso negativo."},
+    {id:"c3-a1",lvl:"a",stem:"Recién nacido cianótico: flujo de derecha a izquierda por el foramen oval durante todo el ciclo y aurícula izquierda pequeña. ¿Qué sospechar?",opts:["Foramen oval normal","Drenaje venoso pulmonar anómalo total","CIV","Tetralogía de Fallot"],correct:1,fb:"La guía indica sospechar drenaje venoso pulmonar anómalo total con ese patrón; si está obstruido, es crítico."},
+    {id:"c3-a2",lvl:"a",stem:"Ductus con flujo de derecha a izquierda en un lactante de 3 meses. ¿Qué indica?",opts:["Normal para la edad","Presión pulmonar mayor que la sistémica","Coartación leve","Ductus restrictivo"],correct:1,fb:"Pasada la etapa transicional, un flujo de derecha a izquierda por el ductus indica presión pulmonar suprasistémica."},
+    /* ===== CAPÍTULO 4 · VI ===== */
+    {id:"c4-b1",lvl:"b",stem:"Masa del VI Z +2,8 con relación masa/volumen Z +2,5. ¿Qué tipo de hipertrofia?",opts:["Excéntrica","Concéntrica","No hay hipertrofia","Fisiológica"],correct:1,fb:"Masa Z ≥ 2 con masa/volumen Z ≥ 2 = hipertrofia concéntrica (sobrecarga de presión)."},
+    {id:"c4-b2",lvl:"b",stem:"Masa del VI Z +2,6 con relación masa/volumen Z +0,8. ¿Qué tipo?",opts:["Concéntrica","Excéntrica","Normal","Indeterminada"],correct:1,fb:"Masa aumentada con masa/volumen normal = hipertrofia excéntrica (sobrecarga de volumen)."},
+    {id:"c4-b3",lvl:"b",stem:"¿Se evalúa de rutina la función diastólica en el eco pediátrico?",opts:["Sí, igual que en adultos","No, por variabilidad y pocos valores normales","Solo con E/e′","Solo en adolescentes"],correct:1,fb:"La guía indica que no es rutinaria en niños, y que E/e′ no se correlaciona bien con las presiones de llenado."},
+    {id:"c4-i1",lvl:"i",stem:"Niño operado con movimiento paradójico del septo y FA de 24 %. ¿Cómo lees la FA?",opts:["Disfunción sistólica","No es válida con movimiento septal paradójico","Función normal","Hipertrofia"],correct:1,fb:"La guía indica no usar la FA con alteraciones regionales como el movimiento paradójico del septo."},
+    {id:"c4-i2",lvl:"i",stem:"Niño en quimioterapia con antraciclinas: FE 60 % y GLS −14 %. ¿Qué indica?",opts:["Todo normal","Disfunción subclínica: el GLS está por debajo del límite de −17 % a −18 %","Hipertrofia","Error de medición seguro"],correct:1,fb:"El GLS detecta daño antes que la FE; −14 % es anormal."},
+    {id:"c4-i3",lvl:"i",stem:"Niño con hipertensión pulmonar y septo aplanado. El VI se ve en forma de \"D\". ¿Qué medida del VI es poco confiable?",opts:["FE por 3D","El diámetro y la FA por eje corto","El strain","Ninguna"],correct:1,fb:"Con el VI no circular el diámetro no representa el tamaño y la FA no debe usarse."},
+    {id:"c4-a1",lvl:"a",stem:"En la base de datos del PHN, ¿qué proporción de niños sanos tuvo FA < 25 % o FE < 50 % en medidas a ciegas?",opts:["1 %","5 %","17 %","40 %"],correct:2,fb:"El 17 %, pese a tener función normal a simple vista. Por eso un valor limítrofe aislado no es diagnóstico."},
+    {id:"c4-a2",lvl:"a",stem:"Seguimiento de strain en un niño en quimioterapia: el nuevo control se hizo en otro equipo y el GLS empeoró 2 puntos. ¿Conducta?",opts:["Suspender la quimioterapia","Recordar que el strain varía entre plataformas; comparar en el mismo equipo","Ignorar el strain siempre","Pedir un Holter"],correct:1,fb:"El strain es reproducible en la misma plataforma pero no entre plataformas distintas."},
+    /* ===== CAPÍTULO 5 · VD e HP ===== */
+    {id:"c5-b1",lvl:"b",stem:"Velocidad de insuficiencia tricuspídea 3 m/s, aurícula derecha asumida 5 mmHg. ¿Presión sistólica del VD?",opts:["≈ 17 mmHg","≈ 41 mmHg","≈ 60 mmHg","≈ 12 mmHg"],correct:1,fb:"4 × 3² = 36 + 5 = 41 mmHg."},
+    {id:"c5-b2",lvl:"b",stem:"¿Por qué el informe pediátrico asume la presión de aurícula derecha en lugar de estimarla por la vena cava?",opts:["Porque la vena cava no se ve en niños","Porque en niños no se ha demostrado buena correlación entre la vena cava y la presión auricular","Por costumbre","Porque la presión auricular siempre es cero"],correct:1,fb:"La guía aclara que no hay estudios que muestren buena correlación en niños."},
+    {id:"c5-b3",lvl:"b",stem:"Presión del VD de 70 mmHg con presión sistólica de 90 mmHg. ¿Cómo se clasifica?",opts:["Menos de 1/2 de la sistémica","Entre 1/2 y 2/3","Más de 2/3 de la sistémica","Suprasistémica"],correct:2,fb:"70/90 ≈ 0,78: más de 2/3 de la sistémica. Si es nueva, es hallazgo crítico."},
+    {id:"c5-i1",lvl:"i",stem:"CIV con flujo de izquierda a derecha, velocidad 4 m/s, presión sistólica del niño 100 mmHg. ¿Presión del VD?",opts:["≈ 36 mmHg","≈ 64 mmHg","≈ 100 mmHg","≈ 16 mmHg"],correct:0,fb:"100 − 4 × 4² (64) = 36 mmHg."},
+    {id:"c5-i2",lvl:"i",stem:"El informe dice \"no se pudo estimar la presión pulmonar: sin insuficiencia tricuspídea\". ¿Qué concluyes?",opts:["Presión normal","No se sabe; mira signos indirectos como la forma del septo","Hipertensión pulmonar segura","Estenosis pulmonar"],correct:1,fb:"No estimable no es normal. El aplanamiento septal y otros signos indirectos ayudan."},
+    {id:"c5-i3",lvl:"i",stem:"Niño con estenosis pulmonar y presión del VD de 80 mmHg. ¿Es esa la presión de la arteria pulmonar?",opts:["Sí, siempre","No: parte de la presión se pierde en la obstrucción","Sí, si hay CIA","Solo en neonatos"],correct:1,fb:"Con estenosis pulmonar la presión del VD supera a la pulmonar; no deben igualarse."},
+    {id:"c5-a1",lvl:"a",stem:"Tras reparar una tetralogía de Fallot hay insuficiencia pulmonar severa y el TAPSE es normal. ¿Qué precaución aplica?",opts:["El VD está sano","En sobrecarga de volumen el TAPSE puede verse normal por movimiento pasivo del anillo","El TAPSE siempre es exacto","Indica estenosis tricuspídea"],correct:1,fb:"La guía señala que el TAPSE es más útil en sobrecarga de presión; en la de volumen el anillo \"se mece\" pasivamente."},
+    {id:"c5-a2",lvl:"a",stem:"Neonato de 12 horas con presión del VD estimada en 2/3 de la sistémica, asintomático. ¿Lectura más prudente?",opts:["Hipertensión pulmonar arterial idiopática","Puede ser transicional; interpretar con la edad y controlar","Hallazgo sin importancia nunca","Error del equipo"],correct:1,fb:"En los primeros días la presión pulmonar es normalmente alta y va bajando."},
+    /* ===== CAPÍTULO 6 · Válvulas ===== */
+    {id:"c6-b1",lvl:"b",stem:"¿Cómo gradúan la mayoría de los centros pediátricos una insuficiencia valvular?",opts:["Con el orificio regurgitante efectivo","De forma cualitativa: chorro en color, dilatación de cavidades e inversión de flujo en venas o aorta","Solo con la vena contracta","Con el gradiente"],correct:1,fb:"Los parámetros cuantitativos del adulto tienen poca reproducibilidad en niños."},
+    {id:"c6-b2",lvl:"b",stem:"¿Por qué el informe debe anotar la frecuencia cardiaca al medir una estenosis mitral?",opts:["Por protocolo","Porque la taquicardia acorta la diástole y eleva el gradiente medio","Porque cambia el situs","No es necesario"],correct:1,fb:"Con frecuencias altas el gradiente medio sube sin que la estenosis sea mayor."},
+    {id:"c6-i1",lvl:"i",stem:"Estenosis aórtica en un lactante con disfunción del VI: gradiente solo moderado. ¿En qué más apoyarse?",opts:["Solo en el gradiente","En la morfología de la válvula y el Z del anillo aórtico","En la presión pulmonar","En el TAPSE"],correct:1,fb:"Con disfunción ventricular el gradiente subestima; la guía sugiere morfología y Z del anillo."},
+    {id:"c6-i2",lvl:"i",stem:"El gradiente aórtico por eco es mayor que el pico a pico medido en cateterismo. ¿Es un error?",opts:["Sí, uno de los dos está mal","No: el eco mide el máximo instantáneo y el cateterismo el pico a pico; no son equivalentes","Sí, siempre deben coincidir","Solo si hay insuficiencia"],correct:1,fb:"Son medidas distintas, y la recuperación de presión amplía la diferencia en niños pequeños."},
+    {id:"c6-a1",lvl:"a",stem:"CIV grande con estenosis pulmonar: el gradiente pulmonar es bajo. ¿Por qué puede subestimar la severidad?",opts:["Porque la CIV iguala presiones y reduce el gradiente","Porque la CIV aumenta el gradiente","No lo subestima","Por el situs"],correct:0,fb:"Un cortocircuito grande que iguala presiones confunde el Doppler; la guía recomienda apoyarse en el anillo y la morfología."},
+    {id:"c6-a2",lvl:"a",stem:"Estenosis aórtica: 3,5 m/s desde apical y 4,2 m/s desde paraesternal derecha. ¿Qué valor debe reportarse?",opts:["El apical, por ser el estándar","El máximo, indicando la vista en que se obtuvo","El promedio","Ninguno"],correct:1,fb:"Los gradientes desde la vista apical suelen ser menores; se reporta el máximo y la vista."},
+    /* ===== CAPÍTULO 7 · Coronarias ===== */
+    {id:"c7-b1",lvl:"b",stem:"Adolescente con síncope de esfuerzo. ¿Qué debe documentar el eco sobre las coronarias?",opts:["Nada, no aplica","Su origen, con imagen 2D y Doppler color","Solo su diámetro","Solo el flujo en diástole"],correct:1,fb:"La guía indica el color para excluir origen anómalo en síncope, dolor torácico y miocardiopatía."},
+    {id:"c7-i1",lvl:"i",stem:"Lactante con miocardiopatía dilatada: en una coronaria el flujo va hacia la aorta. ¿Qué sugiere?",opts:["Normal","Origen anómalo desde la arteria pulmonar o atresia del ostium","Kawasaki","Fístula benigna siempre"],correct:1,fb:"El flujo invertido en una coronaria sugiere origen anómalo desde la pulmonar o atresia del ostium."},
+    {id:"c7-a1",lvl:"a",stem:"Un control de Kawasaki muestra una coronaria \"con pared brillante y engrosada\" que antes era normal. El niño está bien. ¿Qué considerar además de enfermedad?",opts:["Nada, es enfermedad segura","Exceso de ganancia o imagen armónica que exageran el brillo de la pared","Que el modelo de Z es el mismo","Hipertensión pulmonar"],correct:1,fb:"La guía advierte que la ganancia y la imagen armónica pueden hacer ver anormales las paredes coronarias."},
+    /* ===== CAPÍTULO 8 · Aorta ===== */
+    {id:"c8-b1",lvl:"b",stem:"Doppler de aorta abdominal con inversión del flujo durante toda la diástole. ¿Qué puede causarlo?",opts:["Solo la coartación","Insuficiencia aórtica al menos moderada, ductus significativo, colateral, fístula, choque o sedación","Es normal siempre","Estenosis mitral"],correct:1,fb:"Son las causas que enumera la guía para la inversión holodiastólica."},
+    {id:"c8-b2",lvl:"b",stem:"Aorta abdominal con ascenso amortiguado y flujo que no vuelve a la línea de base. ¿Qué sugiere?",opts:["Normal","Obstrucción significativa del arco aórtico","Insuficiencia aórtica","Ductus pequeño"],correct:1,fb:"El patrón aplanado sin retorno a la base es propio de la obstrucción significativa del arco."},
+    {id:"c8-i1",lvl:"i",stem:"Recién nacido de 20 horas: eco con ductus abierto y Doppler abdominal casi normal. ¿Descarta coartación crítica?",opts:["Sí","No: el ductus abierto puede enmascararla hasta que se cierre","Sí, si no hay soplo","Sí, si la saturación es normal"],correct:1,fb:"Mientras el ductus está abierto la coartación puede pasar inadvertida."},
+    {id:"c8-a1",lvl:"a",stem:"En el eje corto supraesternal no se ve la bifurcación de la primera rama del arco. ¿Qué sospechar?",opts:["Arco normal","Subclavia aberrante","Coartación","Ductus"],correct:1,fb:"La guía indica que la ausencia de esa bifurcación hace sospechar una subclavia aberrante."},
+    /* ===== CAPÍTULO 9 · Pericardio ===== */
+    {id:"c9-b1",lvl:"b",stem:"Derrame pericárdico moderado nuevo en un niño estable. ¿Es un hallazgo crítico según la guía?",opts:["No, porque está estable","Sí: el derrame moderado o grande nuevo se comunica de inmediato","Solo si es grande","Solo tras cirugía"],correct:1,fb:"El derrame pericárdico moderado o grande nuevo está en la lista de hallazgos críticos."},
+    {id:"c9-i1",lvl:"i",stem:"Niño operado hace dos semanas, taquicárdico e hipotenso; el informe no describe signos de compresión. ¿Conducta?",opts:["Tranquilizarse por el informe","El taponamiento es clínico: reevaluar de inmediato con cardiología","Esperar al control","Dar diuréticos"],correct:1,fb:"Un informe sin signos no excluye el taponamiento si la clínica lo sugiere."},
+    /* ===== CAPÍTULO 10 · Posoperatorios ===== */
+    {id:"c10-b1",lvl:"b",stem:"¿Cuál es la lesión residual más característica tras reparar una tetralogía de Fallot?",opts:["Estenosis mitral","Insuficiencia pulmonar con dilatación progresiva del VD","Coartación","CIA"],correct:1,fb:"La ampliación del tracto de salida suele dejar insuficiencia pulmonar que dilata el VD con los años."},
+    {id:"c10-i1",lvl:"i",stem:"Tras un switch arterial, ¿qué zonas vigila especialmente el eco?",opts:["Solo la válvula mitral","Estenosis supravalvular y de ramas pulmonares, raíz e insuficiencia neoaórtica, y coronarias","El septo interauricular","La vena cava"],correct:1,fb:"Son las zonas que se suturaron o se movieron en la cirugía."},
+    {id:"c10-i2",lvl:"i",stem:"En un paciente con Fontan, el flujo del conducto se vuelve acelerado y pierde la variación respiratoria. ¿Qué sugiere?",opts:["Normal","Obstrucción del conducto","Mejor función","Hipertensión arterial"],correct:1,fb:"El flujo normal del Fontan es de baja velocidad y fásico; su pérdida sugiere obstrucción."},
+    {id:"c10-a1",lvl:"a",stem:"Un informe de un paciente con Fontan reporta \"PSVD 95 mmHg\" a partir de la insuficiencia de la válvula auriculoventricular. ¿Qué representa?",opts:["Hipertensión pulmonar severa","La presión del ventrículo sistémico, no la pulmonar","Error de cálculo siempre","Estenosis pulmonar"],correct:1,fb:"En el Fontan no hay ventrículo subpulmonar: ese chorro refleja la presión del ventrículo que bombea a la aorta."},
+    /* ===== CAPÍTULO 11 · Críticos ===== */
+    {id:"c11-b1",lvl:"b",stem:"¿En qué plazo espera la guía que se comunique un hallazgo crítico?",opts:["24 horas","1 a 2 horas, por vía directa","Una semana","En la siguiente consulta"],correct:1,fb:"Según la métrica de calidad del ACPC, en 1 a 2 horas y dejando constancia."},
+    {id:"c11-i1",lvl:"i",stem:"Recién nacido con corazón izquierdo hipoplásico. ¿Por qué es crítico aunque esté estable?",opts:["No es crítico si está estable","Su circulación sistémica depende del ductus, que se cierra en los primeros días","Por la cianosis leve","Por el soplo"],correct:1,fb:"Al cerrarse el ductus el neonato puede entrar en choque."},
+    {id:"c11-a1",lvl:"a",stem:"Neonato con atresia pulmonar recién diagnosticada. ¿Qué papel tiene el médico que recibe el informe?",opts:["Citar a control ambulatorio","Reconocer la cardiopatía ductus-dependiente y asegurar la valoración inmediata con cardiología pediátrica y neonatología","Esperar la cianosis","Pedir otro eco en un mes"],correct:1,fb:"El flujo pulmonar depende del ductus; el manejo habitual es mantenerlo abierto mientras se define la intervención."}
+  ];
+
+  var LVL={b:"Básico",i:"Intermedio",a:"Avanzado"};
+  var host=$("#examHost"), titleEl=$("#examTitle");
+  var memUsed=[], KEY="ecoped_used";
+  function loadUsed(){try{var v=localStorage.getItem(KEY);if(v)return JSON.parse(v);}catch(e){}return memUsed.slice();}
+  function saveUsed(a){memUsed=a.slice();try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
+  function byId(id){for(var i=0;i<BANK.length;i++)if(BANK[i].id===id)return BANK[i];return null;}
+  function inScope(q,lvl){return lvl==="mix"||q.lvl===lvl;}
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function poolFor(lvl){var u=loadUsed();return BANK.filter(function(q){return inScope(q,lvl)&&u.indexOf(q.id)<0;});}
+  function totalFor(lvl){return BANK.filter(function(q){return inScope(q,lvl);}).length;}
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+
+  var cfg={lvl:"mix",len:8};
+  var exam=null;
+  var GHOST="font-family:var(--font-display);font-weight:600;font-size:14px;background:#fff;color:var(--brand);border:1px solid var(--line);padding:11px 18px;border-radius:9px;cursor:pointer";
+
+  function renderConfig(){
+    exam=null; titleEl.textContent="Configura tu intento"; host.innerHTML="";
+    var f1=el("div","field"); f1.appendChild(el("label",null,"Nivel de dificultad"));
+    var seg=el("div","seg"); seg.setAttribute("role","group");
+    [["mix","Mixto"],["b","Básico"],["i","Intermedio"],["a","Avanzado"]].forEach(function(o){
+      var b=el("button",null,o[1]); b.type="button";
+      b.setAttribute("aria-pressed",String(cfg.lvl===o[0]));
+      b.addEventListener("click",function(){cfg.lvl=o[0];renderConfig();});
+      seg.appendChild(b);
+    });
+    f1.appendChild(seg); host.appendChild(f1);
+
+    var f2=el("div","field"); f2.appendChild(el("label",null,"Número de preguntas"));
+    var seg2=el("div","seg");
+    [5,8,10].forEach(function(n){
+      var b=el("button",null,String(n)); b.type="button";
+      b.setAttribute("aria-pressed",String(cfg.len===n));
+      b.addEventListener("click",function(){cfg.len=n;renderConfig();});
+      seg2.appendChild(b);
+    });
+    f2.appendChild(seg2); host.appendChild(f2);
+
+    var pool=poolFor(cfg.lvl), total=totalFor(cfg.lvl);
+    var info=el("div","readout");
+    info.appendChild(el("div","label","Disponibilidad"));
+    info.appendChild(el("div","why","Preguntas nuevas en este nivel: "+pool.length+" de "+total+". Las ya respondidas no se repiten."));
+    host.appendChild(info);
+
+    var actions=el("div"); actions.style.cssText="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap";
+    if(pool.length===0){
+      var msg=el("div","trap"); msg.style.margin="0 0 4px"; msg.innerHTML="<b>Completaste todas las preguntas de este nivel.</b> Reinícialo para volver a practicarlas.";
+      host.appendChild(msg);
+      var rb=el("button","primary","Reiniciar este nivel"); rb.type="button";
+      rb.addEventListener("click",function(){resetScope(cfg.lvl);});
+      actions.appendChild(rb);
+    }else{
+      var sb=el("button","primary","Comenzar examen"); sb.type="button";
+      sb.addEventListener("click",startExam); actions.appendChild(sb);
+      if(loadUsed().length){
+        var rb2=el("button",null,"Reiniciar preguntas vistas"); rb2.type="button"; rb2.style.cssText=GHOST;
+        rb2.addEventListener("click",function(){resetScope("mix");});
+        actions.appendChild(rb2);
+      }
+    }
+    host.appendChild(actions);
+  }
+
+  function resetScope(lvl){
+    var keep=loadUsed().filter(function(id){var q=byId(id);return q&&!inScope(q,lvl);});
+    saveUsed(keep); renderConfig();
+  }
+
+  function startExam(){
+    var pool=poolFor(cfg.lvl); if(!pool.length){renderConfig();return;}
+    shuffle(pool);
+    var qs=pool.slice(0,Math.min(cfg.len,pool.length));
+    var u=loadUsed(); qs.forEach(function(q){u.push(q.id);}); saveUsed(u);
+    exam={qs:qs,idx:0,answers:[],stats:{b:[0,0],i:[0,0],a:[0,0]}};
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    var q=exam.qs[exam.idx], n=exam.qs.length;
+    titleEl.textContent="Pregunta "+(exam.idx+1)+" de "+n;
+    host.innerHTML="";
+    var prog=el("div","progress"); var bar=el("i"); bar.style.width=Math.round(exam.idx/n*100)+"%"; prog.appendChild(bar); host.appendChild(prog);
+    var meta=el("div","examMeta");
+    meta.appendChild(el("span","lvlbadge lvl-"+q.lvl,LVL[q.lvl]));
+    meta.appendChild(el("span",null,"Aciertos: "+exam.answers.filter(function(a){return a;}).length+" / "+exam.answers.length));
+    host.appendChild(meta);
+    var qd=el("div","q");
+    qd.appendChild(el("div","stem",(exam.idx+1)+". "+q.stem));
+    var fb=el("div","fb");
+    var order=shuffle(q.opts.map(function(_,k){return k;}));
+    var btns=[];
+    order.forEach(function(oi){
+      var opt=q.opts[oi];
+      var b=el("button","opt",opt); b.type="button";
+      b.addEventListener("click",function(){
+        if(qd.dataset.done)return; qd.dataset.done="1";
+        $$(".opt",qd).forEach(function(x){x.disabled=true;});
+        var ok=oi===q.correct; exam.answers.push(ok);
+        exam.stats[q.lvl][1]++; if(ok)exam.stats[q.lvl][0]++;
+        if(ok){b.classList.add("correct");}else{b.classList.add("wrong");btns[order.indexOf(q.correct)].classList.add("correct");}
+        fb.textContent=q.fb; fb.classList.add("show");
+        bar.style.width=Math.round((exam.idx+1)/n*100)+"%";
+        var nb=el("button","primary",exam.idx+1<n?"Siguiente":"Ver resultados"); nb.type="button"; nb.style.marginTop="14px";
+        nb.addEventListener("click",function(){exam.idx++; if(exam.idx<n)renderQuestion(); else renderResults();});
+        qd.appendChild(nb); nb.focus();
+      });
+      qd.appendChild(b); btns.push(b);
+    });
+    qd.appendChild(fb); host.appendChild(qd);
+  }
+
+  function renderResults(){
+    var n=exam.qs.length, correct=exam.answers.filter(function(a){return a;}).length, pct=Math.round(correct/n*100);
+    titleEl.textContent="Resultado del intento"; host.innerHTML="";
+    var head=el("div","readout");
+    head.appendChild(el("div","label","Desempeño global"));
+    var res=el("div","result",correct+" / "+n+"  ·  "+pct+" %");
+    res.style.color=pct>=80?"var(--ok)":pct>=60?"var(--warn)":"var(--alert)";
+    head.appendChild(res);
+    head.appendChild(el("div","why",pct>=80?"Dominio sólido de la lectura del informe.":pct>=60?"Buen avance; repasa los capítulos donde fallaste.":"Conviene repasar los capítulos y reintentar."));
+    host.appendChild(head);
+    host.appendChild(el("div","reportTitle","Desempeño por nivel"));
+    ["b","i","a"].forEach(function(L){
+      var s=exam.stats[L]; if(s[1]===0)return;
+      var p=Math.round(s[0]/s[1]*100);
+      var row=el("div","statrow");
+      row.appendChild(el("span","statlbl",LVL[L]));
+      var track=el("div","statbar"); var fill=el("i"); fill.style.width=p+"%";
+      fill.style.background=p>=80?"var(--ok)":p>=60?"var(--warn)":"var(--alert)";
+      track.appendChild(fill); row.appendChild(track);
+      row.appendChild(el("span","statnum",s[0]+"/"+s[1]));
+      host.appendChild(row);
+    });
+    var pool=poolFor(cfg.lvl);
+    var actions=el("div"); actions.style.cssText="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap";
+    if(pool.length>0){
+      var again=el("button","primary","Hacer otro examen (preguntas nuevas)"); again.type="button";
+      again.addEventListener("click",startExam); actions.appendChild(again);
+    }else{
+      var done=el("div","clin"); done.style.margin="0 0 6px"; done.innerHTML="<b>Completaste el banco de este nivel.</b> Reinícialo para volver a practicar.";
+      host.appendChild(done);
+      var rs=el("button","primary","Reiniciar este nivel"); rs.type="button";
+      rs.addEventListener("click",function(){resetScope(cfg.lvl);}); actions.appendChild(rs);
+    }
+    var cfgBtn=el("button",null,"Cambiar nivel"); cfgBtn.type="button"; cfgBtn.style.cssText=GHOST;
+    cfgBtn.addEventListener("click",renderConfig); actions.appendChild(cfgBtn);
+    host.appendChild(actions);
+    host.appendChild(el("div","scorebar","Quedan "+pool.length+" preguntas nuevas en el nivel "+(cfg.lvl==="mix"?"Mixto":LVL[cfg.lvl])+"."));
+  }
+
+  renderConfig();
+
+})();
+</script>
+</body>
+</html>
