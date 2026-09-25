@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leer un informe de eco pediátrico · Manual interactivo</title>
+<meta name="description" content="Manual interactivo para pediatras, urgencias, medicina general y UCI: cómo interpretar un informe de ecocardiograma pediátrico, empezando por el Z-score. Por el Dr. Juan Fernando Carvajal Estupiñán, Cardiólogo, Instituto del Corazón de Bucaramanga, Colombia.">
+<meta name="author" content="Dr. Juan Fernando Carvajal Estupiñán">
+<meta name="keywords" content="ecocardiograma pediátrico, Z-score, cardiopatías congénitas, Kawasaki, pediatría, urgencias, UCI, interpretación, educación médica">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta property="og:description" content="Manual interactivo para médicos no cardiólogos: el Z-score, las trampas del eco pediátrico y los hallazgos que obligan a actuar. Dr. Juan Fernando Carvajal Estupiñán · Cardiólogo, Instituto del Corazón de Bucaramanga · Colombia.">
+<meta property="og:site_name" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cómo leer un informe de ecocardiograma pediátrico">
+<meta name="theme-color" content="#16323f">
+<meta name="apple-mobile-web-app-title" content="Eco Pediátrico">
+<meta name="application-name" content="Eco Pediátrico">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2320506f'/%3E%3Cpath d='M32 48C32 48 13 36 13 25c0-6.5 5-10.5 10.2-10.5 4.3 0 7.4 2.7 8.8 5.5 1.4-2.8 4.5-5.5 8.8-5.5C46 14.5 51 18.5 51 25c0 11-19 23-19 23z' fill='%23ffffff'/%3E%3Cpath d='M16 30h8l3-7 3.5 13 3-10 2.8 7 2.4-4.5H48' fill='none' stroke='%2320506f' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#142b3a;
+    --brand:#205070;
+    --brand-2:#2c6b8f;
+    --paper:#eef2f3;
+    --surface:#ffffff;
+    --line:#d2dde1;
+    --muted:#5e7480;
+    --ok:#1f8a6d; --ok-bg:#e2f1ea;
+    --warn:#b9821c; --warn-bg:#f7edd4;
+    --alert:#b3452e; --alert-bg:#f5e0d9;
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand)}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.2;letter-spacing:-.01em}
+  .mono{font-family:var(--font-mono)}
+
+  /* ---------- Layout ---------- */
+  .shell{display:grid;grid-template-columns:248px 1fr;gap:0;min-height:100vh}
+  .nav{
+    position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+    background:var(--ink);color:#cfe0e8;padding:26px 18px;border-right:1px solid #0d212e;
+  }
+  .nav .brandmark{font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;letter-spacing:.02em;line-height:1.25}
+  .nav .brandsub{color:#88a7b6;font-size:11.5px;margin-top:6px;line-height:1.4}
+  .wave{display:block;margin:18px 0;opacity:.55}
+  .nav ol{list-style:none;margin:0;padding:0;counter-reset:s}
+  .nav li a{
+    display:flex;gap:10px;align-items:baseline;text-decoration:none;color:#a9c4d1;
+    font-size:13.5px;padding:7px 9px;border-radius:7px;margin:1px 0;
+  }
+  .nav li a .n{font-family:var(--font-mono);font-size:11px;color:#6f93a3;min-width:18px}
+  .nav li a:hover{background:#1d3c4d;color:#fff}
+  .nav li a.active{background:var(--brand);color:#fff}
+  .nav li a.active .n{color:#bfe0f0}
+
+  .main{padding:0;min-width:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* ---------- Hero ---------- */
+  .hero{background:linear-gradient(180deg,#16323f 0%, #1b3d4d 100%);color:#eaf2f5;padding:54px 0 40px}
+  .hero .wrap{display:block}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7fb0c4}
+  .hero h1{font-size:clamp(28px,5vw,40px);color:#fff;margin:14px 0 14px;font-weight:700}
+  .hero p.lead{font-size:17px;color:#bcd2dc;max-width:60ch;margin:0}
+  .hero .meta{margin-top:24px;font-size:13px;color:#8db1c1;font-family:var(--font-mono)}
+  .hero .meta b{color:#d9e8ee;font-weight:600}
+
+  /* ---------- Sections ---------- */
+  section{padding:46px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--brand);display:inline-block}
+  h2{font-size:clamp(22px,3.4vw,29px);margin:14px 0 8px}
+  h3{font-size:18px;margin:28px 0 6px;color:var(--brand)}
+  p{margin:12px 0}
+  .sub{color:var(--muted);font-size:15px;margin-top:0}
+
+  /* ---------- Components ---------- */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;margin:20px 0;box-shadow:0 1px 0 rgba(20,43,58,.03)}
+  .clin{border-left:3px solid var(--brand);background:#f3f8fa;border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:14.5px}
+  .clin b{color:var(--brand)}
+  .trap{border-left:3px solid var(--alert);background:var(--alert-bg);border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:14.5px}
+  .trap b{color:var(--alert)}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--font-display);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#f5f8f9}
+  td.v{font-family:var(--font-mono);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+
+  .pill{display:inline-block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:var(--ok-bg);color:var(--ok)}
+  .pill.warn{background:var(--warn-bg);color:var(--warn)}
+  .pill.alert{background:var(--alert-bg);color:var(--alert)}
+
+  /* glossary tooltip */
+  .g{border-bottom:1px dotted var(--brand-2);cursor:help;position:relative}
+  .g .tip{
+    display:none;position:absolute;left:0;bottom:135%;z-index:30;
+    width:min(280px,76vw);background:var(--ink);color:#e8f1f5;font-size:13px;font-weight:400;
+    line-height:1.45;padding:11px 13px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.22);
+    font-family:var(--font-body);text-transform:none;letter-spacing:normal;
+  }
+  .g:hover .tip,.g:focus .tip,.g:focus-within .tip{display:block}
+  .g.tip-left .tip{left:auto;right:0}
+
+  /* interactive tool */
+  .tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:24px 0}
+  .tool-head{background:var(--ink);color:#dceaf0;padding:13px 18px;font-family:var(--font-display);font-weight:600;font-size:14px;display:flex;align-items:center;gap:9px}
+  .tool-head .tag{font-family:var(--font-mono);font-size:10.5px;background:var(--brand);color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:.06em}
+  .tool-body{padding:20px}
+  .field{margin:14px 0}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+  .field .hint{color:var(--muted);font-weight:400;font-size:12px}
+  input[type=range]{width:100%;accent-color:var(--brand)}
+  input[type=number]{width:110px;font-family:var(--font-mono);font-size:15px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fbfdfd}
+  input[type=number]:focus,select:focus,button:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px}
+  select{font-family:var(--font-body);font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fbfdfd}
+  .val{font-family:var(--font-mono);font-weight:600;color:var(--brand)}
+  .seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;overflow:hidden;max-width:100%}
+  .seg button{font-family:var(--font-body);font-size:13px;font-weight:600;padding:8px 14px;border:none;background:#fbfdfd;color:var(--muted);cursor:pointer}
+  .seg button[aria-pressed=true]{background:var(--brand);color:#fff}
+  .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fbfdfd;font-size:14px}
+  .toggle button{font-family:var(--font-mono);font-size:12px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--muted);padding:6px 12px;border-radius:7px;cursor:pointer}
+  .toggle button[aria-pressed=true]{background:var(--alert);border-color:var(--alert);color:#fff}
+  .readout{margin-top:16px;padding:16px;border-radius:11px;background:#f4f8f9;border:1px solid var(--line)}
+  .readout .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .readout .result{font-family:var(--font-display);font-size:20px;font-weight:700;margin:4px 0 6px}
+  .readout .why{font-size:13.5px;color:var(--ink)}
+
+  button.primary{font-family:var(--font-display);font-weight:600;font-size:14px;background:var(--brand);color:#fff;border:none;padding:11px 18px;border-radius:9px;cursor:pointer}
+  button.primary:hover{background:var(--brand-2)}
+
+  /* collapsible reference */
+  details{border:1px solid var(--line);border-radius:11px;margin:10px 0;background:var(--surface);overflow:hidden}
+  details>summary{cursor:pointer;padding:13px 16px;font-family:var(--font-display);font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::after{content:"+";font-family:var(--font-mono);color:var(--brand);font-size:18px}
+  details[open]>summary::after{content:"–"}
+  details .inner{padding:0 16px 14px}
+
+  /* quiz */
+  .q{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  .q .stem{font-weight:600;margin-bottom:12px}
+  .q .opt{display:block;width:100%;text-align:left;font-family:var(--font-body);font-size:14px;padding:11px 13px;margin:7px 0;border:1px solid var(--line);border-radius:9px;background:#fbfdfd;cursor:pointer}
+  .q .opt:hover{border-color:var(--brand-2)}
+  .q .opt.correct{background:var(--ok-bg);border-color:var(--ok);color:#0d5c45}
+  .q .opt.wrong{background:var(--alert-bg);border-color:var(--alert);color:#7c2c1b}
+  .q .fb{margin-top:11px;font-size:13.5px;padding:11px 13px;border-radius:9px;background:#f3f8fa;display:none}
+  .q .fb.show{display:block}
+  .scorebar{font-family:var(--font-mono);font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* SVG figure */
+  figure{margin:20px 0;text-align:center}
+  figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;font-style:italic}
+
+  /* exam */
+  .progress{height:8px;background:#e3ebee;border-radius:6px;overflow:hidden;margin-bottom:12px}
+  .progress>i{display:block;height:100%;background:var(--brand);transition:width .25s}
+  .examMeta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+  .lvlbadge{font-family:var(--font-mono);font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:999px}
+  .lvl-b{background:var(--ok-bg);color:var(--ok)}
+  .lvl-i{background:var(--warn-bg);color:var(--warn)}
+  .lvl-a{background:var(--alert-bg);color:var(--alert)}
+  .reportTitle{font-family:var(--font-display);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:18px 0 8px}
+  .statrow{display:flex;align-items:center;gap:12px;margin:8px 0}
+  .statlbl{font-size:13px;font-weight:600;min-width:92px}
+  .statbar{flex:1;height:9px;background:#e3ebee;border-radius:6px;overflow:hidden}
+  .statbar>i{display:block;height:100%}
+  .statnum{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);min-width:42px;text-align:right}
+
+  /* author & credits */
+  .author{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:14px;padding:22px;margin:20px 0}
+  .author .initials{flex:0 0 auto;width:58px;height:58px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:.02em}
+  .author .who{min-width:0}
+  .author .nm{font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--ink);line-height:1.25}
+  .author .role{font-family:var(--font-mono);font-size:12.5px;color:var(--brand);margin-top:5px;letter-spacing:.02em}
+  .author .place{font-size:13px;color:var(--muted);margin-top:3px}
+  .author .note{font-size:13.5px;color:var(--ink);margin-top:12px;line-height:1.6}
+  @media(max-width:520px){.author{flex-direction:column;gap:14px}}
+  .thanks{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+  .thanks li{font-size:14px;color:var(--ink);padding:9px 13px;background:#fbfdfd;border:1px solid var(--line);border-radius:9px}
+  .thanks li b{font-weight:600}
+  .thanks li span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between}
+  .contact-txt{flex:1 1 260px;font-size:14px;line-height:1.6;color:var(--ink);min-width:0}
+  .mailbtn{flex:0 0 auto;display:inline-block;font-family:var(--font-mono);font-size:13.5px;font-weight:600;background:var(--brand);color:#fff;text-decoration:none;padding:11px 16px;border-radius:9px;word-break:break-all;max-width:100%}
+  .mailbtn:hover,.mailbtn:focus{background:var(--brand-2)}
+
+  footer{background:var(--ink);color:#9fbecb;padding:34px 0;font-size:13px}
+  footer .wrap{max-width:var(--maxw)}
+  footer b{color:#dcebf1;color:#d6e7ee}
+  .disc{font-size:12px;color:#7c9eae;margin-top:14px;line-height:1.5}
+
+  /* mobile */
+  .navtoggle{display:none}
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr}
+    .nav{position:fixed;inset:0 auto 0 0;width:264px;transform:translateX(-100%);transition:transform .2s;z-index:50}
+    .nav.open{transform:translateX(0)}
+    .navtoggle{display:inline-flex;align-items:center;gap:8px;position:fixed;top:12px;right:12px;z-index:60;background:var(--ink);color:#fff;border:none;font-family:var(--font-display);font-weight:600;font-size:13px;padding:10px 14px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer}
+    .scrim{display:none;position:fixed;inset:0;background:rgba(10,25,33,.45);z-index:45}
+    .scrim.show{display:block}
+    td.v{white-space:normal}
+    table{font-size:13.5px}
+    th,td{padding:8px 8px}
+  }
+  /* ---------- Pediátrico: añadidos ---------- */
+  .nav li a.soon{opacity:.55}
+  .nav li a.soon::after{content:"pronto";margin-left:auto;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;color:#6f93a3;border:1px solid #2f5566;border-radius:5px;padding:0 5px}
+  .soonbox{border:1px dashed #b9cad1;border-radius:14px;padding:18px 20px;margin:18px 0;background:#f7fafb}
+  .soonbox .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .soonbox ul{margin:6px 0 0;padding-left:20px;font-size:14.5px}
+  .soonbox li{margin:4px 0}
+  .audience{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .audience span{font-family:var(--font-mono);font-size:11.5px;color:#d9e8ee;border:1px solid #3a6478;border-radius:999px;padding:3px 10px}
+  .analogy{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+  .analogy>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
+  .analogy .h{font-family:var(--font-display);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--brand);margin-bottom:4px}
+  @media(max-width:560px){.analogy{grid-template-columns:1fr}}
+  .zrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .zrow input[type=number]{width:96px}
+  .zcurve{width:100%;max-width:520px;height:auto;display:block;margin:6px auto 0}
+  .warnlist{margin:10px 0 0;padding:0;list-style:none}
+  .warnlist li{font-size:13.5px;padding:9px 12px;margin:6px 0;border-radius:9px;background:var(--warn-bg);border-left:3px solid var(--warn)}
+  .warnlist li b{color:#7a560f}
+  .srcline{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+</style>
+
+</head>
+<body>
+
+<button class="navtoggle" id="navToggle" aria-label="Abrir índice">☰ Índice</button>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+  <!-- NAV -->
+  <aside class="nav" id="nav" aria-label="Índice del manual">
+    <div class="brandmark">Leer un eco pediátrico</div>
+    <div class="brandsub">Manual interactivo para médicos no cardiólogos</div>
+    <svg class="wave" width="200" height="22" viewBox="0 0 200 22" fill="none" aria-hidden="true">
+      <path d="M0 11 H34 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H84 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H134 l5 -8 l6 16 l5 -13 l5 11 l4 -6 H200" stroke="#3a7fa0" stroke-width="1.6" fill="none"/>
+    </svg>
+    <ol>
+      <li><a href="#inicio"><span class="n">00</span> Cómo usar</a></li>
+      <li><a href="#zscore"><span class="n">01</span> El niño no es un adulto pequeño</a></li>
+      <li><a href="#informe" class="soon"><span class="n">02</span> Anatomía del informe</a></li>
+      <li><a href="#shunts" class="soon"><span class="n">03</span> Cortocircuitos</a></li>
+      <li><a href="#vi" class="soon"><span class="n">04</span> Ventrículo izquierdo</a></li>
+      <li><a href="#vd" class="soon"><span class="n">05</span> VD e hipertensión pulmonar</a></li>
+      <li><a href="#valvulas" class="soon"><span class="n">06</span> Válvulas y tractos de salida</a></li>
+      <li><a href="#coronarias" class="soon"><span class="n">07</span> Coronarias</a></li>
+      <li><a href="#aorta" class="soon"><span class="n">08</span> Aorta y arco</a></li>
+      <li><a href="#pericardio" class="soon"><span class="n">09</span> Pericardio</a></li>
+      <li><a href="#posop" class="soon"><span class="n">10</span> Posoperatorios</a></li>
+      <li><a href="#criticos" class="soon"><span class="n">11</span> Hallazgos críticos</a></li>
+      <li><a href="#caso" class="soon"><span class="n">12</span> Caso resuelto</a></li>
+      <li><a href="#referencia" class="soon"><span class="n">13</span> Referencia rápida</a></li>
+      <li><a href="#quiz"><span class="n">14</span> Autoevaluación</a></li>
+      <li><a href="#creditos"><span class="n">15</span> Autor</a></li>
+    </ol>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Ecocardiograma transtorácico pediátrico · interpretación</div>
+        <h1>Cómo leer un informe de ecocardiograma pediátrico</h1>
+        <p class="lead">Para quien recibe el informe de un niño y tiene que decidir: qué significa cada dato, por qué en pediatría casi nada se lee con un número fijo, y cuándo un hallazgo exige actuar ya.</p>
+        <div class="audience" aria-label="Dirigido a"><span>Pediatría</span><span>Urgencias</span><span>Medicina general</span><span>UCI pediátrica y neonatal</span></div>
+        <div class="meta"><b>Dr. Juan Fernando Carvajal Estupiñán</b> · Cardiólogo<br>Instituto del Corazón de Bucaramanga · Bucaramanga, Colombia<br>Material de uso educativo · versión preliminar</div>
+      </div>
+    </div>
+
+    <div class="wrap">
+
+      <!-- 00 INICIO -->
+      <section id="inicio">
+        <div class="kicker">00 · Cómo usar</div>
+        <h2>Tres ideas antes de empezar</h2>
+        <p class="sub">Léelo con el informe al lado. Cada apartado responde lo mismo: qué mide, cómo se sabe si es anormal y qué significa para el niño que tienes enfrente.</p>
+        <div class="card">
+          <p style="margin-top:0"><b>1. En pediatría el valor normal cambia con el tamaño del niño.</b> Una raíz aórtica de 20 mm puede ser normal en un escolar y está claramente dilatada en un lactante. Por eso el informe pediátrico se lee en <b>Z-score</b>, no en milímetros. El capítulo 1 es la llave de todo lo demás.</p>
+          <p><b>2. La anatomía va primero.</b> En el adulto el eco responde sobre todo "¿cómo funciona?". En el niño la primera pregunta es "¿cómo está construido?": qué está conectado con qué, qué sobra y qué falta. El informe sigue ese orden (análisis segmentario).</p>
+          <p style="margin-bottom:0"><b>3. Muchos parámetros del adulto no están validados en niños.</b> La guía pediátrica de la ASE lo dice expresamente: la insuficiencia valvular se gradúa de forma cualitativa, la función diastólica no es rutinaria y la fracción de acortamiento puede engañar. Si ves un número "de adulto" en un informe pediátrico, léelo con cautela.</p>
+        </div>
+        <div class="clin"><b>Qué hay en este manual.</b> Catorce capítulos organizados como se lee un informe, con herramientas interactivas, un capítulo de posoperatorios (Fallot, switch arterial, Fontan), una lista de hallazgos que obligan a llamar de inmediato y una autoevaluación. Los capítulos marcados como <i>pronto</i> están en preparación.</div>
+      </section>
+
+      <!-- 01 Z-SCORE -->
+      <section id="zscore">
+        <div class="kicker">01 · El niño no es un adulto pequeño</div>
+        <h2>El Z-score: cómo saber si una medida es normal para <em>este</em> niño</h2>
+        <p class="sub">Un recién nacido de 3 kg y un adolescente de 70 kg tienen corazones de tamaños muy distintos. Ningún valor fijo en milímetros sirve para los dos. La solución es comparar cada medida con la de niños sanos del mismo tamaño.</p>
+
+        <h3>Ya lo usas todos los días</h3>
+        <p>El Z-score del eco funciona igual que las curvas de crecimiento. No dices "este niño mide 110 cm, es alto"; dices "está en el percentil 97 para su edad". El Z-score expresa lo mismo en otra escala: <b>cuántas desviaciones estándar se aleja la medida del promedio de niños sanos de su mismo tamaño</b>.</p>
+        <div class="analogy">
+          <div><div class="h">Curva de crecimiento</div>Talla comparada con niños de la misma <b>edad</b> y sexo. Resultado en percentil.</div>
+          <div><div class="h">Z-score del eco</div>Medida cardiaca comparada con niños sanos de la misma <b>superficie corporal</b> (o talla). Resultado en desviaciones estándar.</div>
+        </div>
+
+        <table>
+          <thead><tr><th>Z-score</th><th>Percentil aproximado</th><th>Lectura</th></tr></thead>
+          <tbody>
+            <tr><td class="v">0</td><td class="v">50</td><td>Exactamente el promedio para su tamaño</td></tr>
+            <tr><td class="v">entre −2 y +2</td><td class="v">2 a 98</td><td><span class="pill ok">Rango normal</span> ahí está el 95 % de los niños sanos</td></tr>
+            <tr><td class="v">+2</td><td class="v">≈ 97,7</td><td><span class="pill warn">Límite superior</span> por encima se considera aumentado</td></tr>
+            <tr><td class="v">+3</td><td class="v">≈ 99,9</td><td>Claramente fuera de lo esperado</td></tr>
+            <tr><td class="v">−2</td><td class="v">≈ 2,3</td><td><span class="pill warn">Límite inferior</span> por debajo se considera pequeño</td></tr>
+          </tbody>
+        </table>
+        <div class="clin"><b>La regla que necesitas.</b> La guía pediátrica de la ASE toma <b>+2 y −2</b> como los límites habituales de lo normal. Un Z de +2,8 en la raíz aórtica significa "más grande de lo esperado para su tamaño", aunque en milímetros parezca un valor pequeño.</div>
+
+        <h3>Los dos sentidos importan</h3>
+        <p>En el adulto casi siempre preocupa lo grande. En el niño también preocupa lo pequeño:</p>
+        <ul>
+          <li><b>Z positivo alto (≥ +2):</b> cavidad dilatada, pared engrosada, vaso o raíz aórtica dilatados, coronaria dilatada o con aneurisma.</li>
+          <li><b>Z negativo bajo (≤ −2):</b> estructura más pequeña de lo esperado. En un anillo valvular, una arteria pulmonar o un arco aórtico puede significar <span class="g" tabindex="0">hipoplasia<span class="tip">Desarrollo insuficiente de una estructura. En cardiopatías congénitas, el tamaño de un anillo valvular o de un vaso (en Z-score) pesa tanto como el gradiente para decidir el tratamiento.</span></span>. En la estenosis aórtica del neonato, por ejemplo, la guía indica que el Z del anillo aórtico puede orientar la severidad mejor que el gradiente.</li>
+        </ul>
+
+        <h3>¿Contra qué se compara? Tamaño, no edad</h3>
+        <p>Las estructuras cardiacas crecen con el tamaño corporal, así que sus Z se calculan casi siempre por <span class="g" tabindex="0">superficie corporal<span class="tip">SC o BSA, en m². Se calcula con peso y talla. Un error en el peso o la talla que se anotaron en el eco cambia todos los Z del informe.</span></span> (o talla). Los índices de función, en cambio, dependen más de la <b>edad</b>. Por eso el informe pediátrico debe traer peso, talla y superficie corporal: sin ellos, los Z no se pueden verificar.</p>
+        <div class="trap"><b>Trampa: el peso mal anotado.</b> Todos los Z del informe dependen del peso y la talla que se registraron el día del estudio. Si el peso está equivocado (un niño pesado en brazos de la madre, una talla estimada), los Z también lo estarán. Si un resultado no cuadra con la clínica, revisa primero esos dos datos.</div>
+
+        <h3>No todos los Z-score son iguales</h3>
+        <p>Existen varios modelos de referencia publicados, construidos con poblaciones y métodos diferentes. La guía de la ASE compara cuatro de los más usados:</p>
+        <table>
+          <thead><tr><th>Modelo</th><th>Población de referencia</th></tr></thead>
+          <tbody>
+            <tr><td><b>PHN</b> (Pediatric Heart Network)</td><td>3.215 niños sanos, 19 centros de Norteamérica, multirracial</td></tr>
+            <tr><td><b>Boston</b></td><td>Más de 2.000 niños, un centro</td></tr>
+            <tr><td><b>Italia</b> (Cantinotti)</td><td>1.151 niños caucásicos, un centro; incluye prematuros</td></tr>
+            <tr><td><b>Detroit</b> (Pettersen)</td><td>782 niños, un centro</td></tr>
+          </tbody>
+        </table>
+        <p>El mismo niño con la misma medida puede obtener <b>Z distintos según el modelo</b>. Las diferencias son mayores en las estructuras más pequeñas, como las coronarias.</p>
+        <div class="trap"><b>Trampa: comparar informes de laboratorios distintos.</b> Si un control dice Z +2,6 y el anterior decía +1,8, antes de concluir que la estructura creció pregunta si ambos usaron el mismo modelo. La guía es explícita: para seguir a un paciente en el tiempo hay que usar <b>siempre el mismo modelo</b>. Un buen informe dice cuál usó.</div>
+
+        <h3>Cuándo el Z-score deja de ser confiable</h3>
+        <div class="trap"><b>Obesidad.</b> El exceso de grasa aumenta la superficie corporal sin que el corazón crezca en proporción. El Z calculado sale artificialmente <b>bajo</b> y puede ocultar una dilatación real. La guía advierte que en el niño obeso no se debe confiar en los Z habituales.</div>
+        <div class="trap"><b>Prematuros y cardiopatías congénitas.</b> La mayoría de los modelos se construyeron con niños a término y con corazón estructuralmente normal. Aplicarlos a un prematuro o a un corazón con cardiopatía es una extrapolación: orienta, pero no es exacto.</div>
+        <div class="trap"><b>Modo M con valores del PHN.</b> Los Z del PHN para el ventrículo izquierdo se obtuvieron con medidas en 2D, no en modo M. La guía indica que no deben usarse para medidas hechas en modo M.</div>
+
+        <h3>Otras diferencias que se reflejan en el informe</h3>
+        <ul>
+          <li><b>La aorta se mide distinto.</b> En niños se mide de borde interno a borde interno, en sístole. En adultos, de borde anterior a borde anterior, en diástole. Cuando un adolescente pasa a un laboratorio de adultos, el diámetro puede "cambiar" solo por la técnica.</li>
+          <li><b>La frecuencia cardiaca alta altera los gradientes.</b> Con taquicardia la diástole se acorta y, si la válvula mitral o tricúspide es estenótica, el gradiente medio sube. Por eso un buen informe anota la frecuencia cardiaca, y dos controles solo se comparan bien si la frecuencia era parecida.</li>
+          <li><b>La sedación cambia la fisiología.</b> Los menores de 3 años o con dificultades del desarrollo a veces necesitan sedación. La sedación o la anestesia pueden producir, por ejemplo, reversión del flujo diastólico en la aorta abdominal sin que haya enfermedad.</li>
+          <li><b>Las imágenes se orientan distinto.</b> En pediatría las vistas subcostales y apicales se muestran con el vértice hacia abajo, al revés de lo habitual en adultos. No es un error si ves imágenes impresas "invertidas".</li>
+        </ul>
+
+        <!-- TOOL: Z-score interpreter -->
+        <div class="tool" id="ztool">
+          <div class="tool-head"><span class="tag">INTERACTIVO</span> Intérprete de Z-score</div>
+          <div class="tool-body">
+            <p style="margin-top:0;font-size:14px;color:var(--muted)">Escribe el Z que trae el informe. La herramienta no calcula el Z a partir de milímetros: interpreta el que ya reportó el laboratorio.</p>
+            <div class="field">
+              <label>¿Qué estructura es?</label>
+              <div class="seg" role="group" aria-label="Tipo de estructura">
+                <button type="button" id="zkGen" aria-pressed="true">Cavidad, pared, válvula o vaso</button>
+                <button type="button" id="zkCor" aria-pressed="false">Arteria coronaria</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="zIn">Z-score reportado <span class="hint">(puede ser negativo)</span></label>
+              <div class="zrow">
+                <input type="number" id="zIn" step="0.1" value="2.4" inputmode="decimal">
+                <input type="range" id="zRange" min="-5" max="12" step="0.1" value="2.4" style="flex:1;min-width:160px" aria-label="Z-score">
+              </div>
+            </div>
+            <div class="field" id="mmField" hidden>
+              <label for="mmIn">Diámetro absoluto de la coronaria <span class="hint">(mm, opcional)</span></label>
+              <input type="number" id="mmIn" step="0.1" min="0" placeholder="—" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label>Situaciones que restan confiabilidad <span class="hint">(marca las que apliquen)</span></label>
+              <div class="toggle"><span>Niño con obesidad</span><button type="button" data-w="obes" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Prematuro o recién nacido de bajo peso</span><button type="button" data-w="prem" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>Voy a compararlo con un informe de otro laboratorio</span><button type="button" data-w="lab" aria-pressed="false">No</button></div>
+              <div class="toggle"><span>El informe no dice qué modelo de Z usó</span><button type="button" data-w="mod" aria-pressed="false">No</button></div>
+            </div>
+
+            <figure style="margin:10px 0 0">
+              <svg class="zcurve" id="zCurve" viewBox="0 0 520 190" role="img" aria-label="Curva normal con la posición del Z-score">
+                <rect x="160" y="20" width="200" height="130" fill="#e2f1ea" opacity=".7"/>
+                <path id="zBell" fill="none" stroke="#205070" stroke-width="2"/>
+                <line x1="40" y1="150" x2="480" y2="150" stroke="#9fb3bb" stroke-width="1"/>
+                <g font-family="IBM Plex Mono" font-size="10" fill="#5e7480" text-anchor="middle" id="zTicks"></g>
+                <text x="260" y="36" text-anchor="middle" font-family="Inter" font-size="10.5" fill="#1f8a6d">rango normal (−2 a +2)</text>
+                <g id="zMark">
+                  <line id="zLine" x1="260" y1="24" x2="260" y2="150" stroke="#b3452e" stroke-width="2" stroke-dasharray="4 3"/>
+                  <circle id="zDot" cx="260" cy="150" r="6.5" fill="#b3452e" stroke="#fff" stroke-width="2"/>
+                  <text id="zLbl" x="260" y="16" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="#b3452e">Z</text>
+                </g>
+              </svg>
+            </figure>
+
+            <div class="readout" aria-live="polite">
+              <div class="label">Interpretación</div>
+              <div class="result" id="zResult">—</div>
+              <div class="why" id="zWhy"></div>
+              <ul class="warnlist" id="zWarn"></ul>
+              <div class="srcline" id="zSrc"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clin"><b>Por qué no hay "leve, moderado, severo" para cualquier Z.</b> Fuera de las coronarias (que tienen su propia escala), no existe una graduación universal del Z-score aceptada por las guías. Cada laboratorio puede usar sus propios cortes. La herramienta te dice si el valor está dentro o fuera de lo normal y cuánto se aleja, sin inventar categorías que el informe no respalda.</div>
+        <div class="clin"><b>Qué hacer con un Z fuera de rango.</b> Un Z de +2,3 no es por sí solo un diagnóstico: el 2,3 % de los niños sanos está por encima de +2. Pesa más si coincide con otros hallazgos (un soplo, una cardiopatía conocida, un síndrome genético), si aumenta entre controles hechos con el mismo modelo, o si se aleja mucho del límite.</div>
+      </section>
+
+      <!-- 02–13 PENDIENTES -->
+      <section id="informe">
+        <div class="kicker">02 · Anatomía del informe</div>
+        <h2>Cómo está organizado un informe pediátrico</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Partes obligatorias del informe según la guía (datos antropométricos, limitaciones, hallazgos críticos).</li><li>El análisis segmentario explicado sin jerga: situs, venas, aurículas, válvulas auriculoventriculares, ventrículos, grandes arterias.</li><li>Cómo leer las abreviaturas más comunes.</li></ul></div>
+      </section>
+
+      <section id="shunts">
+        <div class="kicker">03 · Cortocircuitos</div>
+        <h2>CIA, CIV, ductus y foramen oval</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Dirección del flujo y qué significa "restrictivo".</li><li>Cuándo un cortocircuito sobrecarga el corazón.</li><li>Intérprete del test de burbujas.</li></ul></div>
+      </section>
+
+      <section id="vi">
+        <div class="kicker">04 · Ventrículo izquierdo</div>
+        <h2>Tamaño, masa y función del VI</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Fracción de acortamiento y fracción de eyección: por qué pueden engañar en niños.</li><li>Hipertrofia concéntrica y excéntrica en Z-score.</li><li>Clasificador interactivo de hipertrofia del VI.</li></ul></div>
+      </section>
+
+      <section id="vd">
+        <div class="kicker">05 · VD e hipertensión pulmonar</div>
+        <h2>El ventrículo derecho y la presión pulmonar</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>TAPSE, cambio fraccional de área, relación sístole/diástole y aplanamiento septal.</li><li>Estimador de presión pulmonar por insuficiencia tricuspídea, CIV o ductus, con alerta cuando supera dos tercios de la sistémica.</li></ul></div>
+      </section>
+
+      <section id="valvulas">
+        <div class="kicker">06 · Válvulas y tractos de salida</div>
+        <h2>Estenosis e insuficiencias en el niño</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Por qué los gradientes engañan en neonatos, con taquicardia o con cortocircuitos.</li><li>Válvula aórtica bicúspide.</li><li>Graduación cualitativa de las insuficiencias.</li></ul></div>
+      </section>
+
+      <section id="coronarias">
+        <div class="kicker">07 · Coronarias</div>
+        <h2>Kawasaki y MIS-C</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Clasificación de la AHA por Z-score y seguimiento.</li><li>Origen anómalo de coronarias: cuándo sospecharlo.</li></ul></div>
+      </section>
+
+      <section id="aorta">
+        <div class="kicker">08 · Aorta y arco</div>
+        <h2>Coartación, dilatación y el Doppler de la aorta abdominal</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Lector de los cuatro patrones del Doppler de aorta abdominal.</li><li>Marfan, Turner, Williams y válvula bicúspide.</li></ul></div>
+      </section>
+
+      <section id="pericardio">
+        <div class="kicker">09 · Pericardio</div>
+        <h2>Derrame pericárdico en el niño</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Derrame posoperatorio, taponamiento y signos que obligan a actuar.</li></ul></div>
+      </section>
+
+      <section id="posop">
+        <div class="kicker">10 · Posoperatorios</div>
+        <h2>El informe del niño ya operado</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Tetralogía de Fallot reparada: insuficiencia pulmonar y dilatación del VD.</li><li>Switch arterial: arterias pulmonares, neoaorta y coronarias.</li><li>Circulación de Fontan: qué vigilar.</li></ul></div>
+      </section>
+
+      <section id="criticos">
+        <div class="kicker">11 · Hallazgos críticos</div>
+        <h2>Lo que exige llamar de inmediato</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div>
+          <ul><li>Lista de hallazgos críticos de la guía y checklist interactivo.</li><li>Cardiopatías ductus-dependientes en el neonato.</li></ul></div>
+      </section>
+
+      <section id="caso">
+        <div class="kicker">12 · Caso resuelto</div>
+        <h2>Un informe real, paso a paso</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div><ul><li>Lectura guiada de un informe completo.</li></ul></div>
+      </section>
+
+      <section id="referencia">
+        <div class="kicker">13 · Referencia rápida</div>
+        <h2>Tablas de consulta</h2>
+        <div class="soonbox"><div class="lbl">En preparación</div><ul><li>Resumen de umbrales y trampas de todos los capítulos.</li></ul></div>
+      </section>
+
+      <!-- 14 QUIZ -->
+      <section id="quiz">
+        <div class="kicker">14 · Autoevaluación</div>
+        <h2>Pon a prueba la lectura</h2>
+        <p class="sub">Tres niveles de dificultad y retroalimentación inmediata. Las preguntas no se repiten hasta agotar el banco. Por ahora cubre el capítulo 1; el banco crece con cada capítulo nuevo.</p>
+        <div class="tool">
+          <div class="tool-head"><span class="tag">EXAMEN</span> <span id="examTitle">Configura tu intento</span></div>
+          <div class="tool-body" id="examHost"></div>
+        </div>
+      </section>
+
+      <!-- 15 CREDITOS -->
+      <section id="creditos">
+        <div class="kicker">15 · Autor</div>
+        <h2>Sobre este manual</h2>
+        <p class="sub">La versión pediátrica del manual <a href="https://carvajaljuanfernando-prog.github.io/eco-informe/">Cómo leer un informe de ecocardiograma</a>, hecha a pedido de los colegas que lo usan.</p>
+
+        <div class="author">
+          <div class="initials" aria-hidden="true">JC</div>
+          <div class="who">
+            <div class="nm">Dr. Juan Fernando Carvajal Estupiñán</div>
+            <div class="role">Cardiólogo</div>
+            <div class="place">Instituto del Corazón de Bucaramanga<br>Bucaramanga, Colombia</div>
+            <p class="note">Autor del contenido y del diseño de los módulos interactivos. Material educativo de acceso libre; puede compartirse y usarse con fines docentes citando la autoría.</p>
+          </div>
+        </div>
+
+        <h3>Comentarios y sugerencias</h3>
+        <div class="contact">
+          <div class="contact-txt"><b>Este manual está en construcción.</b> Si encuentras un error, algo que se pueda explicar mejor o un tema que falte, escríbeme.</div>
+          <a class="mailbtn" id="mailLink" href="#" rel="nofollow"><span>carvajaljuanfernando</span><span>&#64;</span><span>gmail</span><span>&#46;</span><span>com</span></a>
+        </div>
+
+        <div class="clin"><b>Cómo citar.</b> Carvajal Estupiñán JF. <i>Cómo leer un informe de ecocardiograma pediátrico: manual interactivo para médicos no cardiólogos.</i> Bucaramanga, Colombia; 2026. Disponible en línea.</div>
+        <div class="trap"><b>Aviso.</b> Material con fines <b>exclusivamente educativos</b>. No sustituye el juicio clínico, la valoración por cardiología pediátrica ni las guías vigentes.</div>
+      </section>
+
+    </div><!-- /wrap -->
+
+    <footer>
+      <div class="wrap">
+        <b>Cómo leer un informe de ecocardiograma pediátrico</b> · Manual interactivo para médicos no cardiólogos.<br>
+        © 2026 <b>Dr. Juan Fernando Carvajal Estupiñán</b> — Cardiólogo, Instituto del Corazón de Bucaramanga · Bucaramanga, Colombia.<br>
+        Comentarios y sugerencias: <a href="#creditos" style="color:#bcd9e6">ver sección 15</a>.
+        <div class="disc">Contenido basado en la guía de la ASE para el ecocardiograma transtorácico pediátrico completo (Lopez L et al. J Am Soc Echocardiogr 2024;37:119-70). Clasificación coronaria según la declaración científica de la AHA sobre enfermedad de Kawasaki (McCrindle BW et al. Circulation 2017;135:e927-99). Material educativo; no sustituye el juicio clínico ni la valoración especializada.</div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s,c){return (c||document).querySelector(s);};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+  /* ---- mobile nav ---- */
+  var nav=$("#nav"), scrim=$("#scrim"), toggle=$("#navToggle");
+  function closeNav(){nav.classList.remove("open");scrim.classList.remove("show");}
+  toggle.addEventListener("click",function(){nav.classList.toggle("open");scrim.classList.toggle("show");});
+  scrim.addEventListener("click",closeNav);
+  $$(".nav a").forEach(function(a){a.addEventListener("click",closeNav);});
+
+  /* ---- contact link (assembled at runtime) ---- */
+  var ml=$("#mailLink");
+  if(ml){
+    var u="carvajaljuanfernando", d=["gmail","com"].join(".");
+    ml.setAttribute("href","mail"+"to:"+u+String.fromCharCode(64)+d+
+      "?subject="+encodeURIComponent("Comentarios — Manual de eco pediátrico"));
+  }
+
+  /* ---- glossary tooltips ---- */
+  $$(".g").forEach(function(g){
+    function place(){
+      g.classList.remove("tip-left");
+      var t=g.querySelector(".tip"); if(!t)return;
+      var r=t.getBoundingClientRect();
+      if(r.right>document.documentElement.clientWidth-8) g.classList.add("tip-left");
+    }
+    g.addEventListener("mouseenter",place);
+    g.addEventListener("focus",place);
+    g.addEventListener("touchstart",place,{passive:true});
+  });
+
+  /* ---- active section highlight ---- */
+  var links={};
+  $$(".nav a").forEach(function(a){links[a.getAttribute("href").slice(1)]=a;});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          $$(".nav a").forEach(function(a){a.classList.remove("active");});
+          var l=links[e.target.id]; if(l)l.classList.add("active");
+        }
+      });
+    },{rootMargin:"-45% 0px -50% 0px"});
+    $$("section").forEach(function(s){io.observe(s);});
+  }
+
+  /* =========================================================
+     TOOL · Intérprete de Z-score
+     Fuentes: Lopez L et al. JASE 2024 (límites ±2, advertencias de modelo,
+     obesidad, prematuros, modo M); McCrindle BW et al. Circulation 2017
+     (clasificación coronaria de la AHA).
+     ========================================================= */
+  var zIn=$("#zIn"), zRange=$("#zRange"), mmIn=$("#mmIn"), mmField=$("#mmField");
+  var kGen=$("#zkGen"), kCor=$("#zkCor");
+  var zKind="gen", zW={obes:false,prem:false,lab:false,mod:false};
+
+  function fmt(x,dec){return x.toFixed(dec==null?1:dec).replace(".",",").replace(/^-/,"−");}
+  function erf(x){ // Abramowitz & Stegun 7.1.26
+    var s=x<0?-1:1; x=Math.abs(x);
+    var t=1/(1+0.3275911*x);
+    var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);
+    return s*y;
+  }
+  function pctl(z){return 50*(1+erf(z/Math.SQRT2));}
+  function pctlTxt(z){
+    var p=pctl(z);
+    if(p>99.9)return "por encima del percentil 99,9";
+    if(p<0.1)return "por debajo del percentil 0,1";
+    return "percentil ≈ "+fmt(p,p>=99||p<=1?1:0);
+  }
+
+  /* curve */
+  var X0=260, SX=50, YB=150, H=112;
+  function cx(z){return X0+SX*z;}
+  (function drawBell(){
+    var d="", z;
+    for(z=-4;z<=4.0001;z+=0.05){
+      var y=YB-H*Math.exp(-z*z/2);
+      d+=(d?" L":"M")+cx(z).toFixed(1)+" "+y.toFixed(1);
+    }
+    $("#zBell").setAttribute("d",d);
+    var g=$("#zTicks"), NS="http://www.w3.org/2000/svg";
+    for(z=-4;z<=4;z++){
+      var t=document.createElementNS(NS,"text");
+      t.setAttribute("x",cx(z)); t.setAttribute("y",YB+16);
+      t.textContent=(z>0?"+":z<0?"−":"")+Math.abs(z);
+      if(z===-2||z===2){t.setAttribute("fill","#1f8a6d");t.setAttribute("font-weight","600");}
+      g.appendChild(t);
+      var tk=document.createElementNS(NS,"line");
+      tk.setAttribute("x1",cx(z));tk.setAttribute("x2",cx(z));tk.setAttribute("y1",YB);tk.setAttribute("y2",YB+4);
+      tk.setAttribute("stroke","#9fb3bb"); g.appendChild(tk);
+    }
+  })();
+
+  function setKind(k){
+    zKind=k;
+    kGen.setAttribute("aria-pressed",String(k==="gen"));
+    kCor.setAttribute("aria-pressed",String(k==="cor"));
+    mmField.hidden=(k!=="cor");
+    zRun();
+  }
+  kGen.addEventListener("click",function(){setKind("gen");});
+  kCor.addEventListener("click",function(){setKind("cor");});
+
+  $$("#ztool .toggle button").forEach(function(b){
+    b.addEventListener("click",function(){
+      var k=b.getAttribute("data-w"); zW[k]=!zW[k];
+      b.setAttribute("aria-pressed",String(zW[k])); b.textContent=zW[k]?"Sí":"No";
+      zRun();
+    });
+  });
+  zIn.addEventListener("input",function(){var v=parseFloat(zIn.value); if(!isNaN(v))zRange.value=Math.max(-5,Math.min(12,v)); zRun();});
+  zRange.addEventListener("input",function(){zIn.value=zRange.value; zRun();});
+  mmIn.addEventListener("input",zRun);
+
+  function mark(z,color){
+    var zc=Math.max(-4.3,Math.min(4.3,z)), x=cx(zc);
+    var y=YB-H*Math.exp(-zc*zc/2);
+    $("#zLine").setAttribute("x1",x);$("#zLine").setAttribute("x2",x);$("#zLine").setAttribute("y1",Math.min(y,YB-6));
+    $("#zDot").setAttribute("cx",x);
+    var lbl=$("#zLbl"); lbl.setAttribute("x",Math.max(40,Math.min(480,x)));
+    lbl.setAttribute("y",Math.max(14,Math.min(y,YB-6)-8));
+    lbl.textContent=(z>4.3?"Z "+fmt(z)+" →":z<-4.3?"← Z "+fmt(z):"Z "+fmt(z));
+    ["#zLine","#zDot"].forEach(function(s){var e=$(s); e.setAttribute(s==="#zLine"?"stroke":"fill",color);});
+    lbl.setAttribute("fill",color);
+  }
+
+  function zRun(){
+    var z=parseFloat(zIn.value), res=$("#zResult"), why=$("#zWhy"), wl=$("#zWarn"), src=$("#zSrc");
+    wl.innerHTML="";
+    if(isNaN(z)){res.textContent="—";why.textContent="Escribe un valor de Z.";return;}
+    var C={ok:"var(--ok)",warn:"var(--warn)",alert:"var(--alert)"}, HEX={ok:"#1f8a6d",warn:"#b9821c",alert:"#b3452e"};
+    var tone="ok", title="", text="";
+
+    if(zKind==="gen"){
+      if(z>=2){
+        tone=z>=3?"alert":"warn";
+        title="Por encima de lo normal para su tamaño";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). La estructura es más grande de lo esperado: cavidad o vaso dilatado, o pared engrosada, según qué se midió. ";
+        text+=z>=3?"Se aleja claramente del límite de +2.":"Está cerca del límite: pesa más si coincide con otros hallazgos o si aumenta en controles con el mismo modelo.";
+      }else if(z<=-2){
+        tone=z<=-3?"alert":"warn";
+        title="Por debajo de lo normal para su tamaño";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). La estructura es más pequeña de lo esperado. En un anillo valvular, una arteria pulmonar o el arco aórtico puede indicar hipoplasia, y en cardiopatías congénitas ese tamaño pesa tanto como el gradiente.";
+      }else{
+        tone="ok";
+        title="Dentro del rango normal";
+        text="Z "+fmt(z)+" ("+pctlTxt(z)+"). Entre −2 y +2 está el 95 % de los niños sanos de su mismo tamaño.";
+        if(Math.abs(z)>=1.7) text+=" Está cerca del límite: vale la pena mirar la tendencia en controles con el mismo modelo.";
+      }
+      src.textContent="Límites ±2 según la guía de la ASE para eco pediátrico (Lopez et al., JASE 2024).";
+    }else{
+      var mm=parseFloat(mmIn.value), big=!isNaN(mm)&&mm>=8;
+      if(big||z>=10){
+        tone="alert"; title="Aneurisma grande o gigante";
+        text=(big&&z<10?"El diámetro absoluto de "+fmt(mm)+" mm (≥ 8 mm) basta para clasificarlo como gigante, aunque el Z sea "+fmt(z)+". ":"Z "+fmt(z)+" (≥ 10). ")+"Es la categoría de mayor riesgo de trombosis y estenosis; requiere manejo y seguimiento por cardiología pediátrica.";
+      }else if(z>=5){
+        tone="alert"; title="Aneurisma mediano";
+        text="Z "+fmt(z)+" (entre 5 y menos de 10) con diámetro absoluto menor de 8 mm."+(isNaN(mm)?" Si el diámetro llegara a 8 mm o más, pasaría a gigante.":"");
+      }else if(z>=2.5){
+        tone="warn"; title="Aneurisma pequeño";
+        text="Z "+fmt(z)+" (entre 2,5 y menos de 5).";
+      }else if(z>=2){
+        tone="warn"; title="Solo dilatación";
+        text="Z "+fmt(z)+" (entre 2 y menos de 2,5). No es aneurisma, pero sí compromiso coronario.";
+      }else{
+        tone="ok"; title="Sin compromiso coronario (por Z)";
+        text="Z "+fmt(z)+" (menor de 2). Recuerda la regla de seguimiento: si el Z inicial era menor de 2 y en los controles cae 1 punto o más, esa coronaria se considera dilatada en retrospectiva.";
+      }
+      src.textContent="Clasificación de la AHA para enfermedad de Kawasaki (McCrindle et al., Circulation 2017). En MIS-C suele aplicarse la misma escala.";
+    }
+
+    res.textContent=title; res.style.color=C[tone]; why.textContent=text;
+    mark(z,HEX[tone]);
+
+    var W=[];
+    if(zW.obes) W.push("<b>Obesidad.</b> La grasa aumenta la superficie corporal sin que el corazón crezca en proporción: el Z sale falsamente bajo."+(z<2?" Un Z “normal” aquí no descarta una dilatación real.":""));
+    if(zW.prem) W.push("<b>Prematuro.</b> La mayoría de los modelos se construyeron con niños a término; el Z orienta pero no es exacto.");
+    if(zW.lab) W.push("<b>Otro laboratorio.</b> Los modelos dan Z distintos para la misma medida, sobre todo en estructuras pequeñas como las coronarias. Compara solo si ambos informes usaron el mismo modelo.");
+    if(zW.mod) W.push("<b>Modelo no especificado.</b> Sin saber qué modelo se usó no puedes seguir la tendencia con seguridad. Pide que el informe lo diga.");
+    W.forEach(function(h){var li=document.createElement("li"); li.innerHTML=h; wl.appendChild(li);});
+  }
+  zRun();
+
+  /* ---- exam engine ---- */
+  var BANK=[
+    /* ===== BÁSICO ===== */
+    {id:"z-b1",lvl:"b",stem:"El informe dice: raíz aórtica Z +1,2. ¿Cómo se interpreta?",opts:["Dilatada","Dentro de lo normal para su tamaño","Hipoplásica","No se puede interpretar sin los milímetros"],correct:1,fb:"Entre −2 y +2 está el rango normal. +1,2 es algo mayor que el promedio, pero normal para su tamaño."},
+    {id:"z-b2",lvl:"b",stem:"¿Qué proporción de niños sanos tiene un Z-score entre −2 y +2?",opts:["Alrededor del 50 %","Alrededor del 68 %","Alrededor del 95 %","El 100 %"],correct:2,fb:"El rango de −2 a +2 incluye cerca del 95 % de la población sana. Por eso son los límites habituales de lo normal."},
+    {id:"z-b3",lvl:"b",stem:"¿Por qué el informe pediátrico expresa las medidas en Z-score y no solo en milímetros?",opts:["Porque los milímetros no se pueden medir en niños","Porque el tamaño normal del corazón cambia con el tamaño corporal","Porque es más fácil de calcular","Porque lo exige el equipo"],correct:1,fb:"Un mismo valor en milímetros puede ser normal en un escolar y anormal en un lactante. El Z compara con niños sanos del mismo tamaño."},
+    {id:"z-b4",lvl:"b",stem:"Diámetro diastólico del VI con Z +2,7. ¿Qué indica?",opts:["VI de tamaño normal","VI dilatado para su tamaño","VI pequeño","Hipertrofia"],correct:1,fb:"Un Z por encima de +2 indica una cavidad más grande de lo esperado para su tamaño: dilatación."},
+    {id:"z-b5",lvl:"b",stem:"El Z-score de las estructuras cardiacas se calcula casi siempre en relación con:",opts:["La edad exacta en días","La superficie corporal (o la talla)","La frecuencia cardiaca","La presión arterial"],correct:1,fb:"Las estructuras crecen con el tamaño corporal, por eso sus Z se basan en superficie corporal o talla. La edad pesa más en los índices de función."},
+    /* ===== INTERMEDIO ===== */
+    {id:"z-i1",lvl:"i",stem:"Niño con obesidad: diámetro del VI con Z +1,5. ¿Cómo lo lees?",opts:["Normal, sin dudas","El Z puede estar subestimado y no descarta dilatación","Está sobreestimado, el VI es pequeño","La obesidad no afecta el Z"],correct:1,fb:"La obesidad aumenta la superficie corporal sin que el corazón crezca en proporción: el Z sale falsamente bajo. La guía advierte no confiar en los Z habituales en el niño obeso."},
+    {id:"z-i2",lvl:"i",stem:"Control de raíz aórtica: antes Z +1,8 en otra institución, ahora Z +2,6. ¿Qué verificas primero?",opts:["Nada, la aorta creció","Que ambos informes usaron el mismo modelo de Z","La frecuencia cardiaca","El ritmo"],correct:1,fb:"Distintos modelos dan Z distintos para la misma medida. Para seguir la tendencia hay que usar siempre el mismo modelo."},
+    {id:"z-i3",lvl:"i",stem:"Neonato con estenosis aórtica: gradiente moderado, anillo aórtico con Z −3. ¿Qué aporta el Z del anillo?",opts:["Nada, lo importante es el gradiente","Un anillo pequeño (hipoplásico) que pesa en la severidad","Que la válvula es normal","Que hay insuficiencia"],correct:1,fb:"En el neonato el gradiente puede subestimar la severidad. La guía indica que el Z del anillo aórtico puede orientar mejor la severidad que el gradiente."},
+    {id:"z-i4",lvl:"i",stem:"El VI se midió en modo M y se calcularon los Z con el modelo del PHN. ¿Es correcto?",opts:["Sí, el PHN sirve para todo","No, los Z del PHN se obtuvieron con medidas en 2D","Sí, si el niño es mayor de 5 años","Solo en prematuros"],correct:1,fb:"El modelo del PHN se construyó con medidas en 2D; la guía indica que no debe usarse para medidas en modo M."},
+    {id:"z-i5",lvl:"i",stem:"Escolar sano con soplo inocente: una sola medida con Z +2,2 y el resto normal. ¿Mejor lectura?",opts:["Diagnóstico de cardiopatía","Hallazgo fuera de rango que se interpreta en contexto; cerca de 2 de cada 100 sanos superan +2","Error del equipo","Repetir el eco cada mes"],correct:1,fb:"Por definición, cerca del 2 % de los niños sanos supera +2. Un valor aislado cerca del límite se interpreta con la clínica y, si hace falta, se sigue con el mismo modelo."},
+    /* ===== AVANZADO ===== */
+    {id:"z-a1",lvl:"a",stem:"Kawasaki: coronaria descendente anterior con Z 2,2. Clasificación de la AHA:",opts:["Sin compromiso","Solo dilatación","Aneurisma pequeño","Aneurisma mediano"],correct:1,fb:"Z de 2 a menos de 2,5 = solo dilatación."},
+    {id:"z-a2",lvl:"a",stem:"Kawasaki: coronaria derecha con Z 6 y diámetro de 5 mm. Clasificación:",opts:["Aneurisma pequeño","Aneurisma mediano","Aneurisma gigante","Solo dilatación"],correct:1,fb:"Z de 5 a menos de 10 con diámetro absoluto menor de 8 mm = aneurisma mediano."},
+    {id:"z-a3",lvl:"a",stem:"Kawasaki: Z 7 pero diámetro absoluto de 8,5 mm. Clasificación:",opts:["Aneurisma mediano","Aneurisma grande o gigante","Aneurisma pequeño","Depende de la edad"],correct:1,fb:"Un diámetro absoluto de 8 mm o más clasifica el aneurisma como gigante, aunque el Z sea menor de 10."},
+    {id:"z-a4",lvl:"a",stem:"Kawasaki: coronaria con Z 1,9 al diagnóstico y 0,6 a las 8 semanas. ¿Cómo se clasifica?",opts:["Sin compromiso","Solo dilatación","Aneurisma pequeño","Regresión de aneurisma"],correct:1,fb:"Si el Z inicial era menor de 2 y cae 1 punto o más en el seguimiento, la AHA considera que había dilatación."},
+    {id:"z-a5",lvl:"a",stem:"Adolescente con válvula aórtica bicúspide pasa a un laboratorio de adultos y la raíz aórtica 'cambia' respecto al control previo. ¿Qué explicación técnica debes considerar?",opts:["Ninguna, la aorta cambió","En niños se mide en sístole de borde interno a borde interno; en adultos, en diástole de borde anterior a borde anterior","Los adultos usan modo M siempre","El Z no existe en adultos"],correct:1,fb:"La guía pediátrica mide los diámetros aórticos en sístole, de borde interno a borde interno; la de adultos, en diástole, de borde anterior a borde anterior. El cambio puede ser solo técnico."},
+    {id:"z-a6",lvl:"a",stem:"Lactante con todos los Z del informe inesperadamente bajos, sin correlación clínica. ¿Qué revisas primero?",opts:["El peso y la talla registrados en el estudio","La velocidad de la tricúspide","El ritmo cardiaco","El modelo del ecógrafo"],correct:0,fb:"Todos los Z dependen de la superficie corporal calculada con el peso y la talla del día del estudio. Un dato antropométrico erróneo desplaza todos los Z."}
+  ];
+
+  var LVL={b:"Básico",i:"Intermedio",a:"Avanzado"};
+  var host=$("#examHost"), titleEl=$("#examTitle");
+  var memUsed=[], KEY="ecoped_used";
+  function loadUsed(){try{var v=localStorage.getItem(KEY);if(v)return JSON.parse(v);}catch(e){}return memUsed.slice();}
+  function saveUsed(a){memUsed=a.slice();try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
+  function byId(id){for(var i=0;i<BANK.length;i++)if(BANK[i].id===id)return BANK[i];return null;}
+  function inScope(q,lvl){return lvl==="mix"||q.lvl===lvl;}
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function poolFor(lvl){var u=loadUsed();return BANK.filter(function(q){return inScope(q,lvl)&&u.indexOf(q.id)<0;});}
+  function totalFor(lvl){return BANK.filter(function(q){return inScope(q,lvl);}).length;}
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+
+  var cfg={lvl:"mix",len:8};
+  var exam=null;
+  var GHOST="font-family:var(--font-display);font-weight:600;font-size:14px;background:#fff;color:var(--brand);border:1px solid var(--line);padding:11px 18px;border-radius:9px;cursor:pointer";
+
+  function renderConfig(){
+    exam=null; titleEl.textContent="Configura tu intento"; host.innerHTML="";
+    var f1=el("div","field"); f1.appendChild(el("label",null,"Nivel de dificultad"));
+    var seg=el("div","seg"); seg.setAttribute("role","group");
+    [["mix","Mixto"],["b","Básico"],["i","Intermedio"],["a","Avanzado"]].forEach(function(o){
+      var b=el("button",null,o[1]); b.type="button";
+      b.setAttribute("aria-pressed",String(cfg.lvl===o[0]));
+      b.addEventListener("click",function(){cfg.lvl=o[0];renderConfig();});
+      seg.appendChild(b);
+    });
+    f1.appendChild(seg); host.appendChild(f1);
+
+    var f2=el("div","field"); f2.appendChild(el("label",null,"Número de preguntas"));
+    var seg2=el("div","seg");
+    [5,8,10].forEach(function(n){
+      var b=el("button",null,String(n)); b.type="button";
+      b.setAttribute("aria-pressed",String(cfg.len===n));
+      b.addEventListener("click",function(){cfg.len=n;renderConfig();});
+      seg2.appendChild(b);
+    });
+    f2.appendChild(seg2); host.appendChild(f2);
+
+    var pool=poolFor(cfg.lvl), total=totalFor(cfg.lvl);
+    var info=el("div","readout");
+    info.appendChild(el("div","label","Disponibilidad"));
+    info.appendChild(el("div","why","Preguntas nuevas en este nivel: "+pool.length+" de "+total+". Las ya respondidas no se repiten."));
+    host.appendChild(info);
+
+    var actions=el("div"); actions.style.cssText="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap";
+    if(pool.length===0){
+      var msg=el("div","trap"); msg.style.margin="0 0 4px"; msg.innerHTML="<b>Completaste todas las preguntas de este nivel.</b> Reinícialo para volver a practicarlas.";
+      host.appendChild(msg);
+      var rb=el("button","primary","Reiniciar este nivel"); rb.type="button";
+      rb.addEventListener("click",function(){resetScope(cfg.lvl);});
+      actions.appendChild(rb);
+    }else{
+      var sb=el("button","primary","Comenzar examen"); sb.type="button";
+      sb.addEventListener("click",startExam); actions.appendChild(sb);
+      if(loadUsed().length){
+        var rb2=el("button",null,"Reiniciar preguntas vistas"); rb2.type="button"; rb2.style.cssText=GHOST;
+        rb2.addEventListener("click",function(){resetScope("mix");});
+        actions.appendChild(rb2);
+      }
+    }
+    host.appendChild(actions);
+  }
+
+  function resetScope(lvl){
+    var keep=loadUsed().filter(function(id){var q=byId(id);return q&&!inScope(q,lvl);});
+    saveUsed(keep); renderConfig();
+  }
+
+  function startExam(){
+    var pool=poolFor(cfg.lvl); if(!pool.length){renderConfig();return;}
+    shuffle(pool);
+    var qs=pool.slice(0,Math.min(cfg.len,pool.length));
+    var u=loadUsed(); qs.forEach(function(q){u.push(q.id);}); saveUsed(u);
+    exam={qs:qs,idx:0,answers:[],stats:{b:[0,0],i:[0,0],a:[0,0]}};
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    var q=exam.qs[exam.idx], n=exam.qs.length;
+    titleEl.textContent="Pregunta "+(exam.idx+1)+" de "+n;
+    host.innerHTML="";
+    var prog=el("div","progress"); var bar=el("i"); bar.style.width=Math.round(exam.idx/n*100)+"%"; prog.appendChild(bar); host.appendChild(prog);
+    var meta=el("div","examMeta");
+    meta.appendChild(el("span","lvlbadge lvl-"+q.lvl,LVL[q.lvl]));
+    meta.appendChild(el("span",null,"Aciertos: "+exam.answers.filter(function(a){return a;}).length+" / "+exam.answers.length));
+    host.appendChild(meta);
+    var qd=el("div","q");
+    qd.appendChild(el("div","stem",(exam.idx+1)+". "+q.stem));
+    var fb=el("div","fb");
+    q.opts.forEach(function(opt,oi){
+      var b=el("button","opt",opt); b.type="button";
+      b.addEventListener("click",function(){
+        if(qd.dataset.done)return; qd.dataset.done="1";
+        $$(".opt",qd).forEach(function(x){x.disabled=true;});
+        var ok=oi===q.correct; exam.answers.push(ok);
+        exam.stats[q.lvl][1]++; if(ok)exam.stats[q.lvl][0]++;
+        if(ok){b.classList.add("correct");}else{b.classList.add("wrong");$$(".opt",qd)[q.correct].classList.add("correct");}
+        fb.textContent=q.fb; fb.classList.add("show");
+        bar.style.width=Math.round((exam.idx+1)/n*100)+"%";
+        var nb=el("button","primary",exam.idx+1<n?"Siguiente":"Ver resultados"); nb.type="button"; nb.style.marginTop="14px";
+        nb.addEventListener("click",function(){exam.idx++; if(exam.idx<n)renderQuestion(); else renderResults();});
+        qd.appendChild(nb); nb.focus();
+      });
+      qd.appendChild(b);
+    });
+    qd.appendChild(fb); host.appendChild(qd);
+  }
+
+  function renderResults(){
+    var n=exam.qs.length, correct=exam.answers.filter(function(a){return a;}).length, pct=Math.round(correct/n*100);
+    titleEl.textContent="Resultado del intento"; host.innerHTML="";
+    var head=el("div","readout");
+    head.appendChild(el("div","label","Desempeño global"));
+    var res=el("div","result",correct+" / "+n+"  ·  "+pct+" %");
+    res.style.color=pct>=80?"var(--ok)":pct>=60?"var(--warn)":"var(--alert)";
+    head.appendChild(res);
+    head.appendChild(el("div","why",pct>=80?"Dominio sólido de la lectura del informe.":pct>=60?"Buen avance; revisa los temas del capítulo.":"Conviene repasar el capítulo y reintentar."));
+    host.appendChild(head);
+    host.appendChild(el("div","reportTitle","Desempeño por nivel"));
+    ["b","i","a"].forEach(function(L){
+      var s=exam.stats[L]; if(s[1]===0)return;
+      var p=Math.round(s[0]/s[1]*100);
+      var row=el("div","statrow");
+      row.appendChild(el("span","statlbl",LVL[L]));
+      var track=el("div","statbar"); var fill=el("i"); fill.style.width=p+"%";
+      fill.style.background=p>=80?"var(--ok)":p>=60?"var(--warn)":"var(--alert)";
+      track.appendChild(fill); row.appendChild(track);
+      row.appendChild(el("span","statnum",s[0]+"/"+s[1]));
+      host.appendChild(row);
+    });
+    var pool=poolFor(cfg.lvl);
+    var actions=el("div"); actions.style.cssText="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap";
+    if(pool.length>0){
+      var again=el("button","primary","Hacer otro examen (preguntas nuevas)"); again.type="button";
+      again.addEventListener("click",startExam); actions.appendChild(again);
+    }else{
+      var done=el("div","clin"); done.style.margin="0 0 6px"; done.innerHTML="<b>Completaste el banco de este nivel.</b> Reinícialo para volver a practicar.";
+      host.appendChild(done);
+      var rs=el("button","primary","Reiniciar este nivel"); rs.type="button";
+      rs.addEventListener("click",function(){resetScope(cfg.lvl);}); actions.appendChild(rs);
+    }
+    var cfgBtn=el("button",null,"Cambiar nivel"); cfgBtn.type="button"; cfgBtn.style.cssText=GHOST;
+    cfgBtn.addEventListener("click",renderConfig); actions.appendChild(cfgBtn);
+    host.appendChild(actions);
+    host.appendChild(el("div","scorebar","Quedan "+pool.length+" preguntas nuevas en el nivel "+(cfg.lvl==="mix"?"Mixto":LVL[cfg.lvl])+"."));
+  }
+
+  renderConfig();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Cómo leer un informe de ecocardiograma pediátrico",
+  "short_name": "Eco Pediátrico",
+  "description": "Manual interactivo para médicos no cardiólogos: cómo interpretar un informe de ecocardiograma pediátrico.",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "minimal-ui",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f8f9",
+  "theme_color": "#16323f"
+}
